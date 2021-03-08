@@ -1,0 +1,376 @@
+$white: #F7F7F7
+$grey: #666666
+$black: #333333
+$orange: #CD6326
+$orange-hover: #E39128
+$orange-pressed: #8F5613
+$bg-grey-color: #cccccc
+	
+*
+	box-sizing: border-box
+	padding: 0
+	margin: 0
+	cursor: default
+
+a
+	text-decoration: none
+	color: currentcolor
+
+	&:hover
+		cursor: pointer
+	
+.wrapper
+	max-width: 1440px
+	display: flex
+	flex-direction: column
+	align-items: center
+	margin: 0 auto
+
+.top
+	width: 100%
+	padding: 0 120px
+	display: flex
+	flex-direction: column
+	background: url(assets/fox-image.png) center
+	background-size: cover
+
+	.header
+		display: flex
+		padding: 20px 0
+		justify-content: space-between
+
+		.logo-container
+			display: flex
+			column-gap: 15px
+			align-items: center
+
+			.logo-text
+				font-family: 'Roboto', sans-serif
+				font-size: 32px
+				line-height: 60px
+				text-transform: uppercase
+				color: $white
+			
+		.top-nav
+
+			.top-nav-list
+				list-style: none
+				display: flex
+				align-items: center
+				column-gap: 65px
+
+				.top-nav-list-item
+					font-family: 'Open Sans', sans-serif
+					font-style: normal
+					font-weight: normal
+					font-size: 23px
+					line-height: 60px
+					color: $white
+
+				.top-nav-list-icon
+					display: block
+
+					img:hover
+						cursor: pointer
+
+				.top-nav-list-button
+
+					button
+						display: flex
+						justify-content: center
+						align-items: center
+						background-color: transparent
+						width: 120px
+						height: 50px
+						border: 2px solid $orange
+						border-radius: 5px
+						font-family: 'Roboto', sans-serif
+						font-style: normal
+						font-weight: normal
+						font-size: 23px
+						line-height: 27px
+						color: $white
+
+						&:hover
+							background-color: $orange					
+							cursor: pointer
+					
+						&:active					
+							background-color: $orange-pressed
+							border: 2px solid $orange-pressed
+							cursor: pointer
+
+
+	.top-container
+
+		.top-content
+			margin: 100px 0 240px 0
+			max-width: 275px
+
+			.top-title
+				font-family: 'Open Sans', sans-serif
+				font-style: normal
+				font-weight: normal
+				font-size: 48px
+				line-height: 72px
+				letter-spacing: 2px
+				color: $orange
+				margin-bottom: 50px
+
+			.top-paragraph
+				font-family: 'Open Sans', sans-serif
+				font-style: normal
+				font-weight: normal
+				font-size: 18px
+				line-height: 27px
+				color: $white
+				margin-bottom: 50px
+
+			.top-button
+				display: flex
+				width: 160px
+				height: 60px
+				justify-content: center
+				align-items: center
+				background-color: $orange
+				border: none
+				border-radius: 5px
+				font-family: 'Roboto', sans-serif
+				font-style: normal
+				font-weight: normal
+				font-size: 23px
+				line-height: 27px
+				color: $white
+
+				&:hover
+					background-color: $orange-hover
+					cursor: pointer
+
+				&:active					
+					background-color: $orange-pressed
+					cursor: pointer
+
+.middle
+	width: 100%
+	padding: 120px 120px 240px 120px 
+	display: flex
+	flex-direction: column
+	align-items: center
+	background-color: $bg-grey-color
+
+	.slider-container
+		width: 100%
+		display: flex
+		flex-direction: column
+		align-items: center
+		margin-bottom: 240px
+
+		.slider-title
+			font-family: 'Open Sans', sans-serif
+			font-style: normal
+			font-weight: normal
+			font-size: 48px
+			line-height: 72px
+			text-align: center
+			color: $black
+			margin-bottom: 20px
+
+		.slider-paragraph
+			font-family: 'Open Sans', sans-serif
+			font-style: normal
+			font-weight: normal
+			font-size: 24px
+			line-height: 36px
+			text-align: center
+			color: $grey
+			margin-bottom: 120px
+
+		.slider
+			width: 100%
+			position: relative
+			display: flex
+			justify-content: center
+			
+			.arrows
+				position: absolute
+				top: 50%
+				width: 100%
+				transform: translateY(-50%)
+				display: flex
+				justify-content: space-between
+
+			
+				.arrow-left
+					cursor: pointer
+
+				.arrow-right
+					cursor: pointer
+					transform: rotate(180deg)
+
+				
+			.slides
+				display: flex
+				column-gap: 60px
+				overflow-x: hidden
+
+				.slide
+					width: 300px
+					height: 360px
+					display: flex
+					flex-direction: column
+					align-items: center
+					justify-content: flex-end
+					padding: 0 0 40px 0
+					position: relative
+
+					.slide-image
+						position: absolute
+						top: 0
+						left: 0
+						cursor: pointer
+
+					.slide-title
+						font-family: 'Open Sans', sans-serif
+						font-style: normal
+						font-weight: normal
+						font-size: 22px
+						line-height: 36px
+						text-align: center
+						color: $white
+						margin-bottom: 10px
+						z-index: 2
+						cursor: pointer
+
+					.slide-description
+						font-family: 'Open Sans', sans-serif
+						font-style: normal
+						font-weight: normal
+						font-size: 17px
+						line-height: 27px
+						text-align: center
+						color: $white
+						z-index: 2
+						cursor: pointer
+
+				@media screen and ( max-width: 1439px )
+					
+					.slide-03
+						display: none
+
+				@media screen and ( max-width: 1079px )
+					
+					.slide-02
+						display: none
+
+	.subscribe-container
+		display: flex
+		flex-direction: column
+		align-items: center
+
+		.subscribe-title
+			font-family: 'Open Sans', sans-serif
+			font-style: normal
+			font-weight: normal
+			font-size: 27px
+			line-height: 40px
+			text-align: center
+			color: $black
+			margin-bottom: 60px
+
+		.subscibe-form
+			display: flex
+
+			.subscibe-form-area
+				width: 540px
+				height: 60px
+				background: none
+				border: 1px solid $grey
+				padding: 0 15px
+				font-family: 'Roboto', sans-serif
+				font-style: normal
+				font-weight: normal
+				font-size: 23px
+				line-height: 27px
+				color: $grey
+				border-radius: 5px 0px 0px 5px
+
+				&:hover
+					cursor: text
+
+			.subscibe-form-button
+				width: 120px
+				height: 60px
+				background-color: $orange
+				border: none
+				border-radius: 0px 5px 5px 0px
+				font-family: 'Roboto', sans-serif
+				font-style: normal
+				font-weight: normal
+				font-size: 23px
+				line-height: 27px
+				color: $white
+
+				&:hover
+					cursor: pointer
+					background-color: $orange-hover
+
+				&:active
+					cursor: pointer
+					background-color: $orange-pressed
+
+.footer
+	width: 100%
+	padding: 150px 120px
+	display: flex
+	justify-content: space-between
+	align-items: center
+	background: url(assets/leaves.jpg) center
+	background-size: cover
+
+	.logo-container
+			display: flex
+			column-gap: 15px
+			align-items: center
+
+			.logo-text
+				font-family: 'Roboto', sans-serif
+				font-size: 32px
+				line-height: 60px
+				text-transform: uppercase
+				color: $white
+
+	.bottom-nav
+
+		.bottom-nav-list
+			list-style: none
+			display: flex
+			column-gap: 85px
+
+			.bottom-nav-list-item
+				font-family: 'Open Sans', sans-serif
+				font-style: normal
+				font-weight: normal
+				font-size: 23px
+				line-height: 60px
+				color: $white
+
+				&:hover
+					cursor: pointer
+
+			@media screen and ( max-width: 1439px )
+				flex-direction: column
+				align-items: center
+
+
+	.contacts
+
+		.contacts-list
+			list-style: none
+			display: flex
+			column-gap: 27px
+
+			.contacts-list-icon
+				display: block
+
+				img:hover
+					cursor: pointer
