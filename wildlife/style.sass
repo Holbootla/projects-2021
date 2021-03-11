@@ -5,12 +5,16 @@ $orange: #CD6326
 $orange-hover: #E39128
 $orange-pressed: #8F5613
 $bg-grey-color: #cccccc
+$content-width: 1200px
 	
 *
 	box-sizing: border-box
 	padding: 0
 	margin: 0
 	cursor: default
+
+h1
+	font-weight: normal
 
 a
 	text-decoration: none
@@ -20,7 +24,7 @@ a
 		cursor: pointer
 	
 .wrapper
-	max-width: 1440px
+	width: 100%
 	display: flex
 	flex-direction: column
 	align-items: center
@@ -28,13 +32,16 @@ a
 
 .top
 	width: 100%
-	padding: 0 120px
 	display: flex
+	align-items: center
 	flex-direction: column
 	background: url(assets/fox-image.png) center
 	background-size: cover
+	padding: 0 120px
 
-	.header
+	.header		
+		max-width: $content-width
+		width: 100%
 		display: flex
 		padding: 20px 0
 		justify-content: space-between
@@ -43,6 +50,18 @@ a
 			display: flex
 			column-gap: 15px
 			align-items: center
+			transition: 0.1s
+
+			&:hover
+				transform: scale(1.05)
+				cursor: pointer
+				transition: 0.1s
+
+				.logo-image
+					cursor: pointer					
+				
+				.logo-text
+					cursor: pointer
 
 			.logo-text
 				font-family: 'Roboto', sans-serif
@@ -66,12 +85,20 @@ a
 					font-size: 23px
 					line-height: 60px
 					color: $white
+					transition: 0.1s
+
+					&:hover
+						transform: scale(1.1)
+						cursor: pointer
+						transition: 0.1s
 
 				.top-nav-list-icon
 					display: block
 
-					img:hover
+					img:hover						
+						transform: scale(1.2)
 						cursor: pointer
+						transition: 0.1s
 
 				.top-nav-list-button
 
@@ -102,6 +129,8 @@ a
 
 
 	.top-container
+		max-width: $content-width
+		width: 100%
 
 		.top-content
 			margin: 100px 0 240px 0
@@ -152,13 +181,14 @@ a
 
 .middle
 	width: 100%
-	padding: 120px 120px 240px 120px 
+	padding: 120px 120px 240px 120px
 	display: flex
 	flex-direction: column
 	align-items: center
 	background-color: $bg-grey-color
 
 	.slider-container
+		max-width: $content-width
 		width: 100%
 		display: flex
 		flex-direction: column
@@ -198,20 +228,27 @@ a
 				transform: translateY(-50%)
 				display: flex
 				justify-content: space-between
-
 			
 				.arrow-left
-					cursor: pointer
+					transition: 0.1s
+
+					&:hover						
+						cursor: pointer
+						transform: scale(1.2)
+						transition: 0.1s						
 
 				.arrow-right
-					cursor: pointer
 					transform: rotate(180deg)
+					transition: 0.1s
 
+					&:hover
+						cursor: pointer
+						transform: scale(1.2) rotate(180deg)
+						transition: 0.1s
 				
 			.slides
 				display: flex
 				column-gap: 60px
-				overflow-x: hidden
 
 				.slide
 					width: 300px
@@ -222,6 +259,13 @@ a
 					justify-content: flex-end
 					padding: 0 0 40px 0
 					position: relative
+					transition: 0.1s
+
+					&:hover						
+						cursor: pointer
+						transform: translate(-5px, -5px)
+						box-shadow: 5px 5px 5px 0px rgba(63,63,63,0.9)
+						transition: 0.1s
 
 					.slide-image
 						position: absolute
@@ -263,6 +307,7 @@ a
 						display: none
 
 	.subscribe-container
+		max-width: $content-width
 		display: flex
 		flex-direction: column
 		align-items: center
@@ -318,59 +363,83 @@ a
 					cursor: pointer
 					background-color: $orange-pressed
 
-.footer
+.bottom	
 	width: 100%
-	padding: 150px 120px
 	display: flex
-	justify-content: space-between
-	align-items: center
+	justify-content: center
 	background: url(assets/leaves.jpg) center
 	background-size: cover
+	padding: 0 120px
 
-	.logo-container
-			display: flex
-			column-gap: 15px
-			align-items: center
+	.footer
+		max-width: $content-width
+		width: 100%
+		padding: 150px 0
+		display: flex
+		justify-content: space-between
+		align-items: center
 
-			.logo-text
-				font-family: 'Roboto', sans-serif
-				font-size: 32px
-				line-height: 60px
-				text-transform: uppercase
-				color: $white
-
-	.bottom-nav
-
-		.bottom-nav-list
-			list-style: none
-			display: flex
-			column-gap: 85px
-
-			.bottom-nav-list-item
-				font-family: 'Open Sans', sans-serif
-				font-style: normal
-				font-weight: normal
-				font-size: 23px
-				line-height: 60px
-				color: $white
+		.logo-container
+				display: flex
+				column-gap: 15px
+				align-items: center
+				transition: 0.1s
 
 				&:hover
+					transform: scale(1.05)
 					cursor: pointer
+					transition: 0.1s
 
-			@media screen and ( max-width: 1439px )
-				flex-direction: column
-				align-items: center
+					.logo-image
+						cursor: pointer
+
+					.logo-text
+						cursor: pointer
+
+				.logo-text
+					font-family: 'Roboto', sans-serif
+					font-size: 32px
+					line-height: 60px
+					text-transform: uppercase
+					color: $white
+
+		.bottom-nav
+
+			.bottom-nav-list
+				list-style: none
+				display: flex
+				column-gap: 85px
+
+				.bottom-nav-list-item
+					font-family: 'Open Sans', sans-serif
+					font-style: normal
+					font-weight: normal
+					font-size: 23px
+					line-height: 60px
+					color: $white
+					transition: 0.1s
+
+					&:hover
+						cursor: pointer
+						transform: scale(1.1)
+						transition: 0.1s
+
+				@media screen and ( max-width: 1439px )
+					flex-direction: column
+					align-items: center
 
 
-	.contacts
+		.contacts
 
-		.contacts-list
-			list-style: none
-			display: flex
-			column-gap: 27px
+			.contacts-list
+				list-style: none
+				display: flex
+				column-gap: 27px
 
-			.contacts-list-icon
-				display: block
+				.contacts-list-icon
+					display: block
 
-				img:hover
-					cursor: pointer
+					img:hover
+						cursor: pointer
+						transform: rotate(360deg)
+						transition: 0.5s
