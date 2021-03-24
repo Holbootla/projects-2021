@@ -28,9 +28,21 @@ const resetFilters = () => {
     })
 }
 
-const loadNextImage = () => {
+const loadNextPicture = () => {
   const date = new Date()
   const hours = date.getHours()
+ 
+  let dayPart
+
+  if (hours < 6) {
+    dayPart = 'night'
+  } else if (hours < 12) {
+    dayPart = 'morning'
+  } else if (hours < 18) {
+    dayPart = 'day'
+  } else if (hours < 24) {
+    dayPart = 'evening'
+  }
 
   let numberOfImageString
 
@@ -40,15 +52,12 @@ const loadNextImage = () => {
     numberOfImageString = `${numberOfImage}`
   }
 
-  if (hours < 6) {
-    image.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/night/${numberOfImageString}.jpg`
-  } else if (hours < 12) {
-    image.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/morning/${numberOfImageString}.jpg`
-  } else if (hours < 18) {
-    image.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/day/${numberOfImageString}.jpg`
-  } else if (hours < 24) {
-    image.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/evening/${numberOfImageString}.jpg`
-  }
+  const img = new Image()
+  img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${dayPart}/${numberOfImageString}.jpg`
+
+  img.onload = () => {
+    image.src = img.src
+  } 
 
   numberOfImage += 1
 
@@ -65,7 +74,7 @@ const buttonHandler = (event) => {
   }
 
   if (event.target.classList.contains('btn-next')) {
-    loadNextImage()
+    loadNextPicture()
   }
   
 }
