@@ -1,5 +1,6 @@
 const filters = document.querySelector('.filters')
 const buttons = document.querySelector('.btn-container')
+const fullScreenButton = document.querySelector('.fullscreen')
 
 const inputHandler = (event) => {
 
@@ -33,3 +34,38 @@ const buttonHandler = (event) => {
 }
 
 buttons.addEventListener('click', (event) => buttonHandler(event))
+
+buttons.addEventListener('mousedown', (event) => {
+  if (event.target.classList.contains('btn')) {
+    event.target.classList.add('btn-active')
+  } 
+  
+})
+
+window.addEventListener('mouseup', () => {
+  const button = buttons.querySelector('.btn-active')
+    if (button) {
+      button.classList.remove('btn-active')
+    }
+  }
+)
+
+
+
+
+
+
+const toggleFullScreen = ()=>{
+  if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen()
+  } else {
+      if (document.exitFullscreen) {
+          document.exitFullscreen()
+      }
+  }
+}
+
+fullScreenButton.addEventListener('click', ()=>{
+  toggleFullScreen()
+  }
+)
