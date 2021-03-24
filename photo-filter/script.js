@@ -55,15 +55,32 @@ const loadNextPicture = () => {
   const img = new Image()
   img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${dayPart}/${numberOfImageString}.jpg`
 
-  img.onload = () => {
+  img.addEventListener('load', () => {
     image.src = img.src
-  } 
+  }) 
 
   numberOfImage += 1
 
   if (numberOfImage > 20) {
     numberOfImage = 1
   }
+
+}
+
+const loadImage = () => {
+
+  const fileInput = document.querySelector('input[type="file"]')
+
+  fileInput.addEventListener('change', () => {
+    const file = fileInput.files[0]
+    const reader = new FileReader()
+
+    reader.addEventListener('load', () => {
+      image.src = reader.result
+    })
+
+    reader.readAsDataURL(file)
+  })
 
 }
 
@@ -75,6 +92,10 @@ const buttonHandler = (event) => {
 
   if (event.target.classList.contains('btn-next')) {
     loadNextPicture()
+  }
+
+  if (event.target.classList.contains('btn-load--input')) {
+    loadImage()
   }
   
 }
