@@ -119,6 +119,8 @@ const loadImage = () => {
 
   const fileInput = document.querySelector('input[type="file"]')
 
+  fileInput.value = ''
+
   fileInput.addEventListener('change', () => {
     const file = fileInput.files[0]
     const reader = new FileReader()
@@ -270,6 +272,8 @@ fullScreenButton.addEventListener('click', ()=>{
 // const loadImage = () => {
 
 //   const fileInput = document.querySelector('input[type="file"]')
+
+//   fileInput.value = ''
 
 //   fileInput.addEventListener('change', () => {
 //     const file = fileInput.files[0]
