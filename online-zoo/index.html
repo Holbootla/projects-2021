@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" />
   <link rel="stylesheet" href="./assets/styles/main.css">
   <title>Online Zoo</title>
@@ -11,30 +13,54 @@
 <body>
   <header class="header">
     <div class="logo logo_dark">
-      <p class="logo__big-text">Zoo</p>
-      <p class="logo__small-text">Online</p>
+      <p class="logo__big-text">zoo</p>
+      <p class="logo__small-text">online</p>
     </div>
     <nav class="navigation-top">
       <ul class="navigation-top__list">
-        <li class="navigation-top__list__item">About</li>
+        <li class="navigation-top__list__item navigation-top__list__item_active">About</li>
         <li class="navigation-top__list__item">Zoos</li>
         <li class="navigation-top__list__item">Map</li>
         <li class="navigation-top__list__item">Contact us</li>
         <li class="navigation-top__list__item">Design</li>
       </ul>
     </nav>
-    <input type="checkbox" class="theme-switcher">
+    <label class="switch">
+      <input type="checkbox">
+      <span class="switcher round"></span>
+    </label>    
   </header>
   <main class="main">
     <section class="wrapper-top">
       <div class="wrapper-top__content">
         <h2 class="wrapper-top__content__title">Watch your favorite animal online</h2>
-        <button class="wrapper-top__content__btn btn">Watch online</button>
+        <button class="wrapper-top__content__btn btn"><img src="assets/icons/play.svg" alt="">Watch online</button>
       </div>
       <div class="wrapper-top__slider-container">
         <div class="wrapper-top__slider-container__slider">
           <div class="wrapper-top__slider-container__slider__slide">
-            <img src="" class="wrapper-top__slider-container__slider__slide__image" alt="">
+            <img src="./assets/images/pets-eagle.jpg" class="wrapper-top__slider-container__slider__slide__image" alt="">
+            <div class="wrapper-top__slider-container__slider__slide__content">
+              <p class="wrapper-top__slider-container__slider__slide__content__description paragraph"></p>
+              <div class="wrapper-top__slider-container__slider__slide__content__btn-container">
+                <button class="wrapper-top__slider-container__slider__slide__content__btn-container__btn">Watch online</button>
+                <button class="wrapper-top__slider-container__slider__slide__content__btn-container__btn">Donate</button>
+              </div>
+            </div>
+          </div>
+          <div class="wrapper-top__slider-container__slider__slide wrapper-top__slider-container__slider__slide_active">
+            <img src="./assets/images/pets-panda.jpg" class="wrapper-top__slider-container__slider__slide__image" alt="">
+            <div class="wrapper-top__slider-container__slider__slide__content">
+              <p class="wrapper-top__slider-container__slider__slide__content__description paragraph">Panda’s name is Bei Bei. He 
+                is 2 years old. Bei Bei is from China. He loves bamboos.</p>
+              <div class="wrapper-top__slider-container__slider__slide__content__btn-container">
+                <button class="wrapper-top__slider-container__slider__slide__content__btn-container__btn">Watch online</button>
+                <button class="wrapper-top__slider-container__slider__slide__content__btn-container__btn">Donate</button>
+              </div>
+            </div>
+          </div>
+          <div class="wrapper-top__slider-container__slider__slide">
+            <img src="./assets/images/pets-gorilla.jpg" class="wrapper-top__slider-container__slider__slide__image" alt="">
             <div class="wrapper-top__slider-container__slider__slide__content">
               <p class="wrapper-top__slider-container__slider__slide__content__description paragraph"></p>
               <div class="wrapper-top__slider-container__slider__slide__content__btn-container">
@@ -44,7 +70,7 @@
             </div>
           </div>
           <div class="wrapper-top__slider-container__slider__slide">
-            <img src="" class="wrapper-top__slider-container__slider__slide__image" alt="">
+            <img src="./assets/images/pets-alligator.jpg" class="wrapper-top__slider-container__slider__slide__image" alt="">
             <div class="wrapper-top__slider-container__slider__slide__content">
               <p class="wrapper-top__slider-container__slider__slide__content__description paragraph"></p>
               <div class="wrapper-top__slider-container__slider__slide__content__btn-container">
@@ -54,7 +80,7 @@
             </div>
           </div>
           <div class="wrapper-top__slider-container__slider__slide">
-            <img src="" class="wrapper-top__slider-container__slider__slide__image" alt="">
+            <img src="./assets/images/pets-fox.jpg" class="wrapper-top__slider-container__slider__slide__image" alt="">
             <div class="wrapper-top__slider-container__slider__slide__content">
               <p class="wrapper-top__slider-container__slider__slide__content__description paragraph"></p>
               <div class="wrapper-top__slider-container__slider__slide__content__btn-container">
@@ -64,7 +90,7 @@
             </div>
           </div>
           <div class="wrapper-top__slider-container__slider__slide">
-            <img src="" class="wrapper-top__slider-container__slider__slide__image" alt="">
+            <img src="./assets/images/pets-lazybones.jpg" class="wrapper-top__slider-container__slider__slide__image" alt="">
             <div class="wrapper-top__slider-container__slider__slide__content">
               <p class="wrapper-top__slider-container__slider__slide__content__description paragraph"></p>
               <div class="wrapper-top__slider-container__slider__slide__content__btn-container">
@@ -74,7 +100,17 @@
             </div>
           </div>
           <div class="wrapper-top__slider-container__slider__slide">
-            <img src="" class="wrapper-top__slider-container__slider__slide__image" alt="">
+            <img src="./assets/images/pets-cheetah.jpg" class="wrapper-top__slider-container__slider__slide__image" alt="">
+            <div class="wrapper-top__slider-container__slider__slide__content">
+              <p class="wrapper-top__slider-container__slider__slide__content__description paragraph"></p>
+              <div class="wrapper-top__slider-container__slider__slide__content__btn-container">
+                <button class="wrapper-top__slider-container__slider__slide__content__btn-container__btn">Watch online</button>
+                <button class="wrapper-top__slider-container__slider__slide__content__btn-container__btn">Donate</button>
+              </div>
+            </div>
+          </div>
+          <div class="wrapper-top__slider-container__slider__slide">
+            <img src="./assets/images/pets-elephant.jpg" class="wrapper-top__slider-container__slider__slide__image" alt="">
             <div class="wrapper-top__slider-container__slider__slide__content">
               <p class="wrapper-top__slider-container__slider__slide__content__description paragraph"></p>
               <div class="wrapper-top__slider-container__slider__slide__content__btn-container">
@@ -85,16 +121,18 @@
           </div>
         </div>
         <div class="slider-controls slider-controls_light">
-          <span class="slide-number-current">02</span> / <span class="slide-number-last">08</span>
-          <input type="range" class="input-line">
+          <div class="slide-number">
+            <span class="slide-number-current">02/</span><span class="slide-number-last">08</span>
+          </div>          
+          <input type="range" class="input-line" min="1" max="8" value="2">
         </div>
       </div>
       <div class="socials">
         <ul class="socials__list socials__list_column">
-          <li class="socials__list__item"><a href=""><img src="" alt=""></a></li>
-          <li class="socials__list__item"><a href=""><img src="" alt=""></a></li>
-          <li class="socials__list__item"><a href=""><img src="" alt=""></a></li>
-          <li class="socials__list__item"><a href=""><img src="" alt=""></a></li>
+          <li class="socials__list__item"><a href=""><img src="assets/icons/instagram.svg" alt=""></a></li>
+          <li class="socials__list__item"><a href=""><img src="assets/icons/twitter.svg" alt=""></a></li>
+          <li class="socials__list__item"><a href=""><img src="assets/icons/youtube.svg" alt=""></a></li>
+          <li class="socials__list__item"><a href=""><img src="assets/icons/vk.svg" alt=""></a></li>
         </ul>
       </div>
     </section>
@@ -208,14 +246,14 @@
           <h3 class="wrapper-pay__steps-container__step__title"></h3>
         </div>
         <div class="wrapper-pay__steps-container__arrow">
-          <img src="wrapper-pay__steps-container__arrow__icon" alt="">
+          <img class="wrapper-pay__steps-container__arrow__icon" src="" alt="">
         </div>
         <div class="wrapper-pay__steps-container__step">
           <img src="" class="wrapper-pay__steps-container__step__icon" alt="">
           <h3 class="wrapper-pay__steps-container__step__title"></h3>
         </div>
         <div class="wrapper-pay__steps-container__arrow">
-          <img src="wrapper-pay__steps-container__arrow__icon" alt="">
+          <img class="wrapper-pay__steps-container__arrow__icon" src="" alt="">
         </div>
         <div class="wrapper-pay__steps-container__step">
           <img src="" class="wrapper-pay__steps-container__step__icon" alt="">
