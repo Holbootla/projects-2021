@@ -220,9 +220,11 @@ header
         display: flex
         flex-direction: column
         justify-content: flex-end
-        border-radius: 5px
-        overflow: hidden
         position: relative
+        overflow-y: hidden
+
+        img
+          border-radius: 5px
 
         .wrapper-top__slider-container__slider__slide__content
           position: absolute
@@ -332,4 +334,74 @@ header
 
       .wrapper-about__content__description
         margin-bottom: 32px
-        
+
+.wrapper-pets
+  padding: 100px 0
+  display: flex
+  flex-direction: column
+  align-items: center
+
+  .wrapper-pets__title
+    margin-bottom: 35px
+
+  .wrapper-pets__slider-container
+    width: 100%
+    max-width: 1200px
+    display: flex
+    flex-direction: column
+    align-items: center
+    position: relative
+
+    .slider-container__arrows__arrow_left
+      top: 50%
+      position: absolute
+      left: -45px
+      transform: translateY(50%)
+
+      img
+        transform: rotate(180deg)
+      
+    .slider-container__arrows__arrow_right
+      top: 50%
+      position: absolute
+      right: -45px
+      transform: translateY(50%)
+
+    .wrapper-pets__slider-container__slider
+      position: relative
+      width: 100%
+      display: flex
+      justify-content: start
+      overflow: hidden
+      margin-bottom: 30px    
+
+      .wrapper-pets__slider-container__slider__slide
+        margin-right: 30px
+        width: 278px
+        height: 399px
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+        position: relative
+
+        img
+          border-radius: 5px
+
+        .wrapper-pets__slider-container__slider__slide__content
+          position: absolute
+          bottom: -320px
+          transition: .2s
+          display: flex
+          flex-direction: column
+          justify-content: flex-end
+          // padding: 0 25px 35px 25px
+
+        img
+          height: 100%
+          object-fit: cover
+
+      .wrapper-pets__slider-container__slider__slide:hover
+
+        .wrapper-pets__slider-container__slider__slide__content
+          bottom: 0
+          transition: .2s
