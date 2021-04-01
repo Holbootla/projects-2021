@@ -342,7 +342,7 @@ header
   align-items: center
 
   .wrapper-pets__title
-    margin-bottom: 35px
+    margin-bottom: 40px
 
   .wrapper-pets__slider-container
     width: 100%
@@ -353,19 +353,17 @@ header
     position: relative
 
     .slider-container__arrows__arrow_left
-      top: 50%
+      top: 39%
       position: absolute
       left: -45px
-      transform: translateY(50%)
 
       img
         transform: rotate(180deg)
       
     .slider-container__arrows__arrow_right
-      top: 50%
+      top: 39%
       position: absolute
       right: -45px
-      transform: translateY(50%)
 
     .wrapper-pets__slider-container__slider
       position: relative
@@ -377,7 +375,7 @@ header
 
       .wrapper-pets__slider-container__slider__slide
         margin-right: 30px
-        width: 278px
+        width: 277px
         height: 399px
         display: flex
         flex-direction: column
@@ -405,3 +403,9 @@ header
         .wrapper-pets__slider-container__slider__slide__content
           bottom: 0
           transition: .2s
+
+    .input-line::-webkit-slider-thumb
+      width: 30px 
+
+  .wrapper-pets__btn
+    margin-top: 30px
