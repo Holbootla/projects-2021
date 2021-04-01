@@ -524,4 +524,27 @@ header .switch input:checked + .switcher:before {
   margin-top: 35px;
 }
 
+.wrapper-map {
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f2f2f2;
+}
+.wrapper-map .wrapper-map__title {
+  margin-bottom: 60px;
+}
+.wrapper-map .wrapper-map__map {
+  width: 1200px;
+  height: 500px;
+  background: url("../images/map.svg") center;
+  position: relative;
+}
+.wrapper-map .wrapper-map__map .wrapper-map__map__flag {
+  position: absolute;
+}
+.wrapper-map .wrapper-map__btn {
+  margin-top: 35px;
+}
+
 /*# sourceMappingURL=main.css.map */
