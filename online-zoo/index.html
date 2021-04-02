@@ -121,13 +121,13 @@
           </div>
         </div>
         <div class="slider-controls slider-controls_light">
-          <div class="slide-number">
+          <label class="slide-number">
             <span class="slide-number-current">02/</span><span class="slide-number-last">08</span>
-          </div>          
+          </label>          
           <input type="range" class="input-line" min="1" max="8" value="2">
         </div>
       </div>
-      <div class="socials">
+      <div class="socials-top">
         <ul class="socials__list socials__list_column">
           <li class="socials__list__item"><a href=""><img src="assets/icons/instagram.svg" alt=""></a></li>
           <li class="socials__list__item"><a href=""><img src="assets/icons/twitter.svg" alt=""></a></li>
@@ -147,9 +147,9 @@
             </div>
           </div>
           <div class="slider-controls slider-controls_dark">
-            <div class="slide-number">
+            <label class="slide-number">
               <span class="slide-number-current">01/</span><span class="slide-number-last">04</span>
-            </div>          
+            </label>          
             <input type="range" class="input-line" min="1" max="8" value="1">
           </div>
         </div>
@@ -225,9 +225,9 @@
           </div>
         </div>
         <div class="slider-controls slider-controls_dark">
-          <div class="slide-number">
+          <label class="slide-number">
             <span class="slide-number-current">01/</span><span class="slide-number-last">08</span>
-          </div>          
+          </label>          
           <input type="range" class="input-line" min="1" max="8" value="1">
         </div>
       </div>
@@ -282,9 +282,9 @@
           </div>
         </div>
         <div class="slider-controls slider-controls_dark">
-          <div class="slide-number">
+          <label class="slide-number">
             <span class="slide-number-current">02/</span><span class="slide-number-last">08</span>
-          </div>          
+          </label>          
           <input type="range" class="input-line" min="1" max="8" value="2">
         </div>
       </div>
@@ -314,11 +314,11 @@
     </section>
   </main>
   <footer class="footer">
-    <div class="logo logo_light">
-      <p class="logo__big-text">Zoo</p>
-      <p class="logo__small-text">Online</p>
+    <div class="logo logo_light grid-item-1">
+      <p class="logo__big-text">zoo</p>
+      <p class="logo__small-text">online</p>
     </div>
-    <nav class="navigation-bottom">
+    <nav class="navigation-bottom grid-item-2">
       <ul class="navigation-bottom__list">
         <li class="navigation-bottom__list__item">About</li>
         <li class="navigation-bottom__list__item">Zoos</li>
@@ -326,38 +326,41 @@
         <li class="navigation-bottom__list__item">Design</li>
       </ul>
     </nav>
-    <button class="footer__btn btn">Donate for volunteers</button>
-    <div class="contact-form">
-      <h3 class="contact-form__title">Contact Us</h3>
-      <form action="#">
-        <input type="text" id="name" placeholder="Name">
-        <input type="email" id="email" placeholder="Email">
-        <fieldset>
-          <legend>Please enter your message</legend>
-          <textarea id="message"></textarea>
+    <button class="footer__btn btn grid-item-3">Donate for volunteers</button>
+    <div class="contact-form-container grid-item-4">
+      <h3 class="content-title contact-form__title">Contact Us</h3>
+      <form action="#" name="contact-form">
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <fieldset class="message-container">
+          <legend>&nbsp;&nbsp;Please enter your message&nbsp;&nbsp;</legend>
+          <textarea id="message" required></textarea>
         </fieldset>
-        <input type="checkbox" id="agreement">
-        <label for="agreement">I agree to the processing of Personal Data</label>
-        <button type="submit">Send</button>
+        <div class="agreement-container">          
+          <label class="agreement-label">I agree to the processing of Personal Data
+            <input type="checkbox" required>
+            <div class="checkmark"></div>
+          </label>
+        </div>        
+        <button class="send" type="submit">Send<img src="./assets/icons/send-arrow.svg"></button>
       </form>
     </div>
-    <div class="contacts">
+    <div class="contacts grid-item-5">
       <p class="paragraph contacts__title">ZOO Online Centre</p>
       <p class="paragraph contacts__adress">132, Address District, Street</p>
       <p class="paragraph contacts__worktime">Open Daily 10:00 am - 5:00 pm</p>
       <p class="paragraph contacts__phone">T(702) 163-3433</p>
       <p class="paragraph contacts__email">zoo.online@gmail.com</p>
-      <div class="socials">
-        <ul class="socials__list">
-          <li class="socials__list__item"><a href=""><img src="" alt=""></a></li>
-          <li class="socials__list__item"><a href=""><img src="" alt=""></a></li>
-          <li class="socials__list__item"><a href=""><img src="" alt=""></a></li>
-          <li class="socials__list__item"><a href=""><img src="" alt=""></a></li>
+      <div class="socials-bottom">
+        <ul class="socials__list socials__list_row">
+          <li class="socials__list__item"><a href="#"><img src="assets/icons/instagram.svg" alt=""></a></li>
+          <li class="socials__list__item"><a href="#"><img src="assets/icons/twitter.svg" alt=""></a></li>
+          <li class="socials__list__item"><a href="#"><img src="assets/icons/vk.svg" alt=""></a></li>
+          <li class="socials__list__item"><a href="#"><img src="assets/icons/youtube.svg" alt=""></a></li>
         </ul>
       </div>
     </div>
-    <hr>
-    <div class="credentials">
+    <div class="credentials grid-item-6">
       <p class="paragraph credentials__text">©Noora Sagnayeva</p>
       <p class="paragraph credentials__text">©RSSchool and ©Yem Digital - 2021</p>
       <p class="paragraph credentials__text">©Holbootla - 2021</p>

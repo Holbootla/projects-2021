@@ -7,10 +7,17 @@
   font-family: 'Roboto', sans-serif
   font-style: normal
 
+::-webkit-scrollbar
+  width: 5px
+
+::-webkit-scrollbar-track
+  background: #cccccc8f
+
+::-webkit-scrollbar-thumb
+  background: #4BD8B5
+
 .logo
-  display: flex
-  flex-direction: column
-  align-items: center
+  width: fit-content
   font-weight: 900
 
   .logo__big-text
@@ -20,6 +27,12 @@
   .logo__small-text
     font-size: 18px
     letter-spacing: 0.08em
+
+.logo_light
+  color: #fefefe
+
+.logo_dark
+  color: #333333
 
 .btn
   display: flex
@@ -123,6 +136,19 @@
   .input-line:hover
     background:#bdbdbd
 
+.socials__list
+  list-style: none
+
+.socials__list_column
+
+  .socials__list__item
+    margin-top: 10px
+
+.socials__list_row
+  display: flex
+
+  .socials__list__item
+    margin-right: 15px
 
 body
   width: 100%
@@ -257,16 +283,10 @@ header
       .input-line::-webkit-slider-thumb
         width: 30px
 
-  .socials
+  .socials-top
     position: absolute
     left: 152px
     bottom: 107px
-
-    .socials__list
-      list-style: none
-
-      .socials__list__item
-        margin-top: 10px
     
   .wrapper-top__content
 
@@ -546,3 +566,202 @@ header
 
   .wrapper-map__btn
     margin-top: 35px
+
+.footer
+  background: #333333
+  padding: 100px 150px 60px 150px
+  display: grid
+  grid-template-columns: 50% 520px 275px
+  grid-template-rows: auto auto auto
+  align-content: start
+
+  .grid-item-1
+    grid-column: 1 / span 1
+
+  .grid-item-2
+    grid-column: 2 / span 1
+
+  .grid-item-3
+    grid-column: 3 / span 1
+
+  .grid-item-4
+    grid-column: 1 / span 1
+
+  .grid-item-5
+    grid-column: 2 / span 2
+
+  .grid-item-6
+    grid-column: 1 / span 3
+    border-top: 0.5px solid #fefefe
+    padding-top: 28px
+
+  .navigation-bottom
+    display: flex
+    align-items: center
+    padding-left: 15px
+
+    .navigation-bottom__list
+      list-style: none
+      display: flex
+      font-weight: 500
+      font-size: 16px
+      color: #fefefe
+
+      .navigation-bottom__list__item
+        margin-right: 73px
+
+  .contact-form-container
+    padding-top: 57px
+
+    .contact-form__title
+      color: #fefefe
+      margin-bottom: 33px
+
+    form
+      display: flex
+      flex-direction: column
+      margin-bottom: 60px
+
+      input
+        background: none
+        border: none
+        border-bottom: 1px solid #BDBDBD
+        width: 383px
+        margin-bottom: 15px
+        padding-bottom: 10px
+        color: #fefefe
+
+      input::placeholder
+        font-family: Roboto
+        font-style: normal
+        font-weight: 400
+        font-size: 14px
+        color: #E0E0E0
+
+      .message-container
+        width: 383px
+        height: 120px
+        border-radius: 3px
+        border: 1px solid #BDBDBD
+        margin: 10px 0 25px 0
+
+        legend
+          font-weight: 400
+          font-size: 12px
+          color: #bdbdbd
+          margin: 0 5px
+
+        textarea
+          width: 100%
+          min-height: 100%
+          border: none
+          background: transparent
+          resize: none
+          color: #fefefe
+
+      .agreement-container
+
+        .agreement-label
+          display: flex
+          align-items: center
+          position: relative
+          padding-left: 20px
+          margin-bottom: 20px
+          cursor: pointer
+          font-size: 12px
+          user-select: none
+          color: #bdbdbd
+
+        .agreement-label input
+          position: absolute
+          opacity: 0
+          cursor: pointer
+          height: 0
+          width: 0
+
+        .checkmark
+          display: inline-block
+          position: absolute
+          top: 0
+          left: 0
+          height: 13px
+          width: 13px
+          background-color: transparent
+          border: 1px solid #bdbdbd
+          border-radius: 2px
+          cursor: pointer
+
+        .agreement-label:hover input ~ .checkmark
+          background-color: #bdbdbd40
+
+        .agreement-label input:checked ~ .checkmark
+          background-color: #bdbdbd80
+
+        .checkmark:after
+          content: ""
+          position: absolute
+          display: none
+
+        .agreement-label input:checked ~ .checkmark:after
+          display: block
+
+        .agreement-label .checkmark:after
+          left: 3px
+          top: 1px
+          width: 3px
+          height: 5px
+          border: solid white
+          border-width: 0 2px 2px 0
+          transform: rotate(45deg)
+
+      .send
+        width: 110px
+        height: 16px
+        display: flex
+        align-items: center
+        justify-content: space-between
+        background: transparent
+        border: none
+        text-transform: uppercase
+        color: #fefefe
+        font-weight: 500
+        font-size: 14
+        margin-left: 260px
+        cursor: pointer
+        
+        img
+          cursor: pointer
+
+  .contacts
+    padding-top: 57px
+    padding-left: 15px
+
+    .contacts__title
+      font-weight: 700
+      text-transform: uppercase
+      margin-bottom: 35px
+      color: #fefefe
+    
+    .contacts__adress
+      margin-bottom: 5px
+      color: #fefefe
+      font-weight: 400
+
+    .contacts__worktime
+      margin-bottom: 20px
+      color: #fefefe
+      font-weight: 400
+    
+    .contacts__phone
+      margin-bottom: 5px
+      color: #fefefe
+      font-weight: 400
+
+    .contacts__email      
+      color: #fefefe
+      font-weight: 400
+      margin-bottom: 20px
+
+  .footer__btn
+    margin-left: 15px
+    width: 275px
