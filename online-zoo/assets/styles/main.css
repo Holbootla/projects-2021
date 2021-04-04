@@ -624,6 +624,7 @@ header .switch input:checked + .switcher:before {
   max-width: 1200px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 60px;
 }
 .wrapper-pay .wrapper-pay__steps-container .wrapper-pay__steps-container__step {
