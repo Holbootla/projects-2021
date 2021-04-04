@@ -16,23 +16,28 @@
 ::-webkit-scrollbar-thumb
   background: #4BD8B5
 
-.logo
-  width: fit-content
-  font-weight: 900
+a
+  color: inherit
 
-  .logo__big-text
-    font-size: 36px
-    line-height: 28px
+.h1-hide
+  position: absolute
+  z-index: -100
+  opacity: 0
+  top: -1000px
+  left: -1000px
 
-  .logo__small-text
-    font-size: 18px
-    letter-spacing: 0.08em
+.logo a, .logo a svg, .logo a svg path
+  cursor: pointer
 
 .logo_light
-  color: #fefefe
+
+  a svg path
+    fill: #fefefe
 
 .logo_dark
-  color: #333333
+
+  a svg path
+    fill: #333333
 
 .btn
   display: flex
@@ -47,6 +52,10 @@
   font-weight: 900
   text-transform: uppercase
   color: #ffffff
+
+  &:hover, img:hover
+    cursor: pointer
+    text-shadow: 0px 0px 3px #fefefe
 
   img
     margin-right: 5px
@@ -140,15 +149,31 @@
   list-style: none
 
 .socials__list_column
+  display: flex
+  flex-direction: column
+  justify-items: center
 
   .socials__list__item
     margin-top: 10px
+    transition: .5s
+
+    &:hover img
+      cursor: pointer
+      transform: rotate(360deg)
+      transition: .5s
 
 .socials__list_row
   display: flex
+  align-items: center
 
   .socials__list__item
     margin-right: 15px
+    transition: .5s
+    
+    &:hover img
+      cursor: pointer
+      transform: rotate(360deg)
+      transition: .5s
 
 body
   width: 100%
@@ -161,6 +186,7 @@ header
   display: flex
   justify-content: space-between
   align-items: center
+  position: relative
 
   .navigation-top
     font-weight: 500
@@ -172,10 +198,17 @@ header
 
     .navigation-top__list__item
       margin: 0 42px
+      color: #333333
+
+      &:hover a
+        cursor: pointer
+        font-weight: 700
+        border-bottom: 1px solid #333333
 
     .navigation-top__list__item_active
       border-bottom: solid 1px
       font-weight: 900
+      pointer-events: none
 
   .switch
     position: relative
@@ -251,28 +284,92 @@ header
         overflow-y: hidden
 
         img
+          height: 100%
+          object-fit: cover
           border-radius: 5px
+        
+          &:hover
+            cursor: pointer
 
         .wrapper-top__slider-container__slider__slide__content
           position: absolute
+          height: 100%
           bottom: -250px
           transition: .2s
-          display: flex
+          display: none
           flex-direction: column
           justify-content: flex-end
-          padding: 0 25px 35px 25px
+          padding: 0 24px 30px 24px
+          border-radius: 5px
 
-        img
-          height: 100%
-          object-fit: cover
+          .wrapper-top__slider-container__slider__slide__content__description
+            font-weight: 400
+            color: #ffffff
+            margin-bottom: 15px
+
+          .wrapper-top__slider-container__slider__slide__content__btn-container__btn_watch
+            color: #4BD8B5
+            width: 113px
+            height: 24px
+            font-weight: 500
+            font-size: 12px
+            text-transform: uppercase
+            border: none
+            background: transparent
+            display: inline-flex
+            justify-content: space-between
+            align-items: center
+            margin-right: 5px
+            
+            &:focus
+              outline: none
+
+            &::before
+              content: ""
+              background: url(../icons/play-threeangle.svg) no-repeat center
+              width: 24px
+              height: 24px
+
+            &:hover
+              text-shadow: 0px 0px 3px #fefefe
+              cursor: pointer
+
+          .wrapper-top__slider-container__slider__slide__content__btn-container__btn_donate
+            color: #ffffff
+            width: 74px
+            height: 24px
+            font-weight: 500
+            font-size: 12px
+            text-transform: uppercase
+            border: none
+            background: transparent
+            display: inline-flex
+            justify-content: space-between
+            align-items: center
+
+            &::before
+              content: ""
+              background: url(../icons/donate.svg) no-repeat center
+              width: 24px
+              height: 24px
+
+            &:hover
+              text-shadow: 0px 0px 3px #fefefe
+              cursor: pointer
 
       .wrapper-top__slider-container__slider__slide_active
         width: 245px
         height: 352px
-
-      .wrapper-top__slider-container__slider__slide_active:hover
+        transition: .2s
 
         .wrapper-top__slider-container__slider__slide__content
+          display: flex
+
+      .wrapper-top__slider-container__slider__slide_active:hover
+        transition: .2s
+
+        .wrapper-top__slider-container__slider__slide__content
+          background: linear-gradient(357.17deg, #000000 -56.45%, #00000000 65.03%)
           bottom: 0
           transition: .2s
 
@@ -389,11 +486,17 @@ header
 
       img
         transform: rotate(180deg)
+
+      &:hover img
+        cursor: pointer
       
     .slider-container__arrows__arrow_right
       top: 39%
       position: absolute
       right: -45px
+
+      &:hover img
+        cursor: pointer
 
     .wrapper-pets__slider-container__slider
       width: 100%
@@ -413,23 +516,79 @@ header
 
         img
           border-radius: 5px
+          height: 100%
+          object-fit: cover
 
         .wrapper-pets__slider-container__slider__slide__content
           position: absolute
-          bottom: -320px
+          height: 100%
+          bottom: -250px
           transition: .2s
           display: flex
           flex-direction: column
           justify-content: flex-end
-          // padding: 0 25px 35px 25px
+          padding: 0 24px 40px 24px
+          border-radius: 5px
 
-        img
-          height: 100%
-          object-fit: cover
+          .wrapper-pets__slider-container__slider__slide__content__description
+            font-weight: 400
+            color: #ffffff
+            margin-bottom: 15px
+
+          .wrapper-pets__slider-container__slider__slide__content__btn-container__btn_watch
+            color: #4BD8B5
+            width: 113px
+            height: 24px
+            font-weight: 500
+            font-size: 12px
+            text-transform: uppercase
+            border: none
+            background: transparent
+            display: inline-flex
+            justify-content: space-between
+            align-items: center
+            margin-right: 5px
+            
+            &:focus
+              outline: none
+
+            &::before
+              content: ""
+              background: url(../icons/play-threeangle.svg) no-repeat center
+              width: 24px
+              height: 24px
+
+            &:hover
+              text-shadow: 0px 0px 3px #fefefe
+              cursor: pointer
+
+          .wrapper-pets__slider-container__slider__slide__content__btn-container__btn_donate
+            color: #ffffff
+            width: 74px
+            height: 24px
+            font-weight: 500
+            font-size: 12px
+            text-transform: uppercase
+            border: none
+            background: transparent
+            display: inline-flex
+            justify-content: space-between
+            align-items: center
+
+            &::before
+              content: ""
+              background: url(../icons/donate.svg) no-repeat center
+              width: 24px
+              height: 24px
+
+            &:hover
+              text-shadow: 0px 0px 3px #fefefe
+              cursor: pointer
 
       .wrapper-pets__slider-container__slider__slide:hover
 
         .wrapper-pets__slider-container__slider__slide__content
+          background: linear-gradient(357.17deg, #000000 -56.45%, #00000000 65.03%)
           bottom: 0
           transition: .2s
 
@@ -501,11 +660,17 @@ header
 
       img
         transform: rotate(180deg)
+
+      &:hover img
+        cursor: pointer
       
     .slider-container__arrows__arrow_right
       top: 36%
       position: absolute
       right: -30px
+
+      &:hover img
+        cursor: pointer
 
     .wrapper-testimonials__slider-container__slider
       width: 100%
@@ -561,8 +726,68 @@ header
     background: url('../images/map.svg') center
     position: relative
 
-    .wrapper-map__map__flag
+    .wrapper-map__map__flag__panda
       position: absolute
+      top: 18%
+      left: 74%
+
+      &::before
+        content: url('../icons/flag.svg')
+        background: url('../images/pets-panda.jpg') no-repeat center
+        background-size: cover
+        display: block
+        width: 65px
+        height: 65px
+        border-radius: 50%
+
+    .wrapper-map__map__flag__eagle
+      position: absolute
+      top: 15%
+      left: 10%
+
+      &::before
+        content: url('../icons/flag.svg')
+        background: url('../images/pets-eagle.jpg') no-repeat center
+        background-size: cover
+        display: block
+        width: 65px
+        height: 65px
+        border-radius: 50%
+
+    .wrapper-map__map__flag__alligator
+      position: absolute
+      top: 20%
+      left: 20%
+
+      &::before
+        content: url('../icons/flag.svg')
+        background: url('../images/pets-alligator.jpg') no-repeat center
+        background-size: cover
+        display: block
+        width: 65px
+        height: 65px
+        border-radius: 50%
+
+    .wrapper-map__map__flag__gorilla
+      position: absolute
+      top: 38%
+      left: 47.5%
+
+      &::before
+        content: url('../icons/flag.svg')
+        background: url('../images/pets-gorilla.jpg') no-repeat center
+        background-size: cover
+        display: block
+        width: 65px
+        height: 65px
+        border-radius: 50%
+
+    .wrapper-map__map__flag:hover
+      cursor: pointer
+
+      &::before
+        content: url('../icons/flag-red.svg')
+
 
   .wrapper-map__btn
     margin-top: 35px
@@ -571,7 +796,7 @@ header
   background: #333333
   padding: 100px 150px 60px 150px
   display: grid
-  grid-template-columns: 50% 520px 275px
+  grid-template-columns: 50% 520px auto
   grid-template-rows: auto auto auto
   align-content: start
 
@@ -610,6 +835,17 @@ header
       .navigation-bottom__list__item
         margin-right: 73px
 
+        &:hover a
+          cursor: pointer
+          font-weight: 700
+          border-bottom: 1px solid #fefefe
+
+    .navigation-bottom__list__item_active
+      border-bottom: solid 1px
+      font-weight: 900
+      pointer-events: none
+
+
   .contact-form-container
     padding-top: 57px
 
@@ -630,13 +866,11 @@ header
         margin-bottom: 15px
         padding-bottom: 10px
         color: #fefefe
-
-      input::placeholder
-        font-family: Roboto
-        font-style: normal
         font-weight: 400
         font-size: 14px
-        color: #E0E0E0
+
+        &:hover
+          cursor: text
 
       .message-container
         width: 383px
@@ -658,6 +892,9 @@ header
           background: transparent
           resize: none
           color: #fefefe
+
+          &:hover
+            cursor: text
 
       .agreement-container
 
@@ -757,10 +994,16 @@ header
       color: #fefefe
       font-weight: 400
 
+      a
+        cursor: pointer
+
     .contacts__email      
       color: #fefefe
       font-weight: 400
       margin-bottom: 20px
+
+      a
+        cursor: pointer
 
   .footer__btn
     margin-left: 15px
