@@ -23,7 +23,7 @@ a
   position: absolute
   z-index: -100
   opacity: 0
-  top: -1000px
+  top: 0
   left: -1000px
 
 .logo a, .logo a svg, .logo a svg path
@@ -98,6 +98,13 @@ a
     transition: opacity .2s
 
   .input-line::-webkit-slider-thumb
+    appearance: none
+    height: 10px
+    width: 20px
+    opacity: 1
+    cursor: pointer
+
+  .input-line::-moz-range-thumb
     appearance: none
     height: 10px
     width: 20px
@@ -394,6 +401,38 @@ header
       max-width: 793px
       color: #fefefe
 
+@media screen and ( max-width: 1919px )
+  .wrapper-top
+    height: 926px
+    padding: 128px 150px 0 150px
+
+    .wrapper-top__slider-container
+      top: 432px
+      left: 480px
+
+      .wrapper-top__slider-container__slider
+        margin-bottom: 25px
+        margin-left: 120px
+
+        .wrapper-top__slider-container__slider__slide
+          margin: 0 15px
+          width: 180px
+          height: 261px
+
+        .wrapper-top__slider-container__slider__slide_active
+          width: 245px
+          height: 352px
+          transition: .2s
+
+          .wrapper-top__slider-container__slider__slide__content
+            display: flex
+
+      .slider-controls
+        left: 350px
+
+    .socials-top
+      bottom: 70px
+
 .wrapper-how
   width: 100%
   padding: 100px 0
@@ -436,6 +475,15 @@ header
         .input-line::-webkit-slider-thumb
           width: 62px
 
+@media screen and ( max-width: 1919px )
+  .wrapper-how
+
+    .wrapper-how__container
+      max-width: 746px
+
+      .wrapper-how__description
+        margin: 30px 0 15px 0
+
 .wrapper-about
   padding: 100px 0
   background: #f2f2f2
@@ -462,6 +510,18 @@ header
 
       .wrapper-about__content__description
         margin-bottom: 32px
+
+@media screen and ( max-width: 1919px )
+  .wrapper-about
+
+    .wrapper-about__content
+      max-width: 900px
+
+      .wrapper-about__content__block
+        width: 287px
+
+        .wrapper-about__content__description
+          margin-bottom: 18px
 
 .wrapper-pets
   padding: 100px 0
@@ -599,6 +659,32 @@ header
   .wrapper-pets__btn
     margin-top: 30px
 
+@media screen and ( max-width: 1919px )
+  .wrapper-pets
+
+    .wrapper-pets__title
+      margin-bottom: 33px
+
+    .wrapper-pets__slider-container
+      max-width: 900px
+
+      .slider-container__arrows__arrow_left
+        top: 37%
+        
+      .slider-container__arrows__arrow_right
+        top: 37%
+
+      .wrapper-pets__slider-container__slider
+        margin-bottom: 29px    
+
+        .wrapper-pets__slider-container__slider__slide
+          margin-right: 20px
+          width: 210px
+          height: 302px
+
+          .wrapper-pets__slider-container__slider__slide__content
+            padding: 0 7px 30px 7px  
+
 .wrapper-pay
   padding: 100px 0
   display: flex
@@ -637,7 +723,25 @@ header
       .wrapper-pay__steps-container__step__title
         text-align: center
         color: #4f4f4f
-    
+
+@media screen and ( max-width: 1919px )
+  .wrapper-pay
+
+    .wrapper-pay__title
+      margin-bottom: 32px
+
+    .wrapper-pay__description
+      margin-bottom: 50px
+
+    .wrapper-pay__steps-container
+      max-width: 900px
+      margin-bottom: 50px
+
+      .wrapper-pay__steps-container__arrow
+
+        img
+          width: 48px
+
 .wrapper-testimonials
   padding: 100px 0
   display: flex
@@ -711,7 +815,19 @@ header
 
   .wrapper-testimonials__btn
     margin-top: 35px
-  
+
+@media screen and ( max-width: 1919px )
+  .wrapper-testimonials
+
+    .wrapper-testimonials__slider-container
+      max-width: 930px
+
+      .wrapper-testimonials__slider-container__slider
+
+        .wrapper-testimonials__slider-container__slider__slide
+          width: 440px
+          padding: 47px 57px
+
 .wrapper-map
   padding: 100px 0
   display: flex
@@ -725,7 +841,7 @@ header
   .wrapper-map__map
     width: 1200px
     height: 500px
-    background: url('../images/map.svg') center
+    background: url('../images/map.svg') center no-repeat
     position: relative
 
     .wrapper-map__map__flag__panda
@@ -788,9 +904,9 @@ header
 
       .pet-tip
         display: none
-        position: absolute
-        bottom: center
-        left: center
+        position: fixed
+        bottom: 37%
+        left: 33%
         width: 436px
         padding: 40px 55px 35px 45px
         align-items: center
@@ -837,9 +953,39 @@ header
       &::before
         content: url('../icons/flag-red.svg')
 
-
   .wrapper-map__btn
     margin-top: 35px
+
+@media screen and ( max-width: 1919px )
+  .wrapper-map
+
+    .wrapper-map__map
+      width: 900px
+      height: 373px
+      background-size: contain
+
+      .wrapper-map__map__flag__panda
+        position: absolute
+        top: 17%
+        left: 73%
+
+      .wrapper-map__map__flag__eagle
+        position: absolute
+        top: 8%
+        left: 9%
+
+      .wrapper-map__map__flag__alligator
+        position: absolute
+        top: 13%
+        left: 19%
+
+      .wrapper-map__map__flag__gorilla
+        position: absolute
+        top: 32%
+        left: 46.5%
+
+    .wrapper-map__btn
+      margin-top: 97px
 
 .footer
   background: #333333
@@ -1058,6 +1204,41 @@ header
     margin-left: 15px
     width: 275px
 
+@media screen and ( max-width: 1919px )
+  .footer
+    padding-bottom: 44px
+    grid-template-columns: 50% 50%
+    grid-template-rows: auto auto auto auto
+    align-content: start
+
+    .grid-item-3
+      grid-column: 2 / span 1
+      grid-row: 3 / span 2
+
+    .grid-item-4
+      grid-row: 2 / span 2
+
+    .grid-item-5
+      grid-column: 2 / span 2
+
+    .navigation-bottom
+      padding-left: 12px
+
+
+    .contact-form-container
+      padding-top: 70px
+
+      form
+        margin-bottom: 30px
+
+    .contacts
+      padding-top: 57px
+      padding-left: 12px
+      padding-bottom: 30px
+
+    .footer__btn
+      margin-left: 12px
+      width: 275px
 
 // MAP PAGE
 
@@ -1084,6 +1265,7 @@ header
       height: 157px
       margin-bottom: 32px
       align-items: center
+      overflow-x: hidden
 
       .circle-slider-container__slider__slide
         width: 108px
@@ -1091,8 +1273,8 @@ header
         margin: 0 15px
           
         .circle-slider-container__slider__slide__image
-          width: 100%
-          height: 100%
+          width: 108px
+          height: 108px
           object-fit: cover
           border-radius: 50%
           cursor: pointer
@@ -1102,7 +1284,7 @@ header
         position: relative
 
         img
-          position: absolute
+          position: relative
           z-index: 3
           border: 6px solid #fefefe
 
@@ -1155,6 +1337,22 @@ header
       .input-line::-webkit-slider-thumb
         width: 30px
 
+@media screen and ( max-width: 1919px )
+  .wrapper-map_white
+
+    .wrapper-map__description
+      margin-bottom: 35px
+
+    .wrapper-map__btn
+      margin-top: 53px
+
+    .circle-slider-container
+      margin-bottom: 50px
+      
+      .circle-slider-container__slider
+        margin-bottom: 25px
+        width: 700px
+
 // Zoos PAGE
 
 .zoos-wrapper
@@ -1175,6 +1373,7 @@ header
       flex-direction: column
       width: 157px
       align-items: center
+      overflow-y: hidden
 
       .circle-slider-container__slider__slide
         width: 108px
@@ -1257,8 +1456,6 @@ header
       display: flex
 
       .video-slider-container
-        width: 790px
-        height: 654px
         display: flex
         flex-direction: column
         align-items: center
@@ -1268,6 +1465,7 @@ header
           height: 442px
           border-radius: 5px
           margin-bottom: 30px
+          overflow: hidden
 
         .video-slider-container__slider
           display: flex
@@ -1280,6 +1478,7 @@ header
             height: 141px
             border-radius: 5px
             position: relative
+            overflow: hidden
 
             .stop-cover
               position: absolute
@@ -1332,3 +1531,89 @@ header
       .zoos-content__content__btn
         width: 194px
         margin-top: 35px
+
+@media screen and ( max-width: 1919px )
+  .zoos-wrapper
+
+    .circle-slider-container
+      margin-right: 60px
+      margin-left: 11px
+      height: 453px
+      
+      .circle-slider-container__slider
+        width: 130px
+
+        .circle-slider-container__slider__slide
+          width: 96px
+          height: 96px
+            
+          .circle-slider-container__slider__slide__image
+            width: 96px
+            height: 96px
+
+        .circle-slider-container__slider__slide_active
+          transform: scale(1.24)
+          position: relative
+          margin: 18px 0
+
+          &::before
+            content: ""
+            width: 102px
+            height: 102px
+            background: linear-gradient(to right, #07EEE0 0%, #DF496D 100%)
+            border-radius: 50%
+            position: absolute
+            z-index: 2
+            top: -3px
+            left: -3px
+
+          &:hover
+            cursor: pointer
+            
+            &::before
+              content: ""
+              width: 102px
+              height: 102px
+              background: linear-gradient(to right, #DF496D 0%, #07EEE0 100%)
+              border-radius: 50%
+              position: absolute
+              z-index: 2
+              top: -3px
+              left: -3px
+
+    .zoos-container
+
+      .zoos-title
+        margin-bottom: 41px
+
+      .zoos-content
+
+        .video-slider-container
+
+          .video-slider-container__view
+            width: 527px
+            height: 297px
+            margin-bottom: 27px
+
+          .video-slider-container__slider
+
+            .video-slider-container__slider__slide
+              width: 164px
+              height: 94px
+
+        .zoos-content__content
+          margin-left: 20px
+          margin-bottom: 20px
+
+          .zoos-content__content__desctiption          
+            max-width: 255px
+
+            .zoos-content__content-title
+              margin-bottom: 6px
+
+            .zoos-content__paragraph
+              margin-bottom: 16px
+
+        .zoos-content__content__btn
+          width: 185px
+          margin-top: 20px
