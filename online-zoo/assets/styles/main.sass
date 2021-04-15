@@ -1585,6 +1585,27 @@ header
         margin-bottom: 25px
         width: 700px
 
+@media screen and ( max-width: 1199px )
+  .wrapper-map_white
+    padding: 60px 20px 80px 20px
+
+    .wrapper-map__description
+      max-width: 600px
+      margin-bottom: 35px
+
+    .wrapper-map__btn
+      margin-top: 78px
+
+    .circle-slider-container
+      margin-bottom: 35px
+      
+      .circle-slider-container__slider
+        margin-bottom: 25px
+        width: 520px
+
+        .circle-slider-container__slider__slide
+          margin: 0 10px
+
 // Zoos PAGE
 
 .zoos-wrapper
@@ -1817,6 +1838,7 @@ header
 
       .zoos-title
         margin-bottom: 41px
+        max-width: 800px
 
       .zoos-content
 
@@ -1849,3 +1871,96 @@ header
         .zoos-content__content__btn
           width: 185px
           margin-top: 20px
+
+@media screen and ( max-width: 1199px )
+  .zoos-wrapper
+    padding-bottom: 44px
+
+    .circle-slider-container
+      margin-right: 20px
+      margin-left: 3px
+      height: 347px
+      
+      .circle-slider-container__slider
+        width: 100px
+
+        .circle-slider-container__slider__slide
+          width: 70px
+          height: 70px
+
+        .circle-slider-container__slider__slide_active
+          transform: scale(1.28)
+          margin: 15px 0
+
+          img
+            border: 3px solid #fefefe
+
+          &::before
+            content: ""
+            width: 74px
+            height: 74px
+            background: linear-gradient(to right, #07EEE0 0%, #DF496D 100%)
+            border-radius: 50%
+            position: absolute
+            z-index: 2
+            top: -2px
+            left: -2px
+
+          &:hover
+            
+            &::before
+              content: ""
+              width: 74px
+              height: 74px
+              background: linear-gradient(to right, #DF496D 0%, #07EEE0 100%)
+              border-radius: 50%
+              position: absolute
+              z-index: 2
+              top: -2px
+              left: -2px
+
+      .slider-container__arrows__arrow_left
+
+        img
+          transform: rotate(-90deg) scale(0.8)
+        
+      .slider-container__arrows__arrow_right
+        
+        img
+          transform: rotate(90deg) scale(0.8)
+
+    .zoos-container
+
+      .zoos-title
+        margin-bottom: 35px
+        margin-left: 10px
+        max-width: 477px
+
+      .zoos-content
+        display: flex
+        flex-direction: column
+
+        .video-slider-container
+          margin-bottom: 50px
+
+          .video-slider-container__view
+            width: 497px
+            height: 280px
+            margin-bottom: 15px
+
+          .video-slider-container__slider
+
+            .video-slider-container__slider__slide
+              width: 155px
+              height: 89px
+
+        .zoos-content__content
+          margin-left: 0
+          margin-bottom: 35px
+
+          .zoos-content__content__desctiption          
+            max-width: 497px
+
+        .zoos-content__content__btn
+          width: 185px
+          margin-top: 30px
