@@ -265,7 +265,7 @@ header
   .burger-icon
     display: none
 
-@media screen and ( max-width: 1199px )
+@media screen and ( max-width: 1199px ) and ( min-width: 640px )
   header
     padding: 0 95px 0 20px
 
@@ -287,6 +287,28 @@ header
         line
           cursor: pointer
 
+@media screen and ( max-width: 639px )
+    header
+      padding: 0 75px 0 10px
+
+      .navigation-top
+        display: none
+
+      .burger-icon
+        display: block
+        position: absolute
+        z-index: 30
+        top: 37px
+        right: 10px
+        transition: .1s
+
+        &:hover
+          transform: scale(1.1)
+          cursor: pointer
+
+          line
+            cursor: pointer
+
 .wrapper-top
   background: no-repeat url('../images/bg-main.png') center
   background-size: cover
@@ -305,7 +327,7 @@ header
     .wrapper-top__slider-container__slider
       display: flex
       align-items: center
-      margin-bottom: 20px
+      margin-bottom: 12px
       margin-left: 112px
       overflow-x: hidden
 
@@ -425,6 +447,7 @@ header
 
     .wrapper-top__content__title
       font-size: 89px
+      font-weight: 900
       margin-bottom: 41px
       max-width: 793px
       color: #fefefe
@@ -461,7 +484,7 @@ header
     .socials-top
       bottom: 70px
 
-@media screen and ( max-width: 1199px )
+@media screen and ( max-width: 1199px ) and ( min-width: 640px )
   .wrapper-top
     height: 934px
     padding: 122px 20px 0 20px
@@ -508,7 +531,76 @@ header
         font-size: 64px
         margin-bottom: 34px
         max-width: 793px
-        color: #fefefe
+
+@media screen and ( max-width: 639px )
+  .wrapper-top
+    height: 667px
+    padding: 92px 10px 0 10px
+
+    .wrapper-top__slider-container
+      position: absolute
+      top: 365px
+      left: 3px
+
+      .wrapper-top__slider-container__slider
+        margin-left: 16px
+
+        .wrapper-top__slider-container__slider__slide
+          margin: 0 4.5px
+          width: 113px
+          height: 164px
+
+        .wrapper-top__slider-container__slider__slide_active
+          width: 140px
+          height: 202px
+          transition: .2s
+
+          .wrapper-top__slider-container__slider__slide__content
+            display: flex
+            padding: 0 8px 11px 8px
+
+            .wrapper-top__slider-container__slider__slide__content__description
+              font-size: 12px
+
+            .wrapper-top__slider-container__slider__slide__content__btn-container
+              display: flex
+              flex-direction: column
+
+              .wrapper-top__slider-container__slider__slide__content__btn-container__btn_watch
+                margin-bottom: 6px
+                width: 99px
+                font-size: 10px
+
+              .wrapper-top__slider-container__slider__slide__content__btn-container__btn_donate
+                font-size: 10px
+                width: 65px
+
+        .wrapper-top__slider-container__slider__slide_active:hover
+          transition: .2s
+
+          .wrapper-top__slider-container__slider__slide__content
+            background: linear-gradient(357.17deg, #000000 -56.45%, #00000000 65.03%)
+            bottom: 0
+            transition: .2s
+
+      .slider-controls
+        left: 146px
+
+        .input-line
+          width: 140px
+
+        .slide-number
+          margin-bottom: 4px
+
+    .socials-top
+      display: none
+      
+    .wrapper-top__content
+
+      .wrapper-top__content__title
+        font-size: 48px
+        margin-bottom: 15px
+        max-width: 300px
 
 .wrapper-how
   width: 100%
@@ -561,7 +653,7 @@ header
       .wrapper-how__description
         margin: 30px 0 15px 0
 
-@media screen and ( max-width: 1199px )
+@media screen and ( max-width: 1199px ) and ( min-width: 640px )
   .wrapper-how
     padding: 100px 0 70px 0
 
@@ -570,6 +662,36 @@ header
 
       .wrapper-how__description
         margin: 30px 0 30px 0
+
+@media screen and ( max-width: 639px )
+  .wrapper-how
+    padding: 50px 10px
+
+    .wrapper-how__container
+      max-width: 300px
+
+      .wrapper-how__title
+        font-size: 36px
+
+      .wrapper-how__description
+        margin: 22px 0 30px 0
+
+      .wrapper-how__slider-container
+        width: 100%
+        margin-bottom: 20px
+
+        .wrapper-how__slider-container__slider
+          overflow-x: hidden
+          margin-bottom: 20px
+
+          .wrapper-how__slider-container__slider__slide
+            width: 100%
+            height: 323px
+
+            img
+              width: 100%
+              height: 100%
+              object-fit: cover
 
 .wrapper-about
   padding: 100px 0
@@ -610,7 +732,7 @@ header
         .wrapper-about__content__description
           margin-bottom: 18px
 
-@media screen and ( max-width: 1199px )
+@media screen and ( max-width: 1199px ) and ( min-width: 640px )
   .wrapper-about
     padding: 100px 0 50px 0
 
@@ -628,6 +750,25 @@ header
 
         .wrapper-about__content__description
           margin-bottom: 50px
+
+@media screen and ( max-width: 639px )
+  .wrapper-about
+    padding: 50px 0 20px 0
+
+    .wrapper-about__content
+      margin: 0 auto
+      width: 100%
+      max-width: 300px
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: space-between
+
+      .wrapper-about__content__block
+        width: 300px
+
+        .wrapper-about__content__description
+          margin-bottom: 30px  
 
 .wrapper-pets
   padding: 100px 0
@@ -791,7 +932,7 @@ header
           .wrapper-pets__slider-container__slider__slide__content
             padding: 0 7px 30px 7px  
 
-@media screen and ( max-width: 1199px )
+@media screen and ( max-width: 1199px ) and ( min-width: 640px )
   .wrapper-pets
     padding-left: 20px
     padding-right: 20px
@@ -818,6 +959,38 @@ header
 
     .wrapper-pets__btn
       margin-top: 38px
+
+@media screen and ( max-width: 639px )
+  .section-title
+    font-size: 36px
+  
+  .wrapper-pets
+    padding-left: 10px
+    padding-right: 10px
+    padding-bottom: 50px
+
+    .wrapper-pets__title
+      margin-bottom: 30px
+
+    .wrapper-pets__slider-container
+      max-width: 670px
+
+      .slider-container__arrows
+        display: none
+
+      .wrapper-pets__slider-container__slider
+        margin-bottom: 31px
+
+        .wrapper-pets__slider-container__slider__slide
+          margin-right: 16px
+          width: 210px
+          height: 302px
+
+          .wrapper-pets__slider-container__slider__slide__content
+            padding: 0 7px 30px 7px  
+
+    .wrapper-pets__btn
+      margin-top: 29px  
 
 .wrapper-pay
   padding: 100px 0
@@ -876,7 +1049,7 @@ header
         img
           width: 48px
 
-@media screen and ( max-width: 1199px )
+@media screen and ( max-width: 1199px ) and ( min-width: 640px )
   .wrapper-pay
     padding-left: 50px
     padding-right: 50px
@@ -898,6 +1071,27 @@ header
         
         img
           width: 48px
+
+@media screen and ( max-width: 639px )
+  .wrapper-pay
+    padding: 50px 0
+
+    .wrapper-pay__title
+      margin-bottom: 30px
+
+    .wrapper-pay__description
+      display: none
+
+    .wrapper-pay__steps-container
+      flex-direction: column
+      margin-bottom: 45px
+      height: 930px
+
+      .wrapper-pay__steps-container__arrow
+        transform: rotate(90deg)
+        
+        img
+          width: 48px  
 
 .wrapper-testimonials
   padding: 100px 0
@@ -985,7 +1179,7 @@ header
           width: 440px
           padding: 47px 57px
 
-@media screen and ( max-width: 1199px )
+@media screen and ( max-width: 1199px ) and ( min-width: 640px )
   .wrapper-testimonials
     padding: 100px 12px
 
@@ -1001,6 +1195,45 @@ header
 
         .wrapper-testimonials__slider-container__slider__slide
           flex-shrink: 0
+
+@media screen and ( max-width: 639px )
+  .wrapper-testimonials
+    padding: 50px 0px
+
+    .wrapper-testimonials__title
+      margin-bottom: 25px
+
+    .wrapper-testimonials__slider-container
+
+      .slider-container__arrows
+        display: none
+
+      .wrapper-testimonials__slider-container__slider
+        margin-bottom: 35px
+
+        .wrapper-testimonials__slider-container__slider__slide
+          width: 300px
+          height: 363px
+          padding: 50px 14px
+          margin: 10px 10px 10px 10px
+          flex-shrink: 0
+
+          .wrapper-testimonials__slider-container__slider__slide__image-container
+            width: 68px
+            height: 68px
+            border-radius: 50%
+            overflow: hidden
+            margin-bottom: 50px
+
+            img
+              width: 100%
+
+          .wrapper-testimonials__slider-container__slider__slide__title          
+            margin-bottom: 17px
+            font-size: 16px
+
+    .wrapper-testimonials__btn
+      margin-top: 20px
 
 .wrapper-map
   padding: 100px 0
@@ -1144,7 +1377,7 @@ header
     .wrapper-map__btn
       margin-top: 97px
 
-@media screen and ( max-width: 1199px )
+@media screen and ( max-width: 1199px ) and ( min-width: 640px )
   .wrapper-map
     padding: 100px 0 80px 0
 
@@ -1165,6 +1398,81 @@ header
 
     .wrapper-map__btn
       margin-top: 77px
+
+@media screen and ( max-width: 639px )
+  .wrapper-map
+    padding: 50px 0 60px 0
+
+    .wrapper-map__title
+      margin-bottom: 30px
+
+    .wrapper-map__map
+      width: 300px
+      height: 125px
+      background-size: contain
+
+      .wrapper-map__map__flag
+        width: 1px
+        height: 63px
+        display: flex
+        justify-content: center
+
+        &::before
+          transform: scale(0.5)
+
+        .pet-tip
+          position: fixed
+          top: 37%
+          left: 25%
+          width: 238px
+          padding: 16px 25px 20px 15px
+          justify-content: center
+          background: #fefefe
+          box-shadow: 2px 4px 15px rgba(6, 12, 70, 0.15)
+          border-radius: 8px
+          z-index: 20          
+
+          .pet-tip__image
+            width: 40px
+            height: 40px
+            border-radius: 50%
+            overflow: hidden
+            margin-right: 8px
+            flex-shrink: 0
+
+            img
+              width: 100%
+              height: 100%
+              object-fit: cover
+
+          .pet-tip__content
+
+            .pet-tip__content__title
+              font-size: 14px
+              margin-bottom: 5px
+              visibility: visible
+
+            .pet-tip__content__paragraph
+              font-size: 11px
+              margin-bottom: 5px
+
+      .wrapper-map__map__flag:hover
+        cursor: pointer
+
+        &::before
+          content: url('../icons/flag-red.svg')
+
+        .pet-tip
+          display: flex
+          transition: .2s
+
+      .wrapper-map__map__flag_active
+
+        &::before
+          content: url('../icons/flag-red.svg')
+
+    .wrapper-map__btn
+      margin-top: 51px  
 
 .footer
   background: #333333
@@ -1335,7 +1643,7 @@ header
         text-transform: uppercase
         color: #fefefe
         font-weight: 500
-        font-size: 14
+        font-size: 14px
         margin-left: 260px
         cursor: pointer
         
@@ -1418,7 +1726,7 @@ header
       margin-left: 12px
       width: 275px
 
-@media screen and ( max-width: 1199px )
+@media screen and ( max-width: 1199px ) and ( min-width: 640px )
   .footer
     padding: 96px 20px 32px 20px
     grid-template-columns: 50% 50%
@@ -1470,7 +1778,72 @@ header
 
     .footer__btn
       margin-left: 25px
-  
+
+@media screen and ( max-width: 639px )
+  .footer
+    padding: 50px 10px 20px 10px
+    grid-template-columns: 100%
+    grid-template-rows: auto auto auto auto auto auto
+
+    .grid-item-1
+      grid-column: 1 / span 1
+      grid-row: 1 / span 1
+
+    .grid-item-2
+      grid-column: 1 / span 1
+      grid-row: 2 / span 1
+
+    .grid-item-3
+      grid-column: 1 / span 1
+      grid-row: 5 / span 1
+
+    .grid-item-4
+      grid-column: 1 / span 1
+      grid-row: 3 / span 1
+
+    .grid-item-5
+      grid-column: 1 / span 1
+      grid-row: 4 / span 1
+
+    .grid-item-6
+      grid-column: 1 / span 1
+      grid-row: 6 / span 1
+      padding-top: 20px
+      margin-top: 80px
+
+    .navigation-bottom
+      padding-left: 0
+      margin-top: 40px
+
+      .navigation-bottom__list
+        flex-direction: column
+
+        .navigation-bottom__list__item
+          margin-right: 0
+          margin-bottom: 5px
+
+    .contact-form-container
+      padding-top: 22px
+
+      form
+        margin-bottom: 35px
+
+        input
+          width: 300px
+
+        .message-container
+          width: 300px
+
+        .send
+          margin-left: 190px
+
+    .contacts
+      padding-top: 18px
+      padding-left: 0
+      padding-bottom: 43px
+
+    .footer__btn
+      margin-left: 13px    
 
 // MAP PAGE
 
@@ -1584,6 +1957,85 @@ header
       .circle-slider-container__slider
         margin-bottom: 25px
         width: 700px
+
+@media screen and ( max-width: 1199px ) and ( min-width: 640px )
+  .wrapper-map_white
+    padding: 60px 20px 80px 20px
+
+    .wrapper-map__description
+      max-width: 600px
+      margin-bottom: 35px
+
+    .wrapper-map__btn
+      margin-top: 78px
+
+    .circle-slider-container
+      margin-bottom: 35px
+      
+      .circle-slider-container__slider
+        margin-bottom: 25px
+        width: 520px
+
+        .circle-slider-container__slider__slide
+          margin: 0 10px
+
+@media screen and ( max-width: 639px )
+  .wrapper-map_white
+    padding: 35px 20px 60px 20px
+
+    .wrapper-map__title
+      font-size: 24px
+      margin-bottom: 10px
+
+    .wrapper-map__description
+      max-width: 100%
+      margin-bottom: 40px
+      font-size: 12px
+      line-height: 14px
+
+    .wrapper-map__btn
+      margin-top: 57px
+
+    .circle-slider-container
+      margin-bottom: 35px
+      
+      .circle-slider-container__slider
+        margin-bottom: 20px
+        width: 230px
+        height: 85px
+
+        .circle-slider-container__slider__slide
+          width: 60px
+          height: 60px
+          margin: 0 10px
+            
+          .circle-slider-container__slider__slide__image
+            width: 60px
+            height: 60px
+
+        .circle-slider-container__slider__slide_active
+          transform: scale(1.28)
+
+          img
+            border: 3px solid #fefefe
+
+          &::before
+            width: 64px
+            height: 64px
+
+          &:hover
+            
+            &::before
+              width: 64px
+              height: 64px
+
+    .slider-container__arrows__arrow_left
+      top: 17%
+      left: -12px
+      
+    .slider-container__arrows__arrow_right
+      top: 17%
+      right: -12px
 
 // Zoos PAGE
 
@@ -1817,6 +2269,7 @@ header
 
       .zoos-title
         margin-bottom: 41px
+        max-width: 800px
 
       .zoos-content
 
@@ -1849,3 +2302,197 @@ header
         .zoos-content__content__btn
           width: 185px
           margin-top: 20px
+
+@media screen and ( max-width: 1199px ) and ( min-width: 640px )
+  .zoos-wrapper
+    padding-bottom: 44px
+
+    .circle-slider-container
+      margin-right: 20px
+      margin-left: 3px
+      height: 347px
+      
+      .circle-slider-container__slider
+        width: 100px
+
+        .circle-slider-container__slider__slide
+          width: 70px
+          height: 70px
+
+        .circle-slider-container__slider__slide_active
+          transform: scale(1.28)
+          margin: 15px 0
+
+          img
+            border: 3px solid #fefefe
+
+          &::before
+            content: ""
+            width: 74px
+            height: 74px
+            background: linear-gradient(to right, #07EEE0 0%, #DF496D 100%)
+            border-radius: 50%
+            position: absolute
+            z-index: 2
+            top: -2px
+            left: -2px
+
+          &:hover
+            
+            &::before
+              content: ""
+              width: 74px
+              height: 74px
+              background: linear-gradient(to right, #DF496D 0%, #07EEE0 100%)
+              border-radius: 50%
+              position: absolute
+              z-index: 2
+              top: -2px
+              left: -2px
+
+      .slider-container__arrows__arrow_left
+
+        img
+          transform: rotate(-90deg) scale(0.8)
+        
+      .slider-container__arrows__arrow_right
+        
+        img
+          transform: rotate(90deg) scale(0.8)
+
+    .zoos-container
+
+      .zoos-title
+        margin-bottom: 35px
+        margin-left: 10px
+        max-width: 477px
+
+      .zoos-content
+        display: flex
+        flex-direction: column
+
+        .video-slider-container
+          margin-bottom: 50px
+
+          .video-slider-container__view
+            width: 497px
+            height: 280px
+            margin-bottom: 15px
+
+          .video-slider-container__slider
+
+            .video-slider-container__slider__slide
+              width: 155px
+              height: 89px
+
+        .zoos-content__content
+          margin-left: 0
+          margin-bottom: 35px
+
+          .zoos-content__content__desctiption          
+            max-width: 497px
+
+        .zoos-content__content__btn
+          width: 185px
+          margin-top: 30px
+
+@media screen and ( max-width: 639px )
+  .zoos-wrapper
+    padding-bottom: 22px
+    padding-top: 35px
+
+    .circle-slider-container
+      margin-right: 0
+      margin-left: 0
+      height: 212px
+      margin-top: 27px
+      
+      .circle-slider-container__slider
+        width: 75px
+
+        .circle-slider-container__slider__slide
+          width: 40px
+          height: 40px
+          margin: 2.5px 0
+
+        .circle-slider-container__slider__slide_active
+          transform: scale(1.48)
+          margin: 15px 0
+
+          img
+            border: 2px solid #fefefe
+
+          &::before
+            width: 44px
+            height: 44px
+
+          &:hover
+            
+            &::before
+              width: 44px
+              height: 44px
+
+      .slider-container__arrows__arrow_left
+        top: -33px
+
+        img
+          transform: rotate(-90deg) scale(0.8)
+        
+      .slider-container__arrows__arrow_right
+        bottom: -33px
+        
+        img
+          transform: rotate(90deg) scale(0.8)
+
+    .zoos-container
+      margin-top: 0
+
+      .zoos-title
+        margin-bottom: 19px
+        margin-left: 27px
+        max-width: 205px
+        font-size: 24px
+
+      .zoos-content
+        display: flex
+        flex-direction: column
+
+        .video-slider-container
+          margin-bottom: 30px
+          margin-left: 20px
+
+          .video-slider-container__view
+            width: 205px
+            height: 116px
+            margin-bottom: 10px
+
+          .video-slider-container__slider
+            overflow-x: hidden
+            width: 205px
+            margin-bottom: 20px
+
+            .video-slider-container__slider__slide
+              width: 98px
+              height: 56px
+              flex-shrink: 0
+              margin-right: 9px
+
+        .zoos-content__content
+          margin-left: 20px
+          margin-bottom: 35px
+
+          .zoos-content__content__desctiption          
+            max-width: 205px
+
+            .zoos-content__content-title
+              margin-bottom: 6px
+              font-size: 14px
+
+            .zoos-content__paragraph
+              margin-bottom: 18px
+              font-size: 12px
+              line-height: 14px
+
+        .zoos-content__content__btn
+          width: 185px
+          margin-top: 0px
