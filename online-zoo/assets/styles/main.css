@@ -206,7 +206,9 @@ header {
   justify-content: space-between;
   align-items: center;
   position: relative;
+  background-color: #ffffff;
   box-shadow: 0px 4px 8px rgba(44, 101, 77, 0.08);
+  z-index: 25;
 }
 header .navigation-top {
   font-weight: 500;
@@ -278,6 +280,8 @@ header .burger-icon {
 @media screen and (max-width: 1199px) and (min-width: 640px) {
   header {
     padding: 0 95px 0 20px;
+    position: sticky;
+    top: 0;
   }
   header .navigation-top {
     display: none;
@@ -301,6 +305,8 @@ header .burger-icon {
 @media screen and (max-width: 639px) {
   header {
     padding: 0 75px 0 10px;
+    position: sticky;
+    top: 0;
   }
   header .navigation-top {
     display: none;
@@ -2297,6 +2303,7 @@ header .burger-icon {
     margin-right: 20px;
     margin-left: 3px;
     height: 347px;
+    top: 150px;
   }
   .zoos-wrapper .circle-slider-container .circle-slider-container__slider {
     width: 100px;
@@ -2383,6 +2390,7 @@ header .burger-icon {
     margin-left: 0;
     height: 212px;
     margin-top: 27px;
+    top: 130px;
   }
   .zoos-wrapper .circle-slider-container .circle-slider-container__slider {
     width: 75px;
