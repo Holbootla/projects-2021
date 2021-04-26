@@ -8,6 +8,26 @@
   --map: url("../images/map.svg");
 }
 
+[data-theme=dark] {
+  --dark: #ffffff;
+  --almost-dark: #fefefe;
+  --grey-dark: #f2f2f2;
+  --white: #333333;
+  --almost-white: #3c3c3c;
+  --grey-white: #4f4f4f;
+  --map: url("../images/map-reverse.svg");
+}
+
+[data-theme=light] {
+  --white: #ffffff;
+  --almost-white: #fefefe;
+  --grey-white: #f2f2f2;
+  --dark: #333333;
+  --almost-dark: #3c3c3c;
+  --grey-dark: #4f4f4f;
+  --map: url("../images/map.svg");
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
