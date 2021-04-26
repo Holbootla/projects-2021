@@ -35,12 +35,16 @@
       <span class="switcher round"></span>
     </label>
     <svg class="burger-icon" width="40" height="21" viewBox="0 0 40 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line y1="1.5" x2="40" y2="1.5" stroke="#333333" stroke-width="3"/>
-      <line y1="10.5" x2="40" y2="10.5" stroke="#333333" stroke-width="3"/>
-      <line x1="7" y1="19.5" x2="40" y2="19.5" stroke="#333333" stroke-width="3"/>
+      <line y1="1.5" x2="40" y2="1.5" stroke-width="3"/>
+      <line y1="10.5" x2="40" y2="10.5" stroke-width="3"/>
+      <line x1="7" y1="19.5" x2="40" y2="19.5" stroke-width="3"/>
     </svg>
   </header>
-  <nav class="navigation-burger">
+  <nav class="navigation-burger navigation-burger_hidden">
+    <svg class="burger-icon-exit" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="2.06066" y1="1.93934" x2="30.3449" y2="30.2236" stroke-width="3"/>
+      <line x1="1.79676" y1="30.0819" x2="30.081" y2="1.79765" stroke-width="3"/>
+    </svg>
     <ul class="navigation-burger__list">
       <li class="navigation-burger__list__item navigation-bottom__list__item__link navigation-burger__list__item_active"><a href="../online-zoo/">About</a></li>
       <li class="navigation-burger__list__item navigation-bottom__list__item__link"><a href="../online-zoo/zoos/panda/">Zoos</a></li>
@@ -178,17 +182,17 @@
       <div class="wrapper-about__content">
         <div class="wrapper-about__content__block">
           <img src="assets/icons/what-inspires.svg" class="wrapper-about__content__block__icon" alt="">
-          <h3 class="content__title wrapper-about__content__title">What inspires us?</h3>
+          <h3 class="content-title wrapper-about__content__title">What inspires us?</h3>
           <p class="paragraph wrapper-about__content__description">As a voice for wildlife, we are devastated by the impact of the 2020 Australian bushfires on precious species and their habitat, and we are determined to assist in all aspects.</p>
         </div>
         <div class="wrapper-about__content__block">
           <img src="assets/icons/our-mission.svg" class="wrapper-about__content__block__icon" alt="">
-          <h3 class="content__title wrapper-about__content__title">Our mission</h3>
+          <h3 class="content-title wrapper-about__content__title">Our mission</h3>
           <p class="paragraph wrapper-about__content__description">Zoo Online saves wildlife and inspires everyone to make conservation a priority in their lives. </p>
         </div>
         <div class="wrapper-about__content__block">
           <img src="assets/icons/believe.svg" class="wrapper-about__content__block__icon" alt="">
-          <h3 class="content__title wrapper-about__content__title">What we believe in?</h3>
+          <h3 class="content-title wrapper-about__content__title">What we believe in?</h3>
           <p class="paragraph wrapper-about__content__description">Animals have the right to a pain-free and happy life. They have equal claim to the resources of this planet, and deserve a life of dignity and compassion.</p>
         </div>
       </div>
@@ -197,8 +201,12 @@
       <h2 class="section-title wrapper-pets__title">Pets in Zoo</h2>
       <div class="wrapper-pets__slider-container">    
         <div class="slider-container__arrows">
-          <div class="slider-container__arrows__arrow slider-container__arrows__arrow_left"><img src="assets/icons/arrow.svg" alt=""></div>
-          <div class="slider-container__arrows__arrow slider-container__arrows__arrow_right"><img src="assets/icons/arrow.svg" alt=""></div>
+          <div class="slider-container__arrows__arrow slider-container__arrows__arrow_left"><svg class="slider-arrow" width="18" height="30" viewBox="0 0 18 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.3337 13.8294L3.98332 0.479264C3.67454 0.170243 3.26235 0 2.82284 0C2.38334 0 1.97114 0.170243 1.66237 0.479264L0.679203 1.46218C0.0394526 2.10267 0.0394526 3.14363 0.679203 3.78314L11.8898 14.9938L0.666764 26.2169C0.357986 26.5259 0.1875 26.9378 0.1875 27.3771C0.1875 27.8168 0.357986 28.2288 0.666764 28.5381L1.64993 29.5207C1.95895 29.8298 2.3709 30 2.81041 30C3.24991 30 3.66211 29.8298 3.97088 29.5207L17.3337 16.1584C17.6432 15.8484 17.8132 15.4345 17.8122 14.9945C17.8132 14.5528 17.6432 14.1392 17.3337 13.8294Z"/>
+</svg></div>
+          <div class="slider-container__arrows__arrow slider-container__arrows__arrow_right"><svg class="slider-arrow" width="18" height="30" viewBox="0 0 18 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.3337 13.8294L3.98332 0.479264C3.67454 0.170243 3.26235 0 2.82284 0C2.38334 0 1.97114 0.170243 1.66237 0.479264L0.679203 1.46218C0.0394526 2.10267 0.0394526 3.14363 0.679203 3.78314L11.8898 14.9938L0.666764 26.2169C0.357986 26.5259 0.1875 26.9378 0.1875 27.3771C0.1875 27.8168 0.357986 28.2288 0.666764 28.5381L1.64993 29.5207C1.95895 29.8298 2.3709 30 2.81041 30C3.24991 30 3.66211 29.8298 3.97088 29.5207L17.3337 16.1584C17.6432 15.8484 17.8132 15.4345 17.8122 14.9945C17.8132 14.5528 17.6432 14.1392 17.3337 13.8294Z"/>
+</svg></div>
         </div>    
         <div class="wrapper-pets__slider-container__slider">
           <div class="wrapper-pets__slider-container__slider__slide">
@@ -257,21 +265,21 @@
       <div class="wrapper-pay__steps-container">
         <div class="wrapper-pay__steps-container__step">
           <img src="assets/icons/credit-card.svg" class="wrapper-pay__steps-container__step__icon" alt="">
-          <h3 class="content__title wrapper-pay__steps-container__step__title">You pay with a VISA card</h3>
+          <h3 class="content-title wrapper-pay__steps-container__step__title">You pay with a VISA card</h3>
         </div>
         <div class="wrapper-pay__steps-container__arrow">
           <img class="wrapper-pay__steps-container__arrow__icon" src="assets/icons/pay-arrow.svg" alt="">
         </div>
         <div class="wrapper-pay__steps-container__step">
           <img src="assets/icons/zoo-way.svg" class="wrapper-pay__steps-container__step__icon" alt="">
-          <h3 class="content__title wrapper-pay__steps-container__step__title">Payment goes to the Zoo</h3>
+          <h3 class="content-title wrapper-pay__steps-container__step__title">Payment goes to the Zoo</h3>
         </div>
         <div class="wrapper-pay__steps-container__arrow">
           <img class="wrapper-pay__steps-container__arrow__icon" src="assets/icons/pay-arrow.svg" alt="">
         </div>
         <div class="wrapper-pay__steps-container__step">
           <img src="assets/icons/panda.svg" class="wrapper-pay__steps-container__step__icon" alt="">
-          <h3 class="content__title wrapper-pay__steps-container__step__title">Panda gets the bamboo</h3>
+          <h3 class="content-title wrapper-pay__steps-container__step__title">Panda gets the bamboo</h3>
         </div>
       </div>
       <button class="wrapper-pay__btn btn">Donate</button>
@@ -280,8 +288,12 @@
       <h2 class="section-title wrapper-testimonials__title">Testimonials</h2>
       <div class="wrapper-testimonials__slider-container">
         <div class="slider-container__arrows">
-          <div class="slider-container__arrows__arrow slider-container__arrows__arrow_left"><img src="assets/icons/arrow.svg" alt=""></div>
-          <div class="slider-container__arrows__arrow slider-container__arrows__arrow_right"><img src="assets/icons/arrow.svg" alt=""></div>
+          <div class="slider-container__arrows__arrow slider-container__arrows__arrow_left"><svg class="slider-arrow" width="18" height="30" viewBox="0 0 18 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.3337 13.8294L3.98332 0.479264C3.67454 0.170243 3.26235 0 2.82284 0C2.38334 0 1.97114 0.170243 1.66237 0.479264L0.679203 1.46218C0.0394526 2.10267 0.0394526 3.14363 0.679203 3.78314L11.8898 14.9938L0.666764 26.2169C0.357986 26.5259 0.1875 26.9378 0.1875 27.3771C0.1875 27.8168 0.357986 28.2288 0.666764 28.5381L1.64993 29.5207C1.95895 29.8298 2.3709 30 2.81041 30C3.24991 30 3.66211 29.8298 3.97088 29.5207L17.3337 16.1584C17.6432 15.8484 17.8132 15.4345 17.8122 14.9945C17.8132 14.5528 17.6432 14.1392 17.3337 13.8294Z"/>
+</svg></div>
+          <div class="slider-container__arrows__arrow slider-container__arrows__arrow_right"><svg class="slider-arrow" width="18" height="30" viewBox="0 0 18 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.3337 13.8294L3.98332 0.479264C3.67454 0.170243 3.26235 0 2.82284 0C2.38334 0 1.97114 0.170243 1.66237 0.479264L0.679203 1.46218C0.0394526 2.10267 0.0394526 3.14363 0.679203 3.78314L11.8898 14.9938L0.666764 26.2169C0.357986 26.5259 0.1875 26.9378 0.1875 27.3771C0.1875 27.8168 0.357986 28.2288 0.666764 28.5381L1.64993 29.5207C1.95895 29.8298 2.3709 30 2.81041 30C3.24991 30 3.66211 29.8298 3.97088 29.5207L17.3337 16.1584C17.6432 15.8484 17.8132 15.4345 17.8122 14.9945C17.8132 14.5528 17.6432 14.1392 17.3337 13.8294Z"/>
+</svg></div>
         </div>
         <div class="wrapper-testimonials__slider-container__slider">
           <div class="wrapper-testimonials__slider-container__slider__slide">
@@ -428,5 +440,6 @@
       <p class="paragraph credentials__text">©Holbootla - 2021</p>
     </div>
   </footer>
+  <script src="./assets/scripts/main.js"></script>
 </body>
 </html>
