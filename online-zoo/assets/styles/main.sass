@@ -1,3 +1,30 @@
+:root
+  --white: #ffffff
+  --almost-white: #fefefe
+  --grey-white: #f2f2f2
+  --dark: #333333
+  --almost-dark: #3c3c3c
+  --grey-dark: #4f4f4f
+  --map: url('../images/map.svg')
+
+[data-theme="dark"]
+    --dark: #ffffff
+    --almost-dark: #fefefe
+    --grey-dark: #f2f2f2
+    --white: #333333
+    --almost-white: #3c3c3c
+    --grey-white: #4f4f4f
+    --map: url('../images/map-reverse.svg')
+
+[data-theme="light"]
+    --white: #ffffff
+    --almost-white: #fefefe
+    --grey-white: #f2f2f2
+    --dark: #333333
+    --almost-dark: #3c3c3c
+    --grey-dark: #4f4f4f
+    --map: url('../images/map.svg')
+  
 *
   box-sizing: border-box
   padding: 0
@@ -6,6 +33,9 @@
   cursor: default
   font-family: 'Roboto', sans-serif
   font-style: normal
+
+.overflow-hidden
+  overflow: hidden
 
 ::-webkit-scrollbar
   width: 5px
@@ -37,7 +67,7 @@ a
 .logo_dark
 
   a svg path
-    fill: #333333
+    fill: var(--dark)
 
 .btn
   display: flex
@@ -60,20 +90,20 @@ a
   img
     margin-right: 5px
 
-.content__title
+.content-title
   font-weight: 900
   font-size: 20px
-  color: #333333
+  color: var(--dark)
 
 .paragraph
   font-size: 14px
   font-weight: 400
-  color: #4f4f4f
+  color: var(--grey-dark)
 
 .section-title
   font-weight: 900
   font-size: 48px
-  color: #333333
+  color: var(--dark)
 
 .slider-controls
   font-weight: 900
@@ -119,7 +149,7 @@ a
   .slide-number
 
     .slide-number-current
-      color: #333333
+      color: var(--dark)
 
     .slide-number-last
       color: #bdbdbd
@@ -128,7 +158,7 @@ a
     background: #bdbdbd94
 
   .input-line::-webkit-slider-thumb
-    background: #333333
+    background: var(--dark)
 
   .input-line:hover
     background:#bdbdbd
@@ -182,12 +212,75 @@ a
       transform: rotate(360deg)
       transition: .5s
 
+.slider-arrow
+  fill: var(--dark)
+  cursor: pointer
+
+  path
+    cursor: pointer
+
 body
   width: 100%
   overflow-x: hidden
 
+.navigation-burger_hidden
+  transform: translateX(-100%)
+
 .navigation-burger
-  display: none
+  display: flex
+  flex-direction: column
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100vh
+  z-index: 100
+  background-color: var(--white)
+  justify-content: center
+  align-items: center
+  transition: transform .3s
+
+  .navigation-burger__list
+    list-style: none
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+    .navigation-burger__list__item
+      color: var(--dark)
+      margin-bottom: 20px
+      font-size: 20px
+      font-weight: 500
+      width: fit-content
+
+      &:hover a
+        cursor: pointer
+        font-weight: 700
+        border-bottom: 1px solid var(--dark)
+
+    .navigation-burger__list__item_active
+      border-bottom: solid 1px
+      font-weight: 900
+      pointer-events: none
+
+  .burger-icon-exit
+    display: block
+    position: absolute
+    top: 37px
+    right: 37px
+    transition: .1s
+    z-index: 101
+
+    &:hover
+      transform: scale(1.1)
+      cursor: pointer
+
+      line
+        cursor: pointer
+
+    line
+      stroke: var(--dark)
 
 header
   height: 94px
@@ -197,7 +290,7 @@ header
   justify-content: space-between
   align-items: center
   position: relative
-  background-color: #ffffff
+  background-color: var(--white)
   box-shadow: 0px 4px 8px rgba(44, 101, 77, 0.08)
   z-index: 25
 
@@ -211,12 +304,12 @@ header
 
     .navigation-top__list__item
       margin: 0 42px
-      color: #333333
+      color: var(--dark)
 
       &:hover a
         cursor: pointer
         font-weight: 700
-        border-bottom: 1px solid #333333
+        border-bottom: 1px solid var(--dark)
 
     .navigation-top__list__item_active
       border-bottom: solid 1px
@@ -266,6 +359,10 @@ header
 
   .burger-icon
     display: none
+    z-index: 30
+
+    line
+      stroke: var(--dark)
 
 @media screen and ( max-width: 1199px ) and ( min-width: 640px )
   header
@@ -279,7 +376,6 @@ header
     .burger-icon
       display: block
       position: absolute
-      z-index: 30
       top: 37px
       right: 20px
       transition: .1s
@@ -303,7 +399,6 @@ header
       .burger-icon
         display: block
         position: absolute
-        z-index: 30
         top: 37px
         right: 10px
         transition: .1s
@@ -611,6 +706,7 @@ header
 .wrapper-how
   width: 100%
   padding: 100px 0
+  background-color: var(--white)
 
   .wrapper-how__container
     width: 100%
@@ -701,7 +797,7 @@ header
 
 .wrapper-about
   padding: 100px 0
-  background: #f2f2f2
+  background: var(--grey-white)
 
   .wrapper-about__content
     margin: 0 auto
@@ -781,6 +877,7 @@ header
   display: flex
   flex-direction: column
   align-items: center
+  background-color: var(--white)
 
   .wrapper-pets__title
     margin-bottom: 40px
@@ -798,19 +895,13 @@ header
       position: absolute
       left: -45px
 
-      img
+      svg
         transform: rotate(180deg)
-
-      &:hover img
-        cursor: pointer
       
     .slider-container__arrows__arrow_right
       top: 39%
       position: absolute
       right: -45px
-
-      &:hover img
-        cursor: pointer
 
     .wrapper-pets__slider-container__slider
       width: 100%
@@ -1003,7 +1094,7 @@ header
   display: flex
   flex-direction: column
   align-items: center
-  background: #f2f2f2
+  background: var(--grey-white)
 
   .wrapper-pay__title
     margin-bottom: 30px
@@ -1035,7 +1126,7 @@ header
 
       .wrapper-pay__steps-container__step__title
         text-align: center
-        color: #4f4f4f
+        color: var(--grey-dark)
 
 @media screen and ( max-width: 1919px ) and ( min-width: 1200px )
   .wrapper-pay
@@ -1104,6 +1195,7 @@ header
   display: flex
   flex-direction: column
   align-items: center
+  background-color: var(--white)
 
   .wrapper-testimonials__title
     margin-bottom: 55px
@@ -1121,10 +1213,10 @@ header
       position: absolute
       left: -30px
 
-      img
+      svg
         transform: rotate(180deg)
 
-      &:hover img
+      &:hover svg
         cursor: pointer
       
     .slider-container__arrows__arrow_right
@@ -1132,7 +1224,7 @@ header
       position: absolute
       right: -30px
 
-      &:hover img
+      &:hover svg
         cursor: pointer
 
     .wrapper-testimonials__slider-container__slider
@@ -1143,6 +1235,7 @@ header
       margin-bottom: 35px
 
       .wrapper-testimonials__slider-container__slider__slide
+        background: var(--almost-white)
         width: 585px
         height: 310px
         padding: 47px 72px
@@ -1246,7 +1339,7 @@ header
   display: flex
   flex-direction: column
   align-items: center
-  background: #f2f2f2
+  background: var(--grey-white)
 
   .wrapper-map__title
     margin-bottom: 60px
@@ -1254,7 +1347,7 @@ header
   .wrapper-map__map
     width: 1200px
     height: 500px
-    background: url('../images/map.svg') center no-repeat
+    background: var(--map) center no-repeat
     position: relative
 
     .wrapper-map__map__flag__panda
@@ -1327,7 +1420,7 @@ header
         padding: 40px 55px 35px 45px
         align-items: center
         justify-content: center
-        background: #fefefe
+        background: var(--almost-white)
         box-shadow: 2px 4px 15px rgba(6, 12, 70, 0.15)
         border-radius: 8px
         z-index: 20
@@ -1433,7 +1526,7 @@ header
           width: 238px
           padding: 16px 25px 20px 15px
           justify-content: center
-          background: #fefefe
+          background: var(--almost-white)
           box-shadow: 2px 4px 15px rgba(6, 12, 70, 0.15)
           border-radius: 8px
           z-index: 20          
@@ -1854,7 +1947,7 @@ header
 // MAP PAGE
 
 .wrapper-map_white
-  background: #fbfbfb
+  background: var(--almost-white)
   padding: 60px 0 100px 0
 
   .wrapper-map__title
@@ -1897,7 +1990,7 @@ header
         img
           position: relative
           z-index: 3
-          border: 6px solid #fefefe
+          border: 6px solid var(--almost-white)
 
         &::before
           content: ""
@@ -1929,10 +2022,10 @@ header
     position: absolute
     left: -40px
 
-    img
+    svg
       transform: rotate(180deg)
 
-    &:hover img
+    &:hover svg
       cursor: pointer
     
   .slider-container__arrows__arrow_right
@@ -1940,7 +2033,7 @@ header
     position: absolute
     right: -40px
 
-    &:hover img
+    &:hover svg
       cursor: pointer
 
   .slider-controls
@@ -2023,7 +2116,7 @@ header
           transform: scale(1.28)
 
           img
-            border: 3px solid #fefefe
+            border: 3px solid var(--almost-white)
 
           &::before
             width: 64px
@@ -2046,6 +2139,7 @@ header
 // Zoos PAGE
 
 .zoos-wrapper
+  background-color: var(--almost-white)
   display: flex
   padding-bottom: 100px
   position: relative
@@ -2085,7 +2179,7 @@ header
         img
           position: absolute
           z-index: 3
-          border: 6px solid #fefefe
+          border: 6px solid var(--almost-white)
 
         &::before
           content: ""
@@ -2118,10 +2212,10 @@ header
       left: 50%
       transform: translate(-50%)
 
-      img
+      svg
         transform: rotate(-90deg)
 
-      &:hover img
+      &:hover svg
         cursor: pointer
       
     .slider-container__arrows__arrow_right
@@ -2130,10 +2224,10 @@ header
       left: 50%
       transform: translate(-50%)
       
-      img
+      svg
         transform: rotate(90deg)
 
-      &:hover img
+      &:hover svg
         cursor: pointer
 
   .zoos-container
@@ -2331,7 +2425,7 @@ header
           margin: 15px 0
 
           img
-            border: 3px solid #fefefe
+            border: 3px solid var(--almost-white)
 
           &::before
             content: ""
@@ -2359,12 +2453,12 @@ header
 
       .slider-container__arrows__arrow_left
 
-        img
+        svg
           transform: rotate(-90deg) scale(0.8)
         
       .slider-container__arrows__arrow_right
         
-        img
+        svg
           transform: rotate(90deg) scale(0.8)
 
     .zoos-container
@@ -2428,7 +2522,7 @@ header
           margin: 15px 0
 
           img
-            border: 2px solid #fefefe
+            border: 2px solid var(--almost-white)
 
           &::before
             width: 44px
@@ -2443,13 +2537,13 @@ header
       .slider-container__arrows__arrow_left
         top: -33px
 
-        img
+        svg
           transform: rotate(-90deg) scale(0.8)
         
       .slider-container__arrows__arrow_right
         bottom: -33px
         
-        img
+        svg
           transform: rotate(90deg) scale(0.8)
 
     .zoos-container
