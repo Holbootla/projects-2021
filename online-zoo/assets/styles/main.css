@@ -445,6 +445,7 @@ header .burger-icon line {
 }
 .wrapper-top .wrapper-top__slider-container .wrapper-top__slider-container__slider {
   display: flex;
+  height: 352px;
   align-items: center;
   margin-bottom: 12px;
   margin-left: 112px;
@@ -459,6 +460,7 @@ header .burger-icon line {
   justify-content: flex-end;
   position: relative;
   overflow-y: hidden;
+  transition: transform 0.2s;
 }
 .wrapper-top .wrapper-top__slider-container .wrapper-top__slider-container__slider .wrapper-top__slider-container__slider__slide img {
   height: 100%;
@@ -662,6 +664,7 @@ header .burger-icon line {
   }
   .wrapper-top .wrapper-top__slider-container .wrapper-top__slider-container__slider {
     margin-left: 16px;
+    height: 202px;
   }
   .wrapper-top .wrapper-top__slider-container .wrapper-top__slider-container__slider .wrapper-top__slider-container__slider__slide {
     margin: 0 4.5px;
