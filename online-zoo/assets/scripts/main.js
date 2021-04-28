@@ -27,30 +27,30 @@ const toggleColorTheme = (e) => {
 
 switcher.addEventListener('change', toggleColorTheme)
 
-// Carousel at main page
+// Top Carousel at main page
 
-const carouselControls = document.querySelector('.wrapper-top__slider-container').querySelector('input[type=range]')
-const carouselControlsText = document.querySelector('.wrapper-top__slider-container').querySelector('.slide-number-current')
-const carouselSlides = document.querySelector('.wrapper-top__slider-container').querySelectorAll('.wrapper-top__slider-container__slider__slide')
+const topCarouselControls = document.querySelector('.wrapper-top__slider-container').querySelector('input[type=range]')
+const topCarouselControlsText = document.querySelector('.wrapper-top__slider-container').querySelector('.slide-number-current')
+const topCarouselSlides = document.querySelector('.wrapper-top__slider-container').querySelectorAll('.wrapper-top__slider-container__slider__slide')
 
-const moveCarousel = () => {
-  carouselControls.defaultValue = carouselControls.value
-  carouselControlsText.textContent = `0${carouselControls.defaultValue}/`
-  carouselSlides.forEach((el) => {
+const moveTopCarousel = () => {
+  topCarouselControls.defaultValue = topCarouselControls.value
+  topCarouselControlsText.textContent = `0${topCarouselControls.defaultValue}/`
+  topCarouselSlides.forEach((el) => {
     if (el.classList.contains('wrapper-top__slider-container__slider__slide_active')) {
       el.classList.remove('wrapper-top__slider-container__slider__slide_active')
     }
   })
-  carouselSlides[carouselControls.defaultValue-1].classList.add('wrapper-top__slider-container__slider__slide_active')
-  carouselSlides.forEach((el) => {
-    el.style.transform = `translateX(${-(carouselControls.defaultValue - 2) * (el.offsetWidth + (parseInt(getComputedStyle(el).marginRight) * 2))}px)`
+  topCarouselSlides[topCarouselControls.defaultValue-1].classList.add('wrapper-top__slider-container__slider__slide_active')
+  topCarouselSlides.forEach((el) => {
+    el.style.transform = `translateX(${-(topCarouselControls.defaultValue - 2) * (el.offsetWidth + (parseInt(getComputedStyle(el).marginRight) * 2))}px)`
   })
 }
 
-carouselControls.addEventListener('input', moveCarousel)
+topCarouselControls.addEventListener('input', moveTopCarousel)
 
-carouselSlides.forEach((el) => {
-  el.addEventListener('click', function () {
+topCarouselSlides.forEach((el) => {
+  el.addEventListener('click', () => {
     let isNextSiblingActive
     if (el.nextElementSibling) {
       isNextSiblingActive = el.nextElementSibling.classList.contains('wrapper-top__slider-container__slider__slide_active')
@@ -58,12 +58,12 @@ carouselSlides.forEach((el) => {
       isNextSiblingActive = 0
     }    
     if (!(el.classList.contains('wrapper-top__slider-container__slider__slide_active')) && !(isNextSiblingActive)) {
-      carouselControls.value = Number(carouselControls.defaultValue) + 1
-      moveCarousel()
+      topCarouselControls.value = Number(topCarouselControls.defaultValue) + 1
+      moveTopCarousel()
     }
     if (!(el.classList.contains('wrapper-top__slider-container__slider__slide_active')) && isNextSiblingActive) {
-      carouselControls.value = Number(carouselControls.defaultValue) - 1
-      moveCarousel()
+      topCarouselControls.value = Number(topCarouselControls.defaultValue) - 1
+      moveTopCarousel()
     }
   })
 })
