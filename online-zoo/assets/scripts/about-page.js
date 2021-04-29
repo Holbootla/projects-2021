@@ -1,32 +1,3 @@
-// Burger-menu
-
-const burgerBtn = document.querySelector('.burger-icon')
-const burgerBtnExit = document.querySelector('.burger-icon-exit')
-
-burgerBtn.addEventListener('click', function() {
-  document.querySelector('.navigation-burger').classList.remove('navigation-burger_hidden')
-  document.body.classList.add('overflow-hidden')
-})
-
-burgerBtnExit.addEventListener('click', function() {
-  document.querySelector('.navigation-burger').classList.add('navigation-burger_hidden')
-  document.body.classList.remove('overflow-hidden')
-})
-
-// Color theme switcher
-
-const switcher = (document.querySelector('.switch')).querySelector('input[type="checkbox"]')
-
-const toggleColorTheme = (e) => {
-  if (e.target.checked) {
-    document.documentElement.setAttribute('data-theme', 'dark')
-  } else {
-    document.documentElement.setAttribute('data-theme', '')
-  }
-}
-
-switcher.addEventListener('change', toggleColorTheme)
-
 // Top Carousel at main page
 
 const topCarouselControls = document.querySelector('.wrapper-top__slider-container').querySelector('input[type=range]')
@@ -71,12 +42,11 @@ topCarouselSlides.forEach((el) => {
 // Pets Carousel at main page
 
 const petsContainer = document.querySelector('.wrapper-pets__slider-container')
-const petsCarouselSlides = document.querySelector('.wrapper-pets__slider-container__slider')
-const petsCarouselArrowLeft = document.querySelector('.slider-container__arrows__arrow_left')
-const petsCarouselArrowRight = document.querySelector('.slider-container__arrows__arrow_right')
-const petsCarouselControls = document.querySelector('.wrapper-pets__slider-container').querySelector('input[type=range]')
-const petsCarouselControlsText = document.querySelector('.wrapper-pets__slider-container').querySelector('.slide-number-current')
-const direction = 1
+const petsCarouselSlides = petsContainer.querySelector('.wrapper-pets__slider-container__slider')
+const petsCarouselArrowLeft = petsContainer.querySelector('.slider-container__arrows__arrow_left')
+const petsCarouselArrowRight = petsContainer.querySelector('.slider-container__arrows__arrow_right')
+const petsCarouselControls = petsContainer.querySelector('input[type=range]')
+const petsCarouselControlsText = petsContainer.querySelector('.slide-number-current')
 const petsList = [
   {name: 'eagle', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem itaque commodi.'},
   {name: 'panda', text: 'Panda’s name is Bei Bei. He is 2 years old. Bei Bei is from China. He loves bamboos.'},
@@ -115,7 +85,7 @@ for (let i = 0; i <= 31; i++) {
   )
 }
 
-const petsCarouselSlide = document.querySelector('.wrapper-pets__slider-container__slider__slide')
+const petsCarouselSlide = petsCarouselSlides.querySelector('.wrapper-pets__slider-container__slider__slide')
 
 const movePetsCarousel = (direction) => {
   if (direction === 'right') {

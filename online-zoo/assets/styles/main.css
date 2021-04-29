@@ -2083,6 +2083,9 @@ header .burger-icon line {
   .wrapper-map_white .circle-slider-container .circle-slider-container__slider .circle-slider-container__slider__slide {
     margin: 0 10px;
   }
+  .wrapper-map_white .circle-slider-container .circle-slider-container__slider .circle-slider-container__slider__slide_active {
+    transform: scale(1.28);
+  }
 }
 @media screen and (max-width: 639px) {
   .wrapper-map_white {
