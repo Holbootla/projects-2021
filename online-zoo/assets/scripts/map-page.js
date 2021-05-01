@@ -112,6 +112,7 @@ const moveCircleCarousel = (direction, flag, index) => {
   if (nextActiveSlideIndex > 3) {
     mapButton.style.pointerEvents = 'none'
   } else {
+    mapButton.style.pointerEvents = 'auto'
     mapButton.href = `../../online-zoo/zoos/${mapPetsList[nextActiveSlideIndex].name}/`
   }
   
