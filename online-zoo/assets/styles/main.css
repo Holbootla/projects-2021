@@ -1970,6 +1970,9 @@ header .burger-icon line {
 .wrapper-map_white .circle-slider-container {
   margin-bottom: 80px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .wrapper-map_white .circle-slider-container .circle-slider-container__slider {
   display: flex;
@@ -1991,7 +1994,7 @@ header .burger-icon line {
   cursor: pointer;
 }
 .wrapper-map_white .circle-slider-container .circle-slider-container__slider .circle-slider-container__slider__slide_active {
-  transform: scale(1.38);
+  transform: scale(1.2);
   position: relative;
 }
 .wrapper-map_white .circle-slider-container .circle-slider-container__slider .circle-slider-container__slider__slide_active img {
@@ -2059,7 +2062,7 @@ header .burger-icon line {
   }
   .wrapper-map_white .circle-slider-container .circle-slider-container__slider {
     margin-bottom: 25px;
-    width: 700px;
+    width: 690px;
   }
 }
 @media screen and (max-width: 1199px) and (min-width: 640px) {
@@ -2078,13 +2081,13 @@ header .burger-icon line {
   }
   .wrapper-map_white .circle-slider-container .circle-slider-container__slider {
     margin-bottom: 25px;
-    width: 520px;
+    width: 512px;
   }
   .wrapper-map_white .circle-slider-container .circle-slider-container__slider .circle-slider-container__slider__slide {
     margin: 0 10px;
   }
   .wrapper-map_white .circle-slider-container .circle-slider-container__slider .circle-slider-container__slider__slide_active {
-    transform: scale(1.28);
+    transform: scale(1.1);
   }
 }
 @media screen and (max-width: 639px) {
@@ -2109,20 +2112,20 @@ header .burger-icon line {
   }
   .wrapper-map_white .circle-slider-container .circle-slider-container__slider {
     margin-bottom: 20px;
-    width: 230px;
+    width: 222px;
     height: 85px;
   }
   .wrapper-map_white .circle-slider-container .circle-slider-container__slider .circle-slider-container__slider__slide {
     width: 60px;
     height: 60px;
-    margin: 0 10px;
+    margin: 0 7px;
   }
   .wrapper-map_white .circle-slider-container .circle-slider-container__slider .circle-slider-container__slider__slide .circle-slider-container__slider__slide__image {
     width: 60px;
     height: 60px;
   }
   .wrapper-map_white .circle-slider-container .circle-slider-container__slider .circle-slider-container__slider__slide_active {
-    transform: scale(1.28);
+    transform: scale(1.1);
   }
   .wrapper-map_white .circle-slider-container .circle-slider-container__slider .circle-slider-container__slider__slide_active img {
     border: 3px solid var(--almost-white);

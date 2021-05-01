@@ -33,12 +33,28 @@ circleSliderSlides[1].classList.add(ACTIVE_CIRCLE_CLASS)
 const mapFlags = document.querySelectorAll('.wrapper-map__map__flag')
 const ACTIVE_FLAG_CLASS = 'wrapper-map__map__flag_active'
 
-const moveCircleCarousel = (direction, flag) => {
+const moveCircleCarousel = (direction, flag, index) => {
 
   function controlsHandler () {  
     circleSliderControls.defaultValue = nextActiveSlideIndex + 1
     circleSliderControls.value = circleSliderControls.defaultValue
     circleSliderControlsText.textContent = `0${circleSliderControls.defaultValue}/`
+  }
+
+  function rightMove () {
+    if (nextActiveSlideIndex === 0) {
+      circleSlider.scrollTo({left: 0, top: 0, behavior: 'smooth'})
+    } else if ((nextActiveSlideIndex + 1) > (circleSlider.offsetWidth / (parseInt(getComputedStyle(circleSliderSlides[1]).width) + parseInt(getComputedStyle(circleSliderSlides[1]).marginRight)))) {
+      circleSlider.scrollBy({left: parseInt(getComputedStyle(circleSliderSlides[1]).width) + (parseInt(getComputedStyle(circleSliderSlides[1]).marginRight) * 2), top: 0, behavior: 'smooth'})
+    }
+  }
+
+  function leftMove () {
+    if (nextActiveSlideIndex === (circleSliderSlides.length - 1)) {
+      circleSlider.scrollTo({left: 99999, top: 0, behavior: 'smooth'})
+    } else if (((parseInt(getComputedStyle(circleSliderSlides[1]).width) + parseInt(getComputedStyle(circleSliderSlides[1]).marginRight) * 2) * (nextActiveSlideIndex)) <= (circleSlider.scrollLeft)) {
+      circleSlider.scrollBy({left: -(parseInt(getComputedStyle(circleSliderSlides[1]).width) + (parseInt(getComputedStyle(circleSliderSlides[1]).marginRight) * 2)), top: 0, behavior: 'smooth'})
+    }
   }
 
   const currentActiveSlideIndex = Array.from(circleSliderSlides).findIndex((el) => el.classList.contains(ACTIVE_CIRCLE_CLASS))
@@ -49,17 +65,26 @@ const moveCircleCarousel = (direction, flag) => {
   if (direction === 'right') {
     nextActiveSlideIndex = currentActiveSlideIndex < circleSliderSlides.length - 1 ? currentActiveSlideIndex + 1 : 0
     circleSliderSlides[nextActiveSlideIndex].classList.add(ACTIVE_CIRCLE_CLASS)
+    rightMove()    
     controlsHandler()
   }
 
   if (direction === 'left') {
     nextActiveSlideIndex = currentActiveSlideIndex > 0 ? currentActiveSlideIndex - 1 : circleSliderSlides.length - 1
     circleSliderSlides[nextActiveSlideIndex].classList.add(ACTIVE_CIRCLE_CLASS)
+    leftMove()
     controlsHandler()
   }
 
   if (direction === 'flag') {
     nextActiveSlideIndex = mapPetsList.findIndex((el) => el.name === flag)
+    circleSliderSlides[nextActiveSlideIndex].classList.add(ACTIVE_CIRCLE_CLASS)
+    controlsHandler()
+    circleSlider.scrollTo({left: (parseInt(getComputedStyle(circleSliderSlides[1]).width) + parseInt(getComputedStyle(circleSliderSlides[1]).marginRight) * 2) * (nextActiveSlideIndex - 1), top: 0, behavior: 'smooth'})
+  }
+
+  if (direction === 'slide') {
+    nextActiveSlideIndex = index
     circleSliderSlides[nextActiveSlideIndex].classList.add(ACTIVE_CIRCLE_CLASS)
     controlsHandler()
   }
@@ -69,6 +94,7 @@ const moveCircleCarousel = (direction, flag) => {
     circleSliderControlsText.textContent = `0${circleSliderControls.defaultValue}/`
     nextActiveSlideIndex = circleSliderControls.defaultValue - 1
     circleSliderSlides[nextActiveSlideIndex].classList.add(ACTIVE_CIRCLE_CLASS)
+    circleSlider.scrollTo({left: (parseInt(getComputedStyle(circleSliderSlides[1]).width) + parseInt(getComputedStyle(circleSliderSlides[1]).marginRight) * 2) * (nextActiveSlideIndex - 1), top: 0, behavior: 'smooth'})
   }
 
   mapFlags.forEach((el) => {
@@ -97,6 +123,10 @@ controlsArrowLeft.addEventListener('click', () => {
 
 mapFlags.forEach((el) => {
   el.addEventListener('click', () => {moveCircleCarousel('flag', el.id)})
+})
+
+circleSliderSlides.forEach((el, index) => {
+  el.addEventListener('click', () => {moveCircleCarousel('slide', null, index)})
 })
 
 circleSliderControls.addEventListener('input', () => {moveCircleCarousel('number')})
