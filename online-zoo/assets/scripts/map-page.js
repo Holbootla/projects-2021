@@ -16,10 +16,10 @@ const controlsArrowLeft = circleSliderContainer.querySelector('.slider-container
 const controlsArrowRight = circleSliderContainer.querySelector('.slider-container__arrows__arrow_right')
 const circleSlider = circleSliderContainer.querySelector('.circle-slider-container__slider')
 
-mapPetsList.forEach((el, ind) => {
+mapPetsList.forEach((el) => {
   circleSlider.insertAdjacentHTML('beforeend', 
   `<div class="circle-slider-container__slider__slide">
-   <img src="../assets/images/pets-${mapPetsList[ind].name}.jpg" class="circle-slider-container__slider__slide__image" alt="">
+   <img src="../assets/images/pets-${el.name}.jpg" class="circle-slider-container__slider__slide__image" alt="">
   </div>`)
 })
 
@@ -29,6 +29,12 @@ const circleSliderControlsText = circleSliderContainer.querySelector('.slide-num
 const ACTIVE_CIRCLE_CLASS = 'circle-slider-container__slider__slide_active'
 
 circleSliderSlides[1].classList.add(ACTIVE_CIRCLE_CLASS)
+
+const mapSection = document.querySelector('.wrapper-map')
+
+mapSection.insertAdjacentHTML('beforeend', `<a class="wrapper-map__btn btn" href="../../online-zoo/zoos/${mapPetsList[1].name}/"><img src="../assets/icons/play.svg" alt="">Watch online</a>`)
+
+const mapButton = mapSection.querySelector('.wrapper-map__btn')
 
 const mapFlags = document.querySelectorAll('.wrapper-map__map__flag')
 const ACTIVE_FLAG_CLASS = 'wrapper-map__map__flag_active'
@@ -102,6 +108,12 @@ const moveCircleCarousel = (direction, flag, index) => {
       el.classList.add(ACTIVE_FLAG_CLASS)
     }
   })
+
+  if (nextActiveSlideIndex > 3) {
+    mapButton.style.pointerEvents = 'none'
+  } else {
+    mapButton.href = `../../online-zoo/zoos/${mapPetsList[nextActiveSlideIndex].name}/`
+  }
   
 }
 
