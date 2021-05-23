@@ -8,10 +8,13 @@ export default class App {
 
   board: HTMLElement;
 
-  constructor() {
+  page: HTMLElement;
+
+  constructor(page: HTMLElement, pageTitle: string) {
     this.body = document.querySelector('body');
     this.header = new Header().createHeader();
-    this.board = new Board().render();
+    this.page = page;
+    this.board = new Board(page, pageTitle).render();
   }
 
   render(): void {
