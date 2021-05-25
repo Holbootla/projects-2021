@@ -24,4 +24,8 @@ export default class Board {
     this.main.appendChild(this.board);
     return this.main;
   }
+
+  clear(): void {
+    this.main.remove();
+  }
 }

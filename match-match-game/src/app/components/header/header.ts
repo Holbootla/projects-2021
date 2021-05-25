@@ -18,7 +18,7 @@ export default class Header {
     this.topButton = new TopButton('Register new player').render();
   }
 
-  createHeader(): HTMLElement {
+  render(): HTMLElement {
     this.header.classList.add('header');
     this.header.appendChild(this.logo);
     this.header.appendChild(this.navigation);

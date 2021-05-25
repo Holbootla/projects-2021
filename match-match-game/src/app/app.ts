@@ -6,19 +6,20 @@ export default class App {
 
   header: HTMLElement;
 
-  board: HTMLElement;
-
-  page: HTMLElement;
+  board: Board;
 
   constructor(page: HTMLElement, pageTitle: string) {
     this.body = document.querySelector('body');
-    this.header = new Header().createHeader();
-    this.page = page;
-    this.board = new Board(page, pageTitle).render();
+    this.header = new Header().render();
+    this.board = new Board(page, pageTitle);
   }
 
   render(): void {
     this.body?.appendChild(this.header);
-    this.body?.appendChild(this.board);
+    this.body?.appendChild(this.board.render());
+  }
+
+  clearBoard(): void {
+    this.board.clear();
   }
 }
