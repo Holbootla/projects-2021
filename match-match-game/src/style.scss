@@ -119,6 +119,9 @@ $black-shadow: rgba(0, 0, 0, 0.25);
   padding: 30px 35px 0 35px;
   border-radius: 5px;
   box-shadow: 0px 2px 4px $black-shadow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .board__title {
@@ -127,7 +130,10 @@ $black-shadow: rgba(0, 0, 0, 0.25);
   font-size: 20px;
   letter-spacing: 0.15px;
   margin-bottom: 20px;
+  align-self: flex-start;
 }
+
+// about page
 
 .rules {
   display: grid;
@@ -162,4 +168,84 @@ $black-shadow: rgba(0, 0, 0, 0.25);
 
 .rules__img {
   justify-self: right;
+}
+
+// game page
+
+.timer {
+  width: 256px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $white;
+  color: $primary-dark;
+  box-shadow: 1px 2px 4px $black-shadow;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 36px;
+  letter-spacing: 0.15px;
+  margin-bottom: 50px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 168px 168px 168px;
+  grid-template-rows: 168px 168px 168px;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+.card-container {
+  perspective: 320px;
+  cursor: pointer;
+  transform-origin: right;
+
+  &:hover > .card {
+    box-shadow: 1px 4px 7px $black;
+  }
+
+}
+
+.card {
+  position: relative;
+  width: 168px;
+  height: 168px;
+  transform-style: preserve-3d;
+  transition: all .3s;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px $black;
+
+  &__front, &__back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: inherit;
+  }
+
+  &__front {
+    background-color: green;
+    transform: rotateY(180deg);
+  }
+
+  &__back {
+    background-image: url('./assets/images/card-front.png');
+    background-position: center;
+    background-size: cover;
+  }
+
+  &_active {
+    transform: rotateY(180deg) translateX(-100%);
+    transform-origin: left;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+  }
+
 }

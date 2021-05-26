@@ -1,14 +1,23 @@
 export default class Navigation {
   navigation: HTMLElement;
 
-  listItems: { itemName: string; itemIcon: string }[];
+  listItems: { itemName: string; itemIcon: string; id: string }[];
 
   constructor() {
     this.navigation = document.createElement('nav');
     this.listItems = [
-      { itemName: 'About game', itemIcon: 'icon-about.svg' },
-      { itemName: 'Best score', itemIcon: 'icon-score.svg' },
-      { itemName: 'Game settings', itemIcon: 'icon-settings.svg' },
+      { itemName: 'About game', itemIcon: 'icon-about.svg', id: 'about' },
+      { itemName: 'Best score', itemIcon: 'icon-score.svg', id: 'score' },
+      {
+        itemName: 'Game settings',
+        itemIcon: 'icon-settings.svg',
+        id: 'settings',
+      },
+      {
+        itemName: 'Play game',
+        itemIcon: 'null',
+        id: 'game',
+      },
     ];
   }
 
@@ -17,7 +26,7 @@ export default class Navigation {
       this.navigation.insertAdjacentHTML(
         'beforeend',
         `
-        <li class="nav__item">
+        <li class="nav__item" id="${el.id}">
           <img src="${el.itemIcon}" alt="">
           <p>${el.itemName}</p>
         </li>

@@ -8,14 +8,17 @@ export default class App {
 
   board: Board;
 
-  constructor(page: HTMLElement, pageTitle: string) {
+  constructor(page: HTMLElement, pageTitle: string, timer: HTMLElement | null) {
     this.body = document.querySelector('body');
     this.header = new Header().render();
-    this.board = new Board(page, pageTitle);
+    this.board = new Board(page, pageTitle, timer);
   }
 
-  render(): void {
+  renderHeader(): void {
     this.body?.appendChild(this.header);
+  }
+
+  renderBoard(): void {
     this.body?.appendChild(this.board.render());
   }
 

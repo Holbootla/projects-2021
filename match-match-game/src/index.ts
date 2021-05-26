@@ -1,16 +1,44 @@
 import './style.scss';
 import App from './app/app';
 import About from './app/components/pages/about/about';
+import Game from './app/components/pages/game/game';
+import Timer from './app/components/pages/game/timer';
 
-const currentPage = new About();
+let currentPage: About | Game = new About();
 
-const app = new App(currentPage.render(), currentPage.getPageTitle());
+let app = new App(currentPage.render(), currentPage.getPageTitle(), null);
 
-app.render();
+app.renderHeader();
+app.renderBoard();
 
-const btn: Element | null = document.querySelector('.nav__item');
+const btns: Element | null = document.querySelector('.nav__list');
 
-btn?.addEventListener('click', () => {
+btns?.addEventListener('click', (event: Event | null) => {
   app.clearBoard();
-  app.render();
+  if (
+    (<HTMLElement>event?.target).id === 'game' ||
+    (<HTMLElement>event?.target).parentElement?.id === 'game'
+  ) {
+    currentPage = new Game(9, 'animal');
+    app = new App(
+      currentPage.render(),
+      currentPage.getPageTitle(),
+      new Timer().render()
+    );
+  } else if (
+    (<HTMLElement>event?.target).id === 'about' ||
+    (<HTMLElement>event?.target).parentElement?.id === 'about'
+  ) {
+    currentPage = new About();
+    app = new App(currentPage.render(), currentPage.getPageTitle(), null);
+  }
+  app.renderBoard();
+
+  document.querySelectorAll('.card').forEach((element) => {
+    element.addEventListener('click', () => {
+      if (element.classList.contains('card')) {
+        element.classList.toggle('card_active');
+      }
+    });
+  });
 });
