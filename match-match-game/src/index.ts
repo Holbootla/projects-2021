@@ -40,12 +40,12 @@ btns?.addEventListener('click', (event: Event | null) => {
     app = new App(currentPage.render(), currentPage.getPageTitle(), null);
   }
   app.renderBoard();
-
-  document.querySelectorAll('.card')?.forEach((element) => {
-    element.addEventListener('click', () => {
-      if (element.classList.contains('card')) {
-        element.classList.toggle('card_active');
-      }
-    });
-  });
 });
+
+// document.querySelectorAll('.card')?.forEach((element) => {
+//   element.addEventListener('click', () => {
+//     if (element.classList.contains('card')) {
+//       element.classList.toggle('card_active');
+//     }
+//   });
+// });

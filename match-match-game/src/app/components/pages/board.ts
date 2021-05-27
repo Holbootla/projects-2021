@@ -16,7 +16,7 @@ export default class Board {
   ) {
     this.main = document.createElement('div');
     this.board = document.createElement('div');
-    this.pageTitle = document.createElement('div');
+    this.pageTitle = document.createElement('h1');
     this.pageTitle.insertAdjacentText('beforeend', pageTitleText);
     this.page = page;
     this.timer = timer;
