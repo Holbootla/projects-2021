@@ -4,8 +4,9 @@ import About from './app/components/pages/about/about';
 import Game from './app/components/pages/game/game';
 import Timer from './app/components/pages/game/timer';
 import Score from './app/components/pages/score/score';
+import Settings from './app/components/pages/settings/settings';
 
-let currentPage: About | Game | Score = new About();
+let currentPage: About | Game | Score | Settings = new About();
 
 let app = new App(currentPage.render(), currentPage.getPageTitle(), null);
 
@@ -37,6 +38,12 @@ btns?.addEventListener('click', (event: Event | null) => {
     (<HTMLElement>event?.target).parentElement?.id === 'score'
   ) {
     currentPage = new Score();
+    app = new App(currentPage.render(), currentPage.getPageTitle(), null);
+  } else if (
+    (<HTMLElement>event?.target).id === 'settings' ||
+    (<HTMLElement>event?.target).parentElement?.id === 'settings'
+  ) {
+    currentPage = new Settings();
     app = new App(currentPage.render(), currentPage.getPageTitle(), null);
   }
   app.renderBoard();
