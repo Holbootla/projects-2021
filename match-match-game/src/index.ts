@@ -3,8 +3,9 @@ import App from './app/app';
 import About from './app/components/pages/about/about';
 import Game from './app/components/pages/game/game';
 import Timer from './app/components/pages/game/timer';
+import Score from './app/components/pages/score/score';
 
-let currentPage: About | Game = new About();
+let currentPage: About | Game | Score = new About();
 
 let app = new App(currentPage.render(), currentPage.getPageTitle(), null);
 
@@ -31,10 +32,16 @@ btns?.addEventListener('click', (event: Event | null) => {
   ) {
     currentPage = new About();
     app = new App(currentPage.render(), currentPage.getPageTitle(), null);
+  } else if (
+    (<HTMLElement>event?.target).id === 'score' ||
+    (<HTMLElement>event?.target).parentElement?.id === 'score'
+  ) {
+    currentPage = new Score();
+    app = new App(currentPage.render(), currentPage.getPageTitle(), null);
   }
   app.renderBoard();
 
-  document.querySelectorAll('.card').forEach((element) => {
+  document.querySelectorAll('.card')?.forEach((element) => {
     element.addEventListener('click', () => {
       if (element.classList.contains('card')) {
         element.classList.toggle('card_active');
