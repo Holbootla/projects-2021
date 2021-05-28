@@ -107,17 +107,18 @@ $black-shadow: rgba(0, 0, 0, 0.25);
 
 .main {
   width: 100%;
-  height: calc(100vh - 64px);
+  min-height: calc(100vh - 64px);
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 30px 0;
 }
 
 .board {
   width: 1000px;
   min-height: 800px;
   background-color: $black-transparent;
-  padding: 30px 35px 0 35px;
+  padding: 30px 35px;
   border-radius: 5px;
   box-shadow: 0px 2px 4px $black-shadow;
   display: flex;
@@ -189,10 +190,18 @@ $black-shadow: rgba(0, 0, 0, 0.25);
   margin-bottom: 50px;
 }
 
-.cards {
+.cards-12 {
   display: grid;
-  grid-template-columns: 168px 168px 168px;
+  grid-template-columns: 168px 168px 168px 168px;
   grid-template-rows: 168px 168px 168px;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+.cards-16 {
+  display: grid;
+  grid-template-columns: 168px 168px 168px 168px;
+  grid-template-rows: 168px 168px 168px 168px;
   column-gap: 20px;
   row-gap: 20px;
 }

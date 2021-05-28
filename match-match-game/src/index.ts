@@ -21,7 +21,7 @@ btns?.addEventListener('click', (event: Event | null) => {
     (<HTMLElement>event?.target).id === 'game' ||
     (<HTMLElement>event?.target).parentElement?.id === 'game'
   ) {
-    currentPage = new Game(9, 'animal');
+    currentPage = new Game(12, 'animal');
     app = new App(
       currentPage.render(),
       currentPage.getPageTitle(),
@@ -47,12 +47,11 @@ btns?.addEventListener('click', (event: Event | null) => {
     app = new App(currentPage.render(), currentPage.getPageTitle(), null);
   }
   app.renderBoard();
+  document.querySelectorAll('.card')?.forEach((element) => {
+    element.addEventListener('click', () => {
+      if (element.classList.contains('card')) {
+        element.classList.toggle('card_active');
+      }
+    });
+  });
 });
-
-// document.querySelectorAll('.card')?.forEach((element) => {
-//   element.addEventListener('click', () => {
-//     if (element.classList.contains('card')) {
-//       element.classList.toggle('card_active');
-//     }
-//   });
-// });
