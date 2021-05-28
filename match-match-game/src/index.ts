@@ -13,6 +13,8 @@ let app = new App(currentPage.render(), currentPage.getPageTitle(), null);
 
 const timer = new Timer();
 
+let gameplay: Gameplay;
+
 app.renderHeader();
 app.renderBoard();
 
@@ -31,8 +33,9 @@ btns?.addEventListener('click', (event: Event | null) => {
       timer.render()
     );
     setTimeout(() => {
-      new Gameplay().flipAll();
-    }, 1000);
+      gameplay = new Gameplay();
+      gameplay.flipAll();
+    }, 500);
     timer.reverse();
     timer.render();
     const minusTimer = setInterval(() => {
@@ -41,8 +44,14 @@ btns?.addEventListener('click', (event: Event | null) => {
     }, 1000);
     setTimeout(() => {
       clearInterval(minusTimer);
-      new Gameplay().flipAll();
-      new Gameplay().flip();
+      gameplay.flipAll();
+      gameplay.flip();
+    }, 15000);
+    const plusTimer = setTimeout(() => {
+      setInterval(() => {
+        timer.plus();
+        timer.render();
+      }, 1000);
     }, 15000);
   } else if (
     (<HTMLElement>event?.target).id === 'about' ||
