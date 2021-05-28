@@ -7,12 +7,13 @@ export default class Timer {
 
   constructor() {
     this.timer = document.createElement('div');
+    this.timer.classList.add('timer');
     this.minutes = 0;
     this.seconds = 0;
   }
 
   render(): HTMLElement {
-    this.timer.classList.add('timer');
+    this.timer.innerHTML = ``;
     this.timer.insertAdjacentHTML(
       'beforeend',
       `
@@ -23,5 +24,21 @@ export default class Timer {
     );
 
     return this.timer;
+  }
+
+  plus(): void {
+    this.seconds += 1;
+    if (this.seconds === 60) {
+      this.minutes += 1;
+      this.seconds = 0;
+    }
+  }
+
+  minus(): void {
+    this.seconds -= 1;
+  }
+
+  reverse(): void {
+    this.seconds = 15;
   }
 }

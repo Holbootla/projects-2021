@@ -5,10 +5,13 @@ import Game from './app/components/pages/game/game';
 import Timer from './app/components/pages/game/timer';
 import Score from './app/components/pages/score/score';
 import Settings from './app/components/pages/settings/settings';
+import Gameplay from './app/components/pages/game/gameplay';
 
 let currentPage: About | Game | Score | Settings = new About();
 
 let app = new App(currentPage.render(), currentPage.getPageTitle(), null);
+
+const timer = new Timer();
 
 app.renderHeader();
 app.renderBoard();
@@ -25,8 +28,22 @@ btns?.addEventListener('click', (event: Event | null) => {
     app = new App(
       currentPage.render(),
       currentPage.getPageTitle(),
-      new Timer().render()
+      timer.render()
     );
+    setTimeout(() => {
+      new Gameplay().flipAll();
+    }, 1000);
+    timer.reverse();
+    timer.render();
+    const minusTimer = setInterval(() => {
+      timer.minus();
+      timer.render();
+    }, 1000);
+    setTimeout(() => {
+      clearInterval(minusTimer);
+      new Gameplay().flipAll();
+      new Gameplay().flip();
+    }, 15000);
   } else if (
     (<HTMLElement>event?.target).id === 'about' ||
     (<HTMLElement>event?.target).parentElement?.id === 'about'
@@ -47,11 +64,4 @@ btns?.addEventListener('click', (event: Event | null) => {
     app = new App(currentPage.render(), currentPage.getPageTitle(), null);
   }
   app.renderBoard();
-  document.querySelectorAll('.card')?.forEach((element) => {
-    element.addEventListener('click', () => {
-      if (element.classList.contains('card')) {
-        element.classList.toggle('card_active');
-      }
-    });
-  });
 });
