@@ -97,6 +97,7 @@ export default class Timer {
       this.gameplay = new Gameplay();
       this.gameplay.flipAll();
       this.gameplay.flip();
+      this.stopIfFinish();
     }, 17000);
   }
 
@@ -106,5 +107,16 @@ export default class Timer {
     clearInterval(this.startMinusTimerTimeout);
     clearInterval(this.stopMinusTimerTimeout);
     clearInterval(this.startPlusTimerTimeout);
+  }
+
+  stopIfFinish(): void {
+    document.querySelectorAll('.card').forEach((el) => {
+      el.addEventListener('click', () => {
+        console.log(this.gameplay?.matchCounter, '1');
+        if (this.gameplay?.matchCounter === 6) {
+          this.stopAllTimers();
+        }
+      });
+    });
   }
 }
