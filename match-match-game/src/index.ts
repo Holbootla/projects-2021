@@ -17,6 +17,7 @@ let gameplay: Gameplay;
 
 app.renderHeader();
 app.renderBoard();
+document.querySelector('#about')?.classList.add('nav__item_active');
 
 const btns: Element | null = document.querySelector('.nav__list');
 

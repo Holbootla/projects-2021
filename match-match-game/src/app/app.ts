@@ -20,6 +20,12 @@ export default class App {
 
   renderBoard(): void {
     this.body?.appendChild(this.board.render());
+    document.querySelectorAll('.nav__item').forEach((el) => {
+      el.classList.remove('nav__item_active');
+      if (window.location.hash.slice(1) === el.id) {
+        el.classList.add('nav__item_active');
+      }
+    });
   }
 
   clearBoard(): void {
