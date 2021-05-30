@@ -1,12 +1,15 @@
+import App from '../../../app';
+import Score from '../score/score';
+
 export default class Congratulations {
-  body: HTMLBodyElement | null;
+  main: HTMLBodyElement | null;
 
   constructor() {
-    this.body = document.querySelector('body');
+    this.main = document.querySelector('.main');
   }
 
   render(): void {
-    this.body?.insertAdjacentHTML(
+    this.main?.insertAdjacentHTML(
       'beforeend',
       `
       <div class="congratulations-container">
@@ -17,5 +20,17 @@ export default class Congratulations {
       </div>
       `
     );
+    this.main
+      ?.querySelector('.congratulations')
+      ?.querySelector('.btn')
+      ?.addEventListener('click', () => {
+        const app = new App(
+          new Score().render(),
+          new Score().getPageTitle(),
+          null
+        );
+        app.clearBoard();
+        app.renderBoard();
+      });
   }
 }

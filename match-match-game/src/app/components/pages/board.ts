@@ -9,6 +9,8 @@ export default class Board {
 
   timer: HTMLElement | null;
 
+  currentMain: HTMLElement | null;
+
   constructor(
     page: HTMLElement,
     pageTitleText: string,
@@ -20,6 +22,7 @@ export default class Board {
     this.pageTitle.insertAdjacentText('beforeend', pageTitleText);
     this.page = page;
     this.timer = timer;
+    this.currentMain = document.querySelector('.main');
   }
 
   render(): HTMLElement {
@@ -36,6 +39,9 @@ export default class Board {
   }
 
   clear(): void {
+    if (this.currentMain) {
+      this.currentMain.remove();
+    }
     this.main.remove();
   }
 }
