@@ -26,10 +26,10 @@ export default class Navigation {
       this.navigation.insertAdjacentHTML(
         'beforeend',
         `
-        <li class="nav__item" id="${el.id}">
+        <a href="#${el.id}" class="nav__item" id="${el.id}">
           <img src="${el.itemIcon}" alt="">
           <p>${el.itemName}</p>
-        </li>
+        </a>
       `
       );
     });
