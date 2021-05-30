@@ -112,7 +112,6 @@ export default class Timer {
   stopIfFinish(): void {
     document.querySelectorAll('.card').forEach((el) => {
       el.addEventListener('click', () => {
-        console.log(this.gameplay?.matchCounter, '1');
         if (this.gameplay?.matchCounter === 6) {
           this.stopAllTimers();
         }

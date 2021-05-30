@@ -20,6 +20,20 @@ body {
   position: relative;
 }
 
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+  color: $white;
+  background-color: $primary;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 .header {
   width: 100%;
   height: 64px;
@@ -308,11 +322,22 @@ body {
 
 .congratulations {
   width: 360px;
-  height: 115px;
+  height: 150px;
   border-radius: 5px;
   background-color: $white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 15px;
 }
 
+.paragraph {
+  font-weight: 400;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 10px;
+}
 
 // score page
 
