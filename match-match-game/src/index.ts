@@ -26,6 +26,7 @@ btns?.addEventListener('click', (event: Event | null) => {
     (<HTMLElement>event?.target).id === 'game' ||
     (<HTMLElement>event?.target).parentElement?.id === 'game'
   ) {
+    timer.stopAllTimers();
     currentPage = new Game(12, 'animal');
     app = new App(
       currentPage.render(),
@@ -35,40 +36,30 @@ btns?.addEventListener('click', (event: Event | null) => {
     setTimeout(() => {
       gameplay = new Gameplay();
       gameplay.flipAll();
-    }, 500);
+    }, 100);
     timer.reverse();
     timer.render();
-    const minusTimer = setInterval(() => {
-      timer.minus();
-      timer.render();
-    }, 1000);
-    setTimeout(() => {
-      clearInterval(minusTimer);
-      gameplay.flipAll();
-      gameplay.flip();
-    }, 15000);
-    const plusTimer = setTimeout(() => {
-      setInterval(() => {
-        timer.plus();
-        timer.render();
-      }, 1000);
-    }, 15000);
+    timer.startGame();
+    timer.resumeGame();
   } else if (
     (<HTMLElement>event?.target).id === 'about' ||
     (<HTMLElement>event?.target).parentElement?.id === 'about'
   ) {
+    timer.stopAllTimers();
     currentPage = new About();
     app = new App(currentPage.render(), currentPage.getPageTitle(), null);
   } else if (
     (<HTMLElement>event?.target).id === 'score' ||
     (<HTMLElement>event?.target).parentElement?.id === 'score'
   ) {
+    timer.stopAllTimers();
     currentPage = new Score();
     app = new App(currentPage.render(), currentPage.getPageTitle(), null);
   } else if (
     (<HTMLElement>event?.target).id === 'settings' ||
     (<HTMLElement>event?.target).parentElement?.id === 'settings'
   ) {
+    timer.stopAllTimers();
     currentPage = new Settings();
     app = new App(currentPage.render(), currentPage.getPageTitle(), null);
   }

@@ -32,8 +32,10 @@ export default class Game {
           'beforeend',
           `
           <div class="card-container">
-            <div class="card">
+            <div class="card" id="card-${el}">
               <div class="card__front">
+                <div class=card__green></div>
+                <div class=card__red></div>
                 <img src="images/${this.typeOfCards}/${this.typeOfCards}-${
             el + 1
           }.jpg" alt="">
