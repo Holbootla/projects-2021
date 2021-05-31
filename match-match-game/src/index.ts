@@ -28,7 +28,7 @@ function openGame() {
   setTimeout(() => {
     gameplay = new Gameplay();
     gameplay.flipAll();
-  }, 100);
+  }, 500);
   timer.reverse();
   timer.render();
   timer.startGame();
@@ -67,20 +67,6 @@ if (hash === 'game') {
 app.renderBoard();
 
 const btns: Element | null = document.querySelector('.nav__list');
-
-btns?.addEventListener('click', (event: Event | null) => {
-  app.clearBoard();
-  if ((<HTMLElement>event?.target).id === 'game') {
-    openGame();
-  } else if ((<HTMLElement>event?.target).id === 'about') {
-    openAbout();
-  } else if ((<HTMLElement>event?.target).id === 'score') {
-    openScore();
-  } else if ((<HTMLElement>event?.target).id === 'settings') {
-    openSettings();
-  }
-  app.renderBoard();
-});
 
 window.addEventListener('hashchange', () => {
   hash = window.location.hash.slice(1);
