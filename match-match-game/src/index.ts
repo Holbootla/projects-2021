@@ -66,8 +66,6 @@ if (hash === 'game') {
 }
 app.renderBoard();
 
-const btns: Element | null = document.querySelector('.nav__list');
-
 window.addEventListener('hashchange', () => {
   hash = window.location.hash.slice(1);
   app.clearBoard();
