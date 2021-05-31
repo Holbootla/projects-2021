@@ -1,6 +1,3 @@
-import App from '../../../app';
-import Score from '../score/score';
-
 export default class Congratulations {
   main: HTMLBodyElement | null;
 
@@ -17,22 +14,13 @@ export default class Congratulations {
           <p class="paragraph">Congratulations! You successfully found all matches on ${localStorage.getItem(
             'scoreMinutes'
           )} minutes.</p>
-          <div class="btn">OK</div>
+          <div class="btn-container">
+            <a href="#score" class="btn btn-ok">OK</a>
+            <div class="btn btn-register">Register new score</div>
+          </div>
         </div>
       </div>
       `
     );
-    this.main
-      ?.querySelector('.congratulations')
-      ?.querySelector('.btn')
-      ?.addEventListener('click', () => {
-        const app = new App(
-          new Score().render(),
-          new Score().getPageTitle(),
-          null
-        );
-        app.clearBoard();
-        app.renderBoard();
-      });
   }
 }

@@ -328,21 +328,26 @@ $red-cover: rgba(255, 0, 0, 0.3);
 
 .congratulations {
   width: 360px;
-  height: 150px;
   border-radius: 5px;
   background-color: $white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px 15px;
+  padding: 20px 20px;
 }
 
 .paragraph {
   font-weight: 400;
   font-size: 14px;
   color: #000000;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.btn-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
 }
 
 // score page
