@@ -112,8 +112,15 @@ export default class Timer {
   stopIfFinish(): void {
     document.querySelectorAll('.card').forEach((el) => {
       el.addEventListener('click', () => {
-        if (this.gameplay?.matchCounter === 6) {
+        if (
+          this.gameplay?.matchCounter ===
+          Number(localStorage.getItem('size')) / 2
+        ) {
           this.stopAllTimers();
+          localStorage.setItem(
+            'scoreMinutes',
+            `${Math.round(this.scoreSeconds / 6) / 10}`
+          );
         }
       });
     });

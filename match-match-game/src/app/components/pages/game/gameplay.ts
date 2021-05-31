@@ -9,11 +9,17 @@ export default class Gameplay {
 
   cardsActive: number[];
 
+  matchCountToWin: number;
+
+  turns: number;
+
   constructor() {
     this.cards = document.querySelectorAll('.card');
     this.cardsActive = [];
     this.cardId = [];
     this.matchCounter = 0;
+    this.matchCountToWin = Number(localStorage.getItem('size')) / 2;
+    this.turns = 0;
   }
 
   flipAll(): void {
@@ -33,8 +39,10 @@ export default class Gameplay {
         }
         this.addColor();
         element.classList.add('pointer-events-none');
-        if (this.matchCounter === 6) {
-          new Congratulations().render();
+        if (this.matchCounter === this.matchCountToWin) {
+          setTimeout(() => {
+            new Congratulations().render();
+          }, 100);
         }
       });
     });
@@ -50,6 +58,7 @@ export default class Gameplay {
             ?.classList.add('display-block');
           this.cards[el].classList.add('pointer-events-none');
         });
+        this.turns += 1;
       } else {
         this.cardsActive.forEach((el) => {
           this.cards[el]
@@ -64,6 +73,7 @@ export default class Gameplay {
             this.cards[el].classList.toggle('card_active');
           }, 500);
         });
+        this.turns += 1;
       }
       this.cardId = [];
       this.cardsActive = [];
