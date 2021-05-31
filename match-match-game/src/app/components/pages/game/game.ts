@@ -1,5 +1,3 @@
-import SettingsService from '../settings/settings-service';
-
 export default class Game {
   game: HTMLElement;
 
