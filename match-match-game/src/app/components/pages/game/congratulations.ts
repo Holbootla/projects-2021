@@ -1,3 +1,5 @@
+import Register from './register';
+
 export default class Congratulations {
   main: HTMLBodyElement | null;
 
@@ -22,5 +24,11 @@ export default class Congratulations {
       </div>
       `
     );
+    // this.main
+    //   ?.querySelector('.congratulations')
+    //   ?.querySelector('.btn-register')
+    //   ?.addEventListener('click', () => {
+    //     new Register().render();
+    //   });
   }
 }
