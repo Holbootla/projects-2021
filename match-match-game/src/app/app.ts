@@ -26,6 +26,9 @@ export default class App {
         el.classList.add('nav__item_active');
       }
     });
+    if (window.location.hash.slice(0) === '') {
+      document.querySelector('#about')?.classList.add('nav__item_active');
+    }
   }
 
   clearBoard(): void {
