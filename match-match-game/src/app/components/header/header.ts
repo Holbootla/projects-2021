@@ -1,6 +1,5 @@
 import Logo from './logo/logo';
 import Navigation from './navigation/navigation';
-import TopButton from './top-button/top-button';
 
 export default class Header {
   header: HTMLElement;
@@ -9,20 +8,22 @@ export default class Header {
 
   navigation: HTMLElement;
 
-  topButton: HTMLElement;
-
   constructor() {
     this.header = document.createElement('div');
     this.logo = new Logo().render();
     this.navigation = new Navigation().render();
-    this.topButton = new TopButton('Register new player').render();
   }
 
   render(): HTMLElement {
     this.header.classList.add('header');
     this.header.appendChild(this.logo);
     this.header.appendChild(this.navigation);
-    this.header.appendChild(this.topButton);
+    this.header.insertAdjacentHTML(
+      'beforeend',
+      `
+    <a href="#game" class="top-btn" id="game">Start game</a>
+    `
+    );
     return this.header;
   }
 }

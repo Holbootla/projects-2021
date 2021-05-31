@@ -13,11 +13,6 @@ export default class Navigation {
         itemIcon: 'icon-settings.svg',
         id: 'settings',
       },
-      {
-        itemName: 'Play game',
-        itemIcon: 'null',
-        id: 'game',
-      },
     ];
   }
 
