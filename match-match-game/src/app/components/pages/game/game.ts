@@ -7,15 +7,15 @@ export default class Game {
 
   gameSize: number;
 
-  typeOfCards: string;
+  typeOfCards: string | null;
 
   arrayOfCardNumber: number[];
 
   constructor() {
     this.game = document.createElement('div');
     this.pageTitle = `Let's play!`;
-    this.gameSize = new SettingsService().get().size;
-    this.typeOfCards = new SettingsService().get().type;
+    this.gameSize = Number(localStorage.getItem('size'));
+    this.typeOfCards = localStorage.getItem('type');
     this.arrayOfCardNumber = Array(this.gameSize / 2);
   }
 

@@ -98,3 +98,10 @@ window.addEventListener('hashchange', () => {
   }
   app.renderBoard();
 });
+
+if (!localStorage.getItem('size')) {
+  localStorage.setItem('size', '16');
+}
+if (!localStorage.getItem('type')) {
+  localStorage.setItem('type', 'animal');
+}
