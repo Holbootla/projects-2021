@@ -1,3 +1,5 @@
+import SettingsService from '../settings/settings-service';
+
 export default class Game {
   game: HTMLElement;
 
@@ -9,12 +11,12 @@ export default class Game {
 
   arrayOfCardNumber: number[];
 
-  constructor(gameSize: number, typeOfCards: string) {
+  constructor() {
     this.game = document.createElement('div');
     this.pageTitle = `Let's play!`;
-    this.gameSize = gameSize;
-    this.typeOfCards = typeOfCards;
-    this.arrayOfCardNumber = Array(gameSize / 2);
+    this.gameSize = new SettingsService().get().size;
+    this.typeOfCards = new SettingsService().get().type;
+    this.arrayOfCardNumber = Array(this.gameSize / 2);
   }
 
   render(): HTMLElement {

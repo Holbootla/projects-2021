@@ -1,3 +1,5 @@
+import SettingsService from './settings-service';
+
 export default class Settings {
   pageTitle: string;
 
@@ -13,23 +15,28 @@ export default class Settings {
     this.settings.insertAdjacentHTML(
       'beforeend',
       `
-      <div class="setting-size">
-        <div class="setting-title">Game size</div>
-        <select name="size" id="size">
-          <option value="12">4x3</option>
-          <option value="16">4x4</option>
-        </select>
-      </div>
-      <div class="setting-type">
-        <div class="setting-title">Cards type</div>
-        <select name="type" id="type">
-          <option value="animal">Animals</option>
-          <option value="figure">Figures</option>
-        </select>
-      </div>
+      <form name="settings">
+        <div class="setting-size">
+          <div class="setting-title">Game size</div>
+          <select name="size" id="size">
+            <option value="16">4x4</option>
+            <option value="36">6x6</option>
+          </select>
+        </div>
+        <div class="setting-type">
+          <div class="setting-title">Cards type</div>
+          <select name="type" id="type">
+            <option value="animal">Animals</option>
+            <option value="food">Food</option>
+          </select>
+        </div>
+      </form>
       <div class="submit-settings">Apply</div>
       `
     );
+    setTimeout(() => {
+      new SettingsService().set();
+    }, 100);
     return this.settings;
   }
 

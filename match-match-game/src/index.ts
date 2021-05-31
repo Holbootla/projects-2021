@@ -34,7 +34,7 @@ function topButtonChangeToStop() {
 function openGame() {
   timer.stopAllTimers();
   topButtonChangeToStop();
-  currentPage = new Game(12, 'animal');
+  currentPage = new Game();
   app = new App(
     currentPage.render(),
     currentPage.getPageTitle(),
