@@ -21,7 +21,7 @@ export default class Header {
     this.header.insertAdjacentHTML(
       'beforeend',
       `
-    <a href="#game" class="top-btn" id="game">Start game</a>
+    <div class="top-btn-container"></div>
     `
     );
     return this.header;

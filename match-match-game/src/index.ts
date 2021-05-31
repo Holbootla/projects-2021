@@ -17,8 +17,23 @@ const timer = new Timer();
 
 let gameplay: Gameplay;
 
+function topButtonChangeToStart() {
+  const topButton = document.querySelector('.top-btn-container');
+  if (topButton) {
+    topButton.innerHTML = `<a href="#game" class="top-btn" id="game">Start game</a>`;
+  }
+}
+
+function topButtonChangeToStop() {
+  const topButton = document.querySelector('.top-btn-container');
+  if (topButton) {
+    topButton.innerHTML = `<a href="#about" class="top-btn" id="about">Stop game</a>`;
+  }
+}
+
 function openGame() {
   timer.stopAllTimers();
+  topButtonChangeToStop();
   currentPage = new Game(12, 'animal');
   app = new App(
     currentPage.render(),
@@ -37,18 +52,21 @@ function openGame() {
 
 function openAbout() {
   timer.stopAllTimers();
+  topButtonChangeToStart();
   currentPage = new About();
   app = new App(currentPage.render(), currentPage.getPageTitle(), null);
 }
 
 function openScore() {
   timer.stopAllTimers();
+  topButtonChangeToStart();
   currentPage = new Score();
   app = new App(currentPage.render(), currentPage.getPageTitle(), null);
 }
 
 function openSettings() {
   timer.stopAllTimers();
+  topButtonChangeToStart();
   currentPage = new Settings();
   app = new App(currentPage.render(), currentPage.getPageTitle(), null);
 }
