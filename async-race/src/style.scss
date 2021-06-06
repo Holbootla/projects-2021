@@ -15,7 +15,7 @@
   justify-content: center;
   align-items: center;
   padding: 10px 15px;
-  background-color: #DC143C;
+  background-color: #dc143c;
   color: #ffffff;
   font-weight: 500;
   border-radius: 5px;
@@ -35,7 +35,7 @@
 .header {
   width: 100%;
   height: 100px;
-  background-color: #DC143C;
+  background-color: #dc143c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,7 +77,6 @@
 }
 
 .controls {
-
   form {
     display: flex;
     align-items: center;
@@ -89,7 +88,8 @@
     }
   }
 
-  #name-cr, #name-upd {
+  #name-cr,
+  #name-upd {
     cursor: text;
     width: 300px;
     height: 30px;
@@ -97,7 +97,8 @@
     padding: 0 10px;
   }
 
-  #color-cr, #color-upd {
+  #color-cr,
+  #color-upd {
     cursor: pointer;
     width: 100px;
     height: 30px;
@@ -111,9 +112,7 @@
     .btn {
       margin-right: 10px;
     }
-
   }
-
 }
 
 .title {
@@ -137,7 +136,7 @@
   align-items: center;
   padding: 10px 0;
   margin-bottom: 10px;
-  border-bottom: 1px dashed #DC143C;
+  border-bottom: 1px dashed #dc143c;
 
   .btn {
     margin-right: 10px;
@@ -153,7 +152,7 @@
 .car-main {
   display: flex;
   align-items: center;
-  border-bottom: 5px dashed #DC143C;
+  border-bottom: 5px dashed #dc143c;
   height: 100px;
 }
 
