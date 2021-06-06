@@ -6,4 +6,237 @@
   font-style: normal;
   font-weight: 400;
   text-decoration: none;
+  cursor: default;
+  outline: none;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #DC143C;
+  color: #ffffff;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: pointer;
+  letter-spacing: 1px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &_active {
+    cursor: default;
+    opacity: 0.5;
+  }
+}
+
+.header {
+  width: 100%;
+  height: 100px;
+  background-color: #DC143C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  color: #ffffff;
+}
+
+.nav__item {
+  display: flex;
+  padding: 20px 80px;
+  border: 2px solid #ffffff;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  &_active {
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: default;
+  }
+}
+
+.main {
+  width: 100%;
+  padding: 40px 80px;
+}
+
+.controls {
+
+  form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .btn {
+      width: 100px;
+      height: 30px;
+    }
+  }
+
+  #name-cr, #name-upd {
+    cursor: text;
+    width: 300px;
+    height: 30px;
+    margin-right: 10px;
+    padding: 0 10px;
+  }
+
+  #color-cr, #color-upd {
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  .action-btns {
+    display: flex;
+    align-items: center;
+
+    .btn {
+      margin-right: 10px;
+    }
+
+  }
+
+}
+
+.title {
+  font-size: 42px;
+  font-weight: 500;
+  margin: 40px 0 20px 0;
+}
+
+.page {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.car-container {
+  margin-bottom: 40px;
+}
+
+.car-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  border-bottom: 1px dashed #DC143C;
+
+  .btn {
+    margin-right: 10px;
+  }
+}
+
+.car-title {
+  font-size: 24px;
+  font-weight: 500;
+  margin-left: 20px;
+}
+
+.car-main {
+  display: flex;
+  align-items: center;
+  border-bottom: 5px dashed #DC143C;
+  height: 100px;
+}
+
+.drive-btns {
+  margin-right: 20px;
+
+  .btn {
+    margin-bottom: 10px;
+  }
+}
+
+.track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.car {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  svg {
+    width: 200px;
+    height: 100px;
+  }
+}
+
+.finish {
+  position: absolute;
+  top: 0;
+  right: 20%;
+  width: 80px;
+  height: 80px;
+}
+
+.page-controls {
+  display: flex;
+
+  .btn {
+    width: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+  }
+}
+
+.score-container {
+  width: 100%;
+  border: 1px solid #dc143c;
+  margin-bottom: 40px;
+}
+
+.score-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 1px;
+}
+
+.score-title {
+  background-color: #dc143c;
+  padding: 10px 0;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.score-result {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  row-gap: 1px;
+  column-gap: 1px;
+}
+
+.score-item {
+  padding: 10px 0;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 1px #dc143c41;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
