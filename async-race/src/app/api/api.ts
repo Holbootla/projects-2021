@@ -7,7 +7,7 @@ export const getCars = async (
   page = 1,
   limit = 7
 ): Promise<{
-  cars: Promise<{ name: string; color: string; id: number }>;
+  cars: { name: string; color: string; id: number }[];
   carsCount: string | null;
 }> => {
   const response = await fetch(`${GARAGE}?_page=${page}&_limit=${limit}`);
