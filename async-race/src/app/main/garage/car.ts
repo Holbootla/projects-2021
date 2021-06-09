@@ -1,5 +1,5 @@
 import { deleteCar } from '../../api/api';
-import Store from '../../api/store';
+import Store from '../../store';
 
 export default class Car {
   name: string;

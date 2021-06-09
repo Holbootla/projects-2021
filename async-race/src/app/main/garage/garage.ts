@@ -1,5 +1,5 @@
 import { getCars } from '../../api/api';
-import Store from '../../api/store';
+import Store from '../../store';
 import Cars from './cars';
 import Controls from './controls';
 
