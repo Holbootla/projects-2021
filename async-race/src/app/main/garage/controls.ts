@@ -1,4 +1,4 @@
-import { createCar } from '../../api/api';
+import { createCar, getCars } from '../../api/api';
 
 export default class Controls {
   controls: HTMLDivElement;
@@ -9,6 +9,8 @@ export default class Controls {
 
   formUpdate: HTMLFormElement;
 
+  title: HTMLElement;
+
   constructor() {
     this.controls = document.createElement('div');
     this.controls.classList.add('controls');
@@ -18,6 +20,8 @@ export default class Controls {
     this.formUpdate.classList.add(`update-car`);
     this.actionBtns = document.createElement('div');
     this.actionBtns.classList.add('action-btns');
+    this.title = document.createElement('h2');
+    this.title.classList.add('title');
   }
 
   createForm(action: 'create' | 'update'): HTMLFormElement {
@@ -70,6 +74,7 @@ export default class Controls {
           nameCreate.value = '';
           colorCreate.value = '#000000';
         }
+        this.render();
       }
     });
     btnUpdate?.addEventListener('click', () => {});
@@ -109,7 +114,11 @@ export default class Controls {
     this.controls.insertAdjacentElement('beforeend', this.createForm('create'));
     this.controls.insertAdjacentElement('beforeend', this.createForm('update'));
     this.controls.insertAdjacentElement('beforeend', this.createActionBtns());
-
+    (async () => {
+      const { carsCount } = await getCars();
+      this.title.innerText = `Garage (${carsCount})`;
+    })();
+    this.controls.appendChild(this.title);
     return this.controls;
   }
 }

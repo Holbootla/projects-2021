@@ -8,8 +8,6 @@ export default class Garage {
 
   controls: HTMLDivElement;
 
-  title: HTMLElement;
-
   cars: DocumentFragment;
 
   pageControls: HTMLElement;
@@ -21,8 +19,6 @@ export default class Garage {
     this.garage = document.createElement('div');
     this.garage.classList.add('garage');
     this.controls = new Controls().render();
-    this.title = document.createElement('h2');
-    this.title.classList.add('title');
     this.cars = new Cars().render(this.store.getPageNumber());
     this.pageControls = document.createElement('div');
     this.pageControls.classList.add('page-controls');
@@ -32,14 +28,7 @@ export default class Garage {
     this.garage.innerHTML = '';
 
     this.cars = new Cars().render(this.store.getPageNumber());
-
-    (async () => {
-      const { carsCount } = await getCars();
-      this.title.innerText = `Garage (${carsCount})`;
-    })();
-
     this.garage.appendChild(this.controls);
-    this.garage.appendChild(this.title);
     this.garage.appendChild(this.cars);
     this.garage.appendChild(this.renderPageNavBtns());
 
