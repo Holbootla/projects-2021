@@ -23,11 +23,12 @@ export default class Cars {
 
   render(pageNumber: number): DocumentFragment {
     const constructCarsContainer = async () => {
+      this.carsContainer.innerHTML = '';
       const { cars } = await getCars(pageNumber);
       cars.forEach((el) => {
         this.carsContainer.insertAdjacentElement(
           'beforeend',
-          new Car(el.name, el.color).render()
+          new Car(el.name, el.color, el.id).render()
         );
       });
     };

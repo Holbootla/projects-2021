@@ -1,3 +1,5 @@
+import Store from '../../api/store';
+
 export default class Car {
   name: string;
 
@@ -5,18 +7,24 @@ export default class Car {
 
   carContainer: HTMLDivElement;
 
-  constructor(name: string, color: string) {
+  carId: number;
+
+  store: Store;
+
+  constructor(name: string, color: string, id: number) {
     this.name = name;
     this.color = color;
     this.carContainer = document.createElement('div');
     this.carContainer.classList.add('car-container');
+    this.carId = id;
+    this.store = Store.getInstance();
   }
 
   render(): HTMLElement {
     this.carContainer.innerHTML = `
       <div class="car-header">
-        <div class="btn">Select</div>
-        <div class="btn">Remove</div>
+        <div class="btn btn-select">Select</div>
+        <div class="btn btn-remove">Remove</div>
         <h4 class="car-title">${this.name}</h4>
       </div>
       <div class="car-main">
@@ -34,6 +42,12 @@ export default class Car {
         </div>
       </div>
     `;
+
+    this.carContainer
+      .querySelector('.btn-select')
+      ?.addEventListener('click', () => {
+        this.store.setSelectedCarId(this.carId);
+      });
 
     return this.carContainer;
   }

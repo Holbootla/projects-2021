@@ -1,4 +1,6 @@
-import { createCar, getCars } from '../../api/api';
+import { createCar, getCars, updateCar } from '../../api/api';
+import Store from '../../api/store';
+import Cars from './cars';
 
 export default class Controls {
   controls: HTMLDivElement;
@@ -11,6 +13,8 @@ export default class Controls {
 
   title: HTMLElement;
 
+  store: Store;
+
   constructor() {
     this.controls = document.createElement('div');
     this.controls.classList.add('controls');
@@ -22,6 +26,7 @@ export default class Controls {
     this.actionBtns.classList.add('action-btns');
     this.title = document.createElement('h2');
     this.title.classList.add('title');
+    this.store = Store.getInstance();
   }
 
   createForm(action: 'create' | 'update'): HTMLFormElement {
@@ -77,7 +82,12 @@ export default class Controls {
         this.render();
       }
     });
-    btnUpdate?.addEventListener('click', () => {});
+    btnUpdate?.addEventListener('click', () => {
+      const carId = this.store.getSelectedCarId();
+      if (carId) {
+        updateCar(carId, { name: nameUpdateValue, color: colorUpdateValue });
+      }
+    });
 
     if (action === 'create') {
       return this.formCreate;

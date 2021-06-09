@@ -3,8 +3,11 @@ export default class Store {
 
   pageNumber: number;
 
+  selectedCarId: number | undefined;
+
   private constructor() {
     this.pageNumber = 1;
+    this.selectedCarId = undefined;
   }
 
   public static getInstance(): Store {
@@ -24,5 +27,13 @@ export default class Store {
 
   public decPageNumber(): void {
     this.pageNumber -= 1;
+  }
+
+  public getSelectedCarId(): number | undefined {
+    return this.selectedCarId;
+  }
+
+  public setSelectedCarId(carId: number): void {
+    this.selectedCarId = carId;
   }
 }
