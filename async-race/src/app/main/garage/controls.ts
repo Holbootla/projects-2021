@@ -1,6 +1,5 @@
 import { createCar, getCars, updateCar } from '../../api/api';
 import Store from '../../api/store';
-import Cars from './cars';
 
 export default class Controls {
   controls: HTMLDivElement;

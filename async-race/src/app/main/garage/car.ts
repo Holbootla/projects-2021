@@ -1,3 +1,4 @@
+import { deleteCar } from '../../api/api';
 import Store from '../../api/store';
 
 export default class Car {
@@ -47,6 +48,12 @@ export default class Car {
       .querySelector('.btn-select')
       ?.addEventListener('click', () => {
         this.store.setSelectedCarId(this.carId);
+      });
+
+    this.carContainer
+      .querySelector('.btn-remove')
+      ?.addEventListener('click', () => {
+        deleteCar(this.carId);
       });
 
     return this.carContainer;
