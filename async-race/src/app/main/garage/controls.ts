@@ -53,11 +53,21 @@ export default class Controls {
       this.formCreate.querySelector('.btn-create');
     const btnUpdate: HTMLDivElement | null =
       this.formUpdate.querySelector('.btn-update');
+    btnUpdate?.classList.add('btn_disabled');
 
-    let nameCreateValue: string;
+    let nameCreateValue: string | undefined;
     let colorCreateValue = '#000000';
     let nameUpdateValue: string;
     let colorUpdateValue = '#000000';
+
+    document.addEventListener('updateSelect', () => {
+      if (nameUpdate && colorUpdate) {
+        nameUpdate.value = this.store.getSelectedCar().name;
+        colorUpdate.value = this.store.getSelectedCar().color;
+        console.log(1);
+        btnUpdate?.classList.remove('btn_disabled');
+      }
+    });
 
     nameCreate?.addEventListener('change', () => {
       nameCreateValue = nameCreate.value;
@@ -71,21 +81,23 @@ export default class Controls {
     colorUpdate?.addEventListener('change', () => {
       colorUpdateValue = colorUpdate.value;
     });
-    btnCreate?.addEventListener('click', () => {
+    btnCreate?.addEventListener('click', (event) => {
       if (nameCreateValue && colorCreateValue) {
         createCar({ name: nameCreateValue, color: colorCreateValue });
         if (nameCreate && colorCreate) {
           nameCreate.value = '';
           colorCreate.value = '#000000';
         }
+        event.target?.dispatchEvent(new Event('created', { bubbles: true }));
         this.render();
       }
     });
-    btnUpdate?.addEventListener('click', () => {
-      const carId = this.store.getSelectedCarId();
+    btnUpdate?.addEventListener('click', (event) => {
+      const carId = this.store.getSelectedCar()?.id;
       if (carId) {
         updateCar(carId, { name: nameUpdateValue, color: colorUpdateValue });
       }
+      event.target?.dispatchEvent(new Event('updated', { bubbles: true }));
     });
 
     if (action === 'create') {

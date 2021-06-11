@@ -12,6 +12,8 @@ export default class Car {
 
   store: Store;
 
+  disabledClass: string;
+
   constructor(name: string, color: string, id: number) {
     this.name = name;
     this.color = color;
@@ -19,12 +21,13 @@ export default class Car {
     this.carContainer.classList.add('car-container');
     this.carId = id;
     this.store = Store.getInstance();
+    this.disabledClass = '';
   }
 
   render(): HTMLElement {
     this.carContainer.innerHTML = `
       <div class="car-header">
-        <div class="btn btn-select">Select</div>
+        <div class="btn btn-select ${this.disabledClass}">Select</div>
         <div class="btn btn-remove">Remove</div>
         <h4 class="car-title">${this.name}</h4>
       </div>
@@ -46,14 +49,18 @@ export default class Car {
 
     this.carContainer
       .querySelector('.btn-select')
-      ?.addEventListener('click', () => {
-        this.store.setSelectedCarId(this.carId);
+      ?.addEventListener('click', (event) => {
+        this.store.setSelectedCar(this.name, this.color, this.carId);
+        event.target?.dispatchEvent(
+          new Event('updateSelect', { bubbles: true })
+        );
       });
 
     this.carContainer
       .querySelector('.btn-remove')
-      ?.addEventListener('click', () => {
+      ?.addEventListener('click', (event) => {
         deleteCar(this.carId);
+        event.target?.dispatchEvent(new Event('removeCar', { bubbles: true }));
       });
 
     return this.carContainer;

@@ -6,19 +6,19 @@ import Controls from './controls';
 export default class Garage {
   garage: HTMLDivElement;
 
-  controls: HTMLDivElement;
-
   cars: DocumentFragment;
 
   pageControls: HTMLElement;
 
   store: Store;
 
+  controls: Controls;
+
   constructor() {
     this.store = Store.getInstance();
     this.garage = document.createElement('div');
     this.garage.classList.add('garage');
-    this.controls = new Controls().render();
+    this.controls = new Controls();
     this.cars = new Cars().render(this.store.getPageNumber());
     this.pageControls = document.createElement('div');
     this.pageControls.classList.add('page-controls');
@@ -26,12 +26,20 @@ export default class Garage {
 
   render(): HTMLDivElement {
     this.garage.innerHTML = '';
-
+    const controlsElement = this.controls.render();
     this.cars = new Cars().render(this.store.getPageNumber());
-    this.garage.appendChild(this.controls);
+    this.garage.appendChild(controlsElement);
     this.garage.appendChild(this.cars);
     this.garage.appendChild(this.renderPageNavBtns());
-
+    this.garage.addEventListener('removeCar', () => {
+      this.render();
+    });
+    this.garage.addEventListener('updated', () => {
+      this.render();
+    });
+    this.garage.addEventListener('created', () => {
+      this.render();
+    });
     return this.garage;
   }
 
@@ -65,6 +73,7 @@ export default class Garage {
 
     this.pageControls.appendChild(btnPrev);
     this.pageControls.appendChild(btnNext);
+
     return this.pageControls;
   }
 }

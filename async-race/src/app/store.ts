@@ -3,11 +3,11 @@ export default class Store {
 
   pageNumber: number;
 
-  selectedCarId: number | undefined;
+  selectedCar: { name: string; color: string; id: number };
 
   private constructor() {
     this.pageNumber = 1;
-    this.selectedCarId = undefined;
+    this.selectedCar = { name: 'Tesla', color: '#000000', id: 1 };
   }
 
   public static getInstance(): Store {
@@ -29,11 +29,11 @@ export default class Store {
     this.pageNumber -= 1;
   }
 
-  public getSelectedCarId(): number | undefined {
-    return this.selectedCarId;
+  public getSelectedCar(): { name: string; color: string; id: number } {
+    return this.selectedCar;
   }
 
-  public setSelectedCarId(carId: number): void {
-    this.selectedCarId = carId;
+  public setSelectedCar(name: string, color: string, id: number): void {
+    this.selectedCar = { name, color, id };
   }
 }
