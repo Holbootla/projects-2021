@@ -60,14 +60,18 @@ export default class Controls {
     let nameUpdateValue: string;
     let colorUpdateValue = '#000000';
 
-    document.addEventListener('updateSelect', () => {
-      if (nameUpdate && colorUpdate) {
-        nameUpdate.value = this.store.getSelectedCar().name;
-        colorUpdate.value = this.store.getSelectedCar().color;
-        console.log(1);
-        btnUpdate?.classList.remove('btn_disabled');
-      }
-    });
+    if (action === 'update') {
+      document.addEventListener('updateSelect', (event) => {
+        if (nameUpdate && colorUpdate) {
+          nameUpdate.value = this.store.getSelectedCar().name;
+          colorUpdate.value = this.store.getSelectedCar().color;
+          nameUpdateValue = nameUpdate.value;
+          colorUpdateValue = colorUpdate.value;
+          btnUpdate?.classList.remove('btn_disabled');
+          console.log(event);
+        }
+      });
+    }
 
     nameCreate?.addEventListener('change', () => {
       nameCreateValue = nameCreate.value;
@@ -96,6 +100,13 @@ export default class Controls {
       const carId = this.store.getSelectedCar()?.id;
       if (carId) {
         updateCar(carId, { name: nameUpdateValue, color: colorUpdateValue });
+      }
+      if (nameUpdate && colorUpdate) {
+        nameUpdate.value = '';
+        colorUpdate.value = '#000000';
+        nameUpdateValue = nameUpdate.value;
+        colorUpdateValue = colorUpdate.value;
+        btnUpdate?.classList.add('btn_disabled');
       }
       event.target?.dispatchEvent(new Event('updated', { bubbles: true }));
     });

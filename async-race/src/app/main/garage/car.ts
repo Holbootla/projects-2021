@@ -12,25 +12,44 @@ export default class Car {
 
   store: Store;
 
-  disabledClass: string;
+  carHeader: HTMLDivElement;
+
+  btnSelect: HTMLDivElement;
+
+  btnRemove: HTMLDivElement;
+
+  carTitle: HTMLHeadingElement;
+
+  carMain: HTMLDivElement;
 
   constructor(name: string, color: string, id: number) {
+    this.carId = id;
+    this.store = Store.getInstance();
     this.name = name;
     this.color = color;
     this.carContainer = document.createElement('div');
     this.carContainer.classList.add('car-container');
-    this.carId = id;
-    this.store = Store.getInstance();
-    this.disabledClass = '';
+    this.carHeader = document.createElement('div');
+    this.carHeader.classList.add('car-header');
+    this.btnSelect = document.createElement('div');
+    this.btnSelect.classList.add('btn');
+    this.btnSelect.classList.add('btn-select');
+    this.btnSelect.innerText = 'Select';
+    this.btnRemove = document.createElement('div');
+    this.btnRemove.classList.add('btn');
+    this.btnRemove.classList.add('btn-remove');
+    this.btnRemove.innerText = 'Remove';
+    this.carTitle = document.createElement('h4');
+    this.carTitle.classList.add('car-title');
+    this.carTitle.innerText = this.name;
+    this.carMain = document.createElement('div');
   }
 
   render(): HTMLElement {
-    this.carContainer.innerHTML = `
-      <div class="car-header">
-        <div class="btn btn-select ${this.disabledClass}">Select</div>
-        <div class="btn btn-remove">Remove</div>
-        <h4 class="car-title">${this.name}</h4>
-      </div>
+    this.carHeader.appendChild(this.btnSelect);
+    this.carHeader.appendChild(this.btnRemove);
+    this.carHeader.appendChild(this.carTitle);
+    this.carMain.innerHTML = `
       <div class="car-main">
         <div class="drive-btns">
           <div class="btn">Start</div>
@@ -46,22 +65,22 @@ export default class Car {
         </div>
       </div>
     `;
+    this.carContainer.appendChild(this.carHeader);
+    this.carContainer.appendChild(this.carMain);
 
-    this.carContainer
-      .querySelector('.btn-select')
-      ?.addEventListener('click', (event) => {
-        this.store.setSelectedCar(this.name, this.color, this.carId);
-        event.target?.dispatchEvent(
-          new Event('updateSelect', { bubbles: true })
-        );
-      });
+    const updateCar = () => {
+      this.store.setSelectedCar(this.name, this.color, this.carId);
+      this.btnSelect.dispatchEvent(
+        new Event('updateSelect', { bubbles: true })
+      );
+      console.log('clicked');
+    };
+    this.btnSelect.addEventListener('click', updateCar);
 
-    this.carContainer
-      .querySelector('.btn-remove')
-      ?.addEventListener('click', (event) => {
-        deleteCar(this.carId);
-        event.target?.dispatchEvent(new Event('removeCar', { bubbles: true }));
-      });
+    this.btnRemove.addEventListener('click', () => {
+      deleteCar(this.carId);
+      this.btnSelect.dispatchEvent(new Event('removeCar', { bubbles: true }));
+    });
 
     return this.carContainer;
   }

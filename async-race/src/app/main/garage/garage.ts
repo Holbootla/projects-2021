@@ -6,40 +6,49 @@ import Controls from './controls';
 export default class Garage {
   garage: HTMLDivElement;
 
-  cars: DocumentFragment;
-
   pageControls: HTMLElement;
 
   store: Store;
 
-  controls: Controls;
+  controls: HTMLDivElement;
 
   constructor() {
     this.store = Store.getInstance();
     this.garage = document.createElement('div');
     this.garage.classList.add('garage');
-    this.controls = new Controls();
-    this.cars = new Cars().render(this.store.getPageNumber());
+    this.controls = new Controls().render();
     this.pageControls = document.createElement('div');
     this.pageControls.classList.add('page-controls');
   }
 
   render(): HTMLDivElement {
     this.garage.innerHTML = '';
-    const controlsElement = this.controls.render();
-    this.cars = new Cars().render(this.store.getPageNumber());
-    this.garage.appendChild(controlsElement);
-    this.garage.appendChild(this.cars);
+    const cars = new Cars().render(this.store.getPageNumber());
+    this.garage.appendChild(this.controls);
+    this.garage.appendChild(cars);
     this.garage.appendChild(this.renderPageNavBtns());
-    this.garage.addEventListener('removeCar', () => {
-      this.render();
-    });
-    this.garage.addEventListener('updated', () => {
-      this.render();
-    });
-    this.garage.addEventListener('created', () => {
-      this.render();
-    });
+    this.garage.addEventListener(
+      'removeCar',
+      () => {
+        console.log('removed');
+        this.render();
+      },
+      { once: true }
+    );
+    this.garage.addEventListener(
+      'updated',
+      () => {
+        this.render();
+      },
+      { once: true }
+    );
+    this.garage.addEventListener(
+      'created',
+      () => {
+        this.render();
+      },
+      { once: true }
+    );
     return this.garage;
   }
 
