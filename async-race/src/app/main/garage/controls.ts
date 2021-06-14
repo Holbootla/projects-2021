@@ -72,7 +72,6 @@ export default class Controls {
           nameUpdateValue = nameUpdate.value;
           colorUpdateValue = colorUpdate.value;
           btnUpdate?.classList.remove('btn_disabled');
-          console.log(event);
         }
       });
     }

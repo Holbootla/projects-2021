@@ -20,7 +20,6 @@ export default class Main {
     this.main.appendChild(this.winners);
     const reRender = () => {
       this.garage.render();
-      console.log('done');
     };
     this.main.addEventListener('removed', reRender);
     this.main.addEventListener('updated', reRender);
