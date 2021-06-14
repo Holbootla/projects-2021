@@ -1,4 +1,4 @@
-import { deleteCar } from '../../api/api';
+import { deleteCar, driveEngine, startEngine, stopEngine } from '../../api/api';
 import Store from '../../store';
 
 export default class Car {
@@ -34,7 +34,16 @@ export default class Car {
 
   finish: HTMLImageElement;
 
+  TRACK_SIZE: number;
+
+  MILLISECONDS: number;
+
+  animationID: number;
+
   constructor(name: string, color: string, id: number) {
+    this.animationID = 0;
+    this.TRACK_SIZE = 100;
+    this.MILLISECONDS = 1000;
     this.carId = id;
     this.store = Store.getInstance();
     this.name = name;
@@ -65,6 +74,7 @@ export default class Car {
     this.btnStop = document.createElement('div');
     this.btnStop.classList.add('btn');
     this.btnStop.classList.add('btn-stop');
+    this.btnStop.classList.add('btn_disabled');
     this.btnStop.innerText = 'Stop';
     this.carTrack = document.createElement('div');
     this.carTrack.classList.add('track');
@@ -106,6 +116,51 @@ export default class Car {
       this.btnSelect.dispatchEvent(new Event('removed', { bubbles: true }));
     });
 
+    this.btnStart.addEventListener('click', () => {
+      this.btnStart.classList.add('btn_disabled');
+      this.startCar();
+    });
+
+    this.btnStop.addEventListener('click', () => {
+      this.btnStop.classList.add('btn_disabled');
+      this.stopCar();
+    });
+
     return this.carContainer;
+  }
+
+  startCar(): void {
+    (async () => {
+      const { velocity, distance } = await startEngine(this.carId);
+      this.btnStop.classList.remove('btn_disabled');
+      this.animateCar(distance / velocity);
+      await driveEngine(this.carId).then((res) => {
+        if (res.success === false) {
+          cancelAnimationFrame(this.animationID);
+        }
+      });
+    })();
+  }
+
+  stopCar(): void {
+    (async () => {
+      await stopEngine(this.carId);
+      this.btnStart.classList.remove('btn_disabled');
+      this.btnStop.classList.add('btn_disabled');
+      cancelAnimationFrame(this.animationID);
+      this.car.style.left = `0`;
+    })();
+  }
+
+  animateCar(duration: number): void {
+    let POSITION = 0;
+    const driveAnimation = () => {
+      POSITION += (1 / duration) * this.MILLISECONDS;
+      this.car.style.left = `${POSITION}%`;
+      if (POSITION < 100) {
+        this.animationID = requestAnimationFrame(driveAnimation);
+      }
+    };
+    driveAnimation();
   }
 }

@@ -53,7 +53,9 @@ export const updateCar = async (
   ).json();
 };
 
-export const startEngine = async (id: number): Promise<void> => {
+export const startEngine = async (
+  id: number
+): Promise<{ velocity: number; distance: number }> => {
   return (await fetch(`${ENGINE}?id=${id}&status=started`)).json();
 };
 
