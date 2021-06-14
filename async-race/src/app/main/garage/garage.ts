@@ -30,38 +30,6 @@ export default class Garage {
     this.garage.appendChild(this.controlsElement);
     this.garage.appendChild(cars);
     this.garage.appendChild(this.renderPageNavBtns());
-    this.garage.addEventListener(
-      'removed',
-      () => {
-        console.log('removed');
-        this.render();
-      },
-      { once: true }
-    );
-    this.garage.addEventListener(
-      'updated',
-      () => {
-        this.render();
-        console.log('updated');
-      },
-      { once: true }
-    );
-    this.garage.addEventListener(
-      'created',
-      () => {
-        this.render();
-        console.log('created');
-      },
-      { once: true }
-    );
-    this.garage.addEventListener(
-      'generated',
-      () => {
-        this.render();
-        console.log('generated');
-      },
-      { once: true }
-    );
     return this.garage;
   }
 
