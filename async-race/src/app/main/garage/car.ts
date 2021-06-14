@@ -40,6 +40,8 @@ export default class Car {
 
   animationID: number;
 
+  removeListeners: () => void;
+
   constructor(name: string, color: string, id: number) {
     this.animationID = 0;
     this.TRACK_SIZE = 100;
@@ -88,9 +90,6 @@ export default class Car {
     this.finish = document.createElement('img');
     this.finish.src = 'racing-flag.svg';
     this.finish.classList.add('finish');
-  }
-
-  render(): HTMLElement {
     this.carHeader.appendChild(this.btnSelect);
     this.carHeader.appendChild(this.btnRemove);
     this.carHeader.appendChild(this.carTitle);
@@ -116,25 +115,26 @@ export default class Car {
       this.btnSelect.dispatchEvent(new Event('removed', { bubbles: true }));
     });
 
-    this.btnStart.addEventListener('click', () => {
+    const start = () => {
       this.startCar();
-    });
+    };
 
-    this.btnStop.addEventListener('click', () => {
+    const stop = () => {
       this.stopCar();
-    });
+    };
 
-    document.addEventListener('race', () => {
-      console.log('raced');
-      this.startCar();
-    });
+    this.btnStart.addEventListener('click', start);
 
-    document.addEventListener('reset', () => {
-      console.log('reseted');
-      this.stopCar();
-    });
+    this.btnStop.addEventListener('click', stop);
 
-    return this.carContainer;
+    document.addEventListener('race', start);
+
+    document.addEventListener('reset', stop);
+
+    this.removeListeners = () => {
+      document.removeEventListener('race', start);
+      document.removeEventListener('reset', stop);
+    };
   }
 
   startCar(): void {
@@ -172,5 +172,13 @@ export default class Car {
       }
     };
     driveAnimation();
+  }
+
+  render(): HTMLElement {
+    return this.carContainer;
+  }
+
+  destroy(): void {
+    this.removeListeners();
   }
 }

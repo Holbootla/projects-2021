@@ -131,13 +131,13 @@ export default class Controls {
 
     const btnRace = this.actionBtns.querySelector('.btn-race');
     btnRace?.addEventListener('click', (event) => {
-      event.target?.dispatchEvent(new Event('race', { bubbles: true }));
+      document.dispatchEvent(new Event('race', { bubbles: true }));
       console.log('race');
     });
 
     const btnReset = this.actionBtns.querySelector('.btn-reset');
     btnReset?.addEventListener('click', (event) => {
-      event.target?.dispatchEvent(new Event('reset', { bubbles: true }));
+      document.dispatchEvent(new Event('reset', { bubbles: true }));
       console.log('reset');
     });
 

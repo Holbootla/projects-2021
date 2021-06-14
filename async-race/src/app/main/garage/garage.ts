@@ -14,6 +14,8 @@ export default class Garage {
 
   controlsElement: HTMLDivElement;
 
+  cars: Cars;
+
   constructor() {
     this.store = Store.getInstance();
     this.garage = document.createElement('div');
@@ -22,13 +24,15 @@ export default class Garage {
     this.controlsElement = this.controls.render();
     this.pageControls = document.createElement('div');
     this.pageControls.classList.add('page-controls');
+    this.cars = new Cars();
   }
 
   render(): HTMLDivElement {
     this.garage.innerHTML = '';
-    const cars = new Cars().render(this.store.getPageNumber());
+    this.cars.clear();
+    const carsContainer = this.cars.render(this.store.getPageNumber());
     this.garage.appendChild(this.controlsElement);
-    this.garage.appendChild(cars);
+    this.garage.appendChild(carsContainer);
     this.garage.appendChild(this.renderPageNavBtns());
     return this.garage;
   }

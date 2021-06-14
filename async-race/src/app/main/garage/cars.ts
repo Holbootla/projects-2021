@@ -6,14 +6,14 @@ export default class Cars {
 
   carsContainer: HTMLDivElement;
 
-  fragmentCarsPage: DocumentFragment;
+  carsArray: Car[];
 
   constructor() {
-    this.fragmentCarsPage = document.createDocumentFragment();
     this.page = document.createElement('h3');
     this.page.classList.add('page');
     this.carsContainer = document.createElement('div');
     this.carsContainer.classList.add('cars');
+    this.carsArray = [];
   }
 
   renderPageNumber(pageNumber: number): HTMLElement {
@@ -25,16 +25,24 @@ export default class Cars {
     const constructCarsContainer = async () => {
       const { cars } = await getCars(pageNumber);
       cars.forEach((el) => {
-        this.carsContainer.appendChild(
-          new Car(el.name, el.color, el.id).render()
-        );
+        const car = new Car(el.name, el.color, el.id);
+        this.carsArray.push(car);
+        this.carsContainer.appendChild(car.render());
       });
     };
-
-    this.fragmentCarsPage.appendChild(this.renderPageNumber(pageNumber));
+    const fragmentCarsPage = document.createDocumentFragment();
+    fragmentCarsPage.appendChild(this.renderPageNumber(pageNumber));
     constructCarsContainer();
-    this.fragmentCarsPage.appendChild(this.carsContainer);
+    fragmentCarsPage.appendChild(this.carsContainer);
 
-    return this.fragmentCarsPage;
+    return fragmentCarsPage;
+  }
+
+  clear(): void {
+    this.carsArray.forEach((el) => {
+      el.destroy();
+    });
+    this.carsArray = [];
+    this.carsContainer.innerHTML = '';
   }
 }
