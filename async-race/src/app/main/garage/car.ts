@@ -73,13 +73,12 @@ export default class Car {
       this.btnSelect.dispatchEvent(
         new Event('updateSelect', { bubbles: true })
       );
-      console.log('clicked');
     };
     this.btnSelect.addEventListener('click', updateCar);
 
     this.btnRemove.addEventListener('click', () => {
       deleteCar(this.carId);
-      this.btnSelect.dispatchEvent(new Event('removeCar', { bubbles: true }));
+      this.btnSelect.dispatchEvent(new Event('removed', { bubbles: true }));
     });
 
     return this.carContainer;

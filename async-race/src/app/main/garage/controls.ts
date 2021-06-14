@@ -1,5 +1,6 @@
 import { createCar, getCars, updateCar } from '../../api/api';
 import Store from '../../store';
+import GenerateCars from './generate-cars';
 
 export default class Controls {
   controls: HTMLDivElement;
@@ -14,6 +15,8 @@ export default class Controls {
 
   store: Store;
 
+  generateCars: GenerateCars;
+
   constructor() {
     this.controls = document.createElement('div');
     this.controls.classList.add('controls');
@@ -26,6 +29,7 @@ export default class Controls {
     this.title = document.createElement('h2');
     this.title.classList.add('title');
     this.store = Store.getInstance();
+    this.generateCars = new GenerateCars();
   }
 
   createForm(action: 'create' | 'update'): HTMLFormElement {
@@ -91,9 +95,11 @@ export default class Controls {
         if (nameCreate && colorCreate) {
           nameCreate.value = '';
           colorCreate.value = '#000000';
+          nameCreateValue = '';
+          colorCreateValue = '#000000';
         }
+        this.getCarsCount();
         event.target?.dispatchEvent(new Event('created', { bubbles: true }));
-        this.render();
       }
     });
     btnUpdate?.addEventListener('click', (event) => {
@@ -135,22 +141,31 @@ export default class Controls {
     });
 
     const btnGenerate = this.actionBtns.querySelector('.btn-generate');
-    btnGenerate?.addEventListener('click', () => {
-      console.log('3');
+    btnGenerate?.addEventListener('click', (event) => {
+      this.generateCars.generateCars();
+      event.target?.dispatchEvent(new Event('generated', { bubbles: true }));
+      this.getCarsCount();
     });
 
     return this.actionBtns;
+  }
+
+  getCarsCount(): void {
+    (async () => {
+      const { carsCount } = await getCars();
+      this.title.innerText = `Garage (${carsCount})`;
+    })();
   }
 
   render(): HTMLDivElement {
     this.controls.insertAdjacentElement('beforeend', this.createForm('create'));
     this.controls.insertAdjacentElement('beforeend', this.createForm('update'));
     this.controls.insertAdjacentElement('beforeend', this.createActionBtns());
-    (async () => {
-      const { carsCount } = await getCars();
-      this.title.innerText = `Garage (${carsCount})`;
-    })();
+    this.getCarsCount();
     this.controls.appendChild(this.title);
+    document.addEventListener('removed', () => {
+      this.getCarsCount();
+    });
     return this.controls;
   }
 }

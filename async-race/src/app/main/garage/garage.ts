@@ -10,13 +10,16 @@ export default class Garage {
 
   store: Store;
 
-  controls: HTMLDivElement;
+  controls: Controls;
+
+  controlsElement: HTMLDivElement;
 
   constructor() {
     this.store = Store.getInstance();
     this.garage = document.createElement('div');
     this.garage.classList.add('garage');
-    this.controls = new Controls().render();
+    this.controls = new Controls();
+    this.controlsElement = this.controls.render();
     this.pageControls = document.createElement('div');
     this.pageControls.classList.add('page-controls');
   }
@@ -24,11 +27,11 @@ export default class Garage {
   render(): HTMLDivElement {
     this.garage.innerHTML = '';
     const cars = new Cars().render(this.store.getPageNumber());
-    this.garage.appendChild(this.controls);
+    this.garage.appendChild(this.controlsElement);
     this.garage.appendChild(cars);
     this.garage.appendChild(this.renderPageNavBtns());
     this.garage.addEventListener(
-      'removeCar',
+      'removed',
       () => {
         console.log('removed');
         this.render();
@@ -39,6 +42,7 @@ export default class Garage {
       'updated',
       () => {
         this.render();
+        console.log('updated');
       },
       { once: true }
     );
@@ -46,6 +50,15 @@ export default class Garage {
       'created',
       () => {
         this.render();
+        console.log('created');
+      },
+      { once: true }
+    );
+    this.garage.addEventListener(
+      'generated',
+      () => {
+        this.render();
+        console.log('generated');
       },
       { once: true }
     );
