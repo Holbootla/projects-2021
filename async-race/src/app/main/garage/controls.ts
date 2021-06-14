@@ -65,7 +65,7 @@ export default class Controls {
     let colorUpdateValue = '#000000';
 
     if (action === 'update') {
-      document.addEventListener('updateSelect', (event) => {
+      document.addEventListener('updateSelect', () => {
         if (nameUpdate && colorUpdate) {
           nameUpdate.value = this.store.getSelectedCar().name;
           colorUpdate.value = this.store.getSelectedCar().color;
@@ -130,15 +130,13 @@ export default class Controls {
     `;
 
     const btnRace = this.actionBtns.querySelector('.btn-race');
-    btnRace?.addEventListener('click', (event) => {
+    btnRace?.addEventListener('click', () => {
       document.dispatchEvent(new Event('race', { bubbles: true }));
-      console.log('race');
     });
 
     const btnReset = this.actionBtns.querySelector('.btn-reset');
-    btnReset?.addEventListener('click', (event) => {
+    btnReset?.addEventListener('click', () => {
       document.dispatchEvent(new Event('reset', { bubbles: true }));
-      console.log('reset');
     });
 
     const btnGenerate = this.actionBtns.querySelector('.btn-generate');
