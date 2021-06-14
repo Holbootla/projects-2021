@@ -117,12 +117,20 @@ export default class Car {
     });
 
     this.btnStart.addEventListener('click', () => {
-      this.btnStart.classList.add('btn_disabled');
       this.startCar();
     });
 
     this.btnStop.addEventListener('click', () => {
-      this.btnStop.classList.add('btn_disabled');
+      this.stopCar();
+    });
+
+    document.addEventListener('race', () => {
+      console.log('raced');
+      this.startCar();
+    });
+
+    document.addEventListener('reset', () => {
+      console.log('reseted');
       this.stopCar();
     });
 
@@ -130,6 +138,7 @@ export default class Car {
   }
 
   startCar(): void {
+    this.btnStart.classList.add('btn_disabled');
     (async () => {
       const { velocity, distance } = await startEngine(this.carId);
       this.btnStop.classList.remove('btn_disabled');
@@ -143,6 +152,7 @@ export default class Car {
   }
 
   stopCar(): void {
+    this.btnStop.classList.add('btn_disabled');
     (async () => {
       await stopEngine(this.carId);
       this.btnStart.classList.remove('btn_disabled');
