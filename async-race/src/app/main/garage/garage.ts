@@ -70,4 +70,8 @@ export default class Garage {
 
     return this.pageControls;
   }
+
+  toggleVisibility(): void {
+    this.garage.classList.toggle('invisible');
+  }
 }

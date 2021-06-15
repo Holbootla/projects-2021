@@ -1,4 +1,9 @@
 import App from './app/app';
 import './style.scss';
 
-new App().render();
+const app = new App();
+app.render();
+
+window.addEventListener('hashchange', () => {
+  app.toggleVisibility();
+});

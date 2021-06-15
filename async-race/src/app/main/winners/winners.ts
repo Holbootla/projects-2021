@@ -6,7 +6,7 @@ import Store from '../../store';
 export default class Winners {
   store: Store;
 
-  LIST_SIZE: number;
+  limit: number;
 
   btnPagePrev: HTMLDivElement;
 
@@ -17,7 +17,7 @@ export default class Winners {
   winnersContainer: HTMLDivElement;
 
   constructor() {
-    this.LIST_SIZE = 10;
+    this.limit = 10;
     this.store = Store.getInstance();
     this.pageControls = document.createElement('div');
     this.pageControls.classList.add('page-controls');
@@ -31,6 +31,7 @@ export default class Winners {
     this.btnPageNext.innerText = 'Next >>';
     this.winnersContainer = document.createElement('div');
     this.winnersContainer.classList.add('winners');
+    this.winnersContainer.classList.add('invisible');
   }
 
   render(): Promise<HTMLDivElement> {
@@ -49,7 +50,7 @@ export default class Winners {
           this.btnPageNext.classList.add('btn_disabled');
         }
       })();
-      let listNumber = (winnersPageNumber - 1) * this.LIST_SIZE + 1;
+      let listNumber = (winnersPageNumber - 1) * this.limit + 1;
       const { winners, winnersCount } = await getWinners(winnersPageNumber);
       const scoreMain = document.createElement('div');
       scoreMain.classList.add('score-main');
@@ -110,7 +111,14 @@ export default class Winners {
       this.btnPageNext.dispatchEvent(
         new Event('newWinners', { bubbles: true })
       );
-      console.log('up');
     });
+    window.addEventListener('hashchange', () => {
+      this.render();
+    });
+  }
+
+  toggleVisibility(): void {
+    this.winnersContainer.classList.toggle('invisible');
+    this.render();
   }
 }

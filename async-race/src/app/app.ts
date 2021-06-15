@@ -21,4 +21,8 @@ export default class App {
     this.body?.appendChild(this.header);
     this.body?.appendChild(this.main);
   }
+
+  toggleVisibility(): void {
+    this.mainInstance.toggleVisibility();
+  }
 }

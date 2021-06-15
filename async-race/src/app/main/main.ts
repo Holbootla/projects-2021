@@ -38,4 +38,9 @@ export default class Main {
   reRenderWinners(): void {
     this.winners.render();
   }
+
+  toggleVisibility(): void {
+    this.garage.toggleVisibility();
+    this.winners.toggleVisibility();
+  }
 }
