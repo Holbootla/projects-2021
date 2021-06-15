@@ -5,9 +5,15 @@ export default class Store {
 
   selectedCar: { name: string; color: string; id: number };
 
+  isRace: boolean;
+
+  winnersPageNumber: number;
+
   private constructor() {
     this.pageNumber = 1;
+    this.winnersPageNumber = 1;
     this.selectedCar = { name: 'Tesla', color: '#000000', id: 1 };
+    this.isRace = false;
   }
 
   public static getInstance(): Store {
@@ -35,5 +41,25 @@ export default class Store {
 
   public setSelectedCar(name: string, color: string, id: number): void {
     this.selectedCar = { name, color, id };
+  }
+
+  public getIsRace(): boolean {
+    return this.isRace;
+  }
+
+  public setIsRace(flag: boolean): void {
+    this.isRace = flag;
+  }
+
+  public getWinnersPageNumber(): number {
+    return this.winnersPageNumber;
+  }
+
+  public incWinnersPageNumber(): void {
+    this.winnersPageNumber += 1;
+  }
+
+  public decWinnersPageNumber(): void {
+    this.winnersPageNumber -= 1;
   }
 }

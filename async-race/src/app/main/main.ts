@@ -6,25 +6,36 @@ export default class Main {
 
   garage: Garage;
 
-  winners: HTMLDivElement;
+  winners: Winners;
 
   constructor() {
     this.main = document.createElement('div');
     this.main.classList.add('main');
     this.garage = new Garage();
-    this.winners = new Winners().render();
+    this.winners = new Winners();
   }
 
   render(): HTMLDivElement {
     this.main.appendChild(this.garage.render());
-    this.main.appendChild(this.winners);
-    const reRender = () => {
+    (async () => {
+      this.main.appendChild(await this.winners.render());
+      this.winners.addBtnListeners();
+    })();
+    const reRenderGarage = () => {
       this.garage.render();
     };
-    this.main.addEventListener('removed', reRender);
-    this.main.addEventListener('updated', reRender);
-    this.main.addEventListener('created', reRender);
-    this.main.addEventListener('generated', reRender);
+    this.main.addEventListener('removed', reRenderGarage);
+    this.main.addEventListener('updated', reRenderGarage);
+    this.main.addEventListener('created', reRenderGarage);
+    this.main.addEventListener('generated', reRenderGarage);
+    const reRenderWinners = () => {
+      this.winners.render();
+    };
+    document.addEventListener('newWinners', reRenderWinners);
     return this.main;
+  }
+
+  reRenderWinners(): void {
+    this.winners.render();
   }
 }

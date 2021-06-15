@@ -132,11 +132,14 @@ export default class Controls {
     const btnRace = this.actionBtns.querySelector('.btn-race');
     btnRace?.addEventListener('click', () => {
       document.dispatchEvent(new Event('race', { bubbles: true }));
+      btnRace?.classList.add('btn_disabled');
+      this.store.setIsRace(true);
     });
 
     const btnReset = this.actionBtns.querySelector('.btn-reset');
     btnReset?.addEventListener('click', () => {
       document.dispatchEvent(new Event('reset', { bubbles: true }));
+      btnRace?.classList.remove('btn_disabled');
     });
 
     const btnGenerate = this.actionBtns.querySelector('.btn-generate');

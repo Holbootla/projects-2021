@@ -82,7 +82,7 @@ export const getWinners = async (
   sort: WinnersSort = 'time',
   order: WinnersOrder = 'ASC'
 ): Promise<{
-  winners: Promise<{ id: number; wins: number; time: number }>;
+  winners: { id: number; wins: number; time: number }[];
   winnersCount: string | null;
 }> => {
   const response = await fetch(

@@ -1,5 +1,14 @@
-import { deleteCar, driveEngine, startEngine, stopEngine } from '../../api/api';
+import {
+  createWinner,
+  deleteCar,
+  driveEngine,
+  getWinner,
+  startEngine,
+  stopEngine,
+  updateWinner,
+} from '../../api/api';
 import Store from '../../store';
+import Winners from '../winners/winners';
 
 export default class Car {
   name: string;
@@ -42,7 +51,13 @@ export default class Car {
 
   removeListeners: () => void;
 
+  winners: Winners;
+
+  wins: number;
+
   constructor(name: string, color: string, id: number) {
+    this.wins = 0;
+    this.winners = new Winners();
     this.animationID = 0;
     this.TRACK_SIZE = 100;
     this.MILLISECONDS = 1000;
@@ -143,9 +158,30 @@ export default class Car {
       const { velocity, distance } = await startEngine(this.carId);
       this.btnStop.classList.remove('btn_disabled');
       this.animateCar(distance / velocity);
-      await driveEngine(this.carId).then((res) => {
+      await driveEngine(this.carId).then(async (res) => {
         if (res.success === false) {
           cancelAnimationFrame(this.animationID);
+        }
+        if (res.success === true && this.store.getIsRace() === true) {
+          const winnerId = (await getWinner(this.carId)).id;
+          if (winnerId) {
+            this.wins = (await getWinner(this.carId)).wins;
+            this.wins += 1;
+            updateWinner(this.carId, {
+              wins: this.wins,
+              time: +(distance / velocity / this.MILLISECONDS).toFixed(2),
+            });
+          }
+          if (!winnerId) {
+            this.wins = 1;
+            createWinner({
+              id: this.carId,
+              wins: this.wins,
+              time: +(distance / velocity / this.MILLISECONDS).toFixed(2),
+            });
+          }
+
+          this.store.setIsRace(false);
         }
       });
     })();
