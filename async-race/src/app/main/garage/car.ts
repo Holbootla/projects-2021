@@ -56,12 +56,15 @@ export default class Car {
 
   wins: number;
 
+  TIME_TO_SHOW_WIN_MESSAGE: number;
+
   constructor(name: string, color: string, id: number) {
     this.wins = 0;
     this.winners = new Winners();
     this.animationID = 0;
     this.TRACK_SIZE = 100;
     this.MILLISECONDS = 1000;
+    this.TIME_TO_SHOW_WIN_MESSAGE = 5000;
     this.carId = id;
     this.store = Store.getInstance();
     this.name = name;
@@ -196,6 +199,17 @@ export default class Car {
               time: +(distance / velocity / this.MILLISECONDS).toFixed(2),
             });
           }
+          const winMessage = document.createElement('div');
+          winMessage.classList.add('win-message');
+          winMessage.innerText = `${this.name} won with time ${(
+            distance /
+            velocity /
+            this.MILLISECONDS
+          ).toFixed(2)} seconds`;
+          document.body.appendChild(winMessage);
+          setTimeout(() => {
+            winMessage.remove();
+          }, this.TIME_TO_SHOW_WIN_MESSAGE);
           document.dispatchEvent(new Event('newWinners', { bubbles: true }));
           this.store.setIsRace(false);
         }
