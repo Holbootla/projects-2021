@@ -174,9 +174,18 @@ export default class Car {
           if (winnerId) {
             this.wins = (await getWinner(this.carId)).wins;
             this.wins += 1;
+            const currentTime = +(
+              distance /
+              velocity /
+              this.MILLISECONDS
+            ).toFixed(2);
+            const oldTime = (await getWinner(this.carId)).time;
             updateWinner(this.carId, {
               wins: this.wins,
-              time: +(distance / velocity / this.MILLISECONDS).toFixed(2),
+              time:
+                currentTime < oldTime
+                  ? +(distance / velocity / this.MILLISECONDS).toFixed(2)
+                  : oldTime,
             });
           }
           if (!winnerId) {
