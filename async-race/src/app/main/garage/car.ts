@@ -1,6 +1,7 @@
 import {
   createWinner,
   deleteCar,
+  deleteWinner,
   driveEngine,
   getWinner,
   startEngine,
@@ -128,6 +129,12 @@ export default class Car {
     this.btnRemove.addEventListener('click', () => {
       deleteCar(this.carId);
       this.btnSelect.dispatchEvent(new Event('removed', { bubbles: true }));
+      setTimeout(() => {
+        deleteWinner(this.carId);
+        this.btnSelect.dispatchEvent(
+          new Event('newWinners', { bubbles: true })
+        );
+      }, 100);
     });
 
     const start = () => {
