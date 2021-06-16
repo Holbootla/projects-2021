@@ -180,7 +180,7 @@ export default class Car {
               time: +(distance / velocity / this.MILLISECONDS).toFixed(2),
             });
           }
-
+          document.dispatchEvent(new Event('newWinners', { bubbles: true }));
           this.store.setIsRace(false);
         }
       });

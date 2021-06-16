@@ -73,8 +73,8 @@ export const driveEngine = async (
   return response.json();
 };
 
-type WinnersSort = 'id' | 'wins' | 'time';
-type WinnersOrder = 'ASC' | 'DESC';
+export type WinnersSort = 'id' | 'wins' | 'time';
+export type WinnersOrder = 'ASC' | 'DESC';
 
 export const getWinners = async (
   page = 1,

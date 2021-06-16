@@ -37,6 +37,8 @@ export default class Winners {
   render(): Promise<HTMLDivElement> {
     const constructWinners = async () => {
       const winnersPageNumber = this.store.getWinnersPageNumber();
+      const winnersSort = this.store.getWinnersSort();
+      const winnersOrder = this.store.getWinnersOrder();
       this.btnPagePrev.classList.remove('btn_disabled');
       this.btnPageNext.classList.remove('btn_disabled');
       if (winnersPageNumber === 1) {
@@ -44,14 +46,22 @@ export default class Winners {
       }
       (async () => {
         const { winners } = await getWinners(
-          this.store.getWinnersPageNumber() + 1
+          this.store.getWinnersPageNumber() + 1,
+          this.limit,
+          this.store.getWinnersSort(),
+          winnersOrder
         );
         if (winners.length === 0) {
           this.btnPageNext.classList.add('btn_disabled');
         }
       })();
       let listNumber = (winnersPageNumber - 1) * this.limit + 1;
-      const { winners, winnersCount } = await getWinners(winnersPageNumber);
+      const { winners, winnersCount } = await getWinners(
+        winnersPageNumber,
+        this.limit,
+        winnersSort,
+        winnersOrder
+      );
       const scoreMain = document.createElement('div');
       scoreMain.classList.add('score-main');
       for (const el of winners) {
@@ -73,6 +83,20 @@ export default class Winners {
         );
         listNumber += 1;
       }
+      let winsName = 'Wins';
+      let timeName = 'Best time (seconds)';
+      if (winnersSort === 'wins' && winnersOrder === 'ASC') {
+        winsName = 'Wins &#8595;';
+      }
+      if (winnersSort === 'wins' && winnersOrder === 'DESC') {
+        winsName = 'Wins &#8593;';
+      }
+      if (winnersSort === 'time' && winnersOrder === 'ASC') {
+        timeName = 'Best time (seconds) &#8595;';
+      }
+      if (winnersSort === 'time' && winnersOrder === 'DESC') {
+        timeName = 'Best time (seconds) &#8593;';
+      }
       this.winnersContainer.innerHTML = `
         <h2 class="title">Winners (${winnersCount})</h2>
         <h3 class="page">Page #${this.store.getWinnersPageNumber()}</h3>
@@ -81,14 +105,40 @@ export default class Winners {
             <div class="score-title">Number</div>
             <div class="score-title">Car</div>
             <div class="score-title">Name</div>
-            <div class="score-title">Wins</div>
-            <div class="score-title">Best time (seconds)</div>
+            <div class="score-title sort-wins">${winsName}</div>
+            <div class="score-title sort-time">${timeName}</div>
           </div>
           <div class="score-main">
           ${scoreMain.innerHTML}
           </div>
         </div>
       `;
+      this.winnersContainer
+        .querySelector('.sort-wins')
+        ?.addEventListener('click', (event) => {
+          this.store.setWinnersSort('wins');
+          if (winnersOrder === 'ASC') {
+            this.store.setWinnersOrder('DESC');
+          } else {
+            this.store.setWinnersOrder('ASC');
+          }
+          event.target?.dispatchEvent(
+            new Event('newWinners', { bubbles: true })
+          );
+        });
+      this.winnersContainer
+        .querySelector('.sort-time')
+        ?.addEventListener('click', (event) => {
+          this.store.setWinnersSort('time');
+          if (winnersOrder === 'ASC') {
+            this.store.setWinnersOrder('DESC');
+          } else {
+            this.store.setWinnersOrder('ASC');
+          }
+          event.target?.dispatchEvent(
+            new Event('newWinners', { bubbles: true })
+          );
+        });
       this.pageControls.appendChild(this.btnPagePrev);
       this.pageControls.appendChild(this.btnPageNext);
       this.winnersContainer.appendChild(this.pageControls);

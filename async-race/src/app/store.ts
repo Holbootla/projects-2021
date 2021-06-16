@@ -1,3 +1,5 @@
+import { WinnersOrder, WinnersSort } from './api/api';
+
 export default class Store {
   private static instance: Store;
 
@@ -9,11 +11,17 @@ export default class Store {
 
   winnersPageNumber: number;
 
+  winnersSort: 'id' | 'wins' | 'time';
+
+  winnersOrder: 'ASC' | 'DESC';
+
   private constructor() {
     this.pageNumber = 1;
     this.winnersPageNumber = 1;
     this.selectedCar = { name: 'Tesla', color: '#000000', id: 1 };
     this.isRace = false;
+    this.winnersSort = 'time';
+    this.winnersOrder = 'ASC';
   }
 
   public static getInstance(): Store {
@@ -61,5 +69,21 @@ export default class Store {
 
   public decWinnersPageNumber(): void {
     this.winnersPageNumber -= 1;
+  }
+
+  public getWinnersSort(): WinnersSort {
+    return this.winnersSort;
+  }
+
+  public setWinnersSort(string: WinnersSort): void {
+    this.winnersSort = string;
+  }
+
+  public getWinnersOrder(): WinnersOrder {
+    return this.winnersOrder;
+  }
+
+  public setWinnersOrder(string: WinnersOrder): void {
+    this.winnersOrder = string;
   }
 }
