@@ -167,8 +167,13 @@ export default class Winners {
     });
   }
 
-  toggleVisibility(): void {
-    this.winnersContainer.classList.toggle('invisible');
+  addVisibility(): void {
+    this.winnersContainer.classList.remove('invisible');
+    this.render();
+  }
+
+  removeVisibility(): void {
+    this.winnersContainer.classList.add('invisible');
     this.render();
   }
 }

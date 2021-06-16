@@ -39,8 +39,13 @@ export default class Main {
     this.winners.render();
   }
 
-  toggleVisibility(): void {
-    this.garage.toggleVisibility();
-    this.winners.toggleVisibility();
+  addGarageVisibility(): void {
+    this.garage.addVisibility();
+    this.winners.removeVisibility();
+  }
+
+  addWinnersVisibility(): void {
+    this.garage.removeVisibility();
+    this.winners.addVisibility();
   }
 }

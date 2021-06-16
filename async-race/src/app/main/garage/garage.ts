@@ -71,7 +71,11 @@ export default class Garage {
     return this.pageControls;
   }
 
-  toggleVisibility(): void {
-    this.garage.classList.toggle('invisible');
+  addVisibility(): void {
+    this.garage.classList.remove('invisible');
+  }
+
+  removeVisibility(): void {
+    this.garage.classList.add('invisible');
   }
 }

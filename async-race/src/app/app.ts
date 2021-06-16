@@ -22,7 +22,11 @@ export default class App {
     this.body?.appendChild(this.main);
   }
 
-  toggleVisibility(): void {
-    this.mainInstance.toggleVisibility();
+  addGarageVisibility(): void {
+    this.mainInstance.addGarageVisibility();
+  }
+
+  addWinnersVisibility(): void {
+    this.mainInstance.addWinnersVisibility();
   }
 }
