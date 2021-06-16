@@ -28,7 +28,7 @@ export default class GenerateCars {
       'Tesla',
     ];
     this.series = ['A', 'B', 'C', 'E', 'S', 'RX', 'RS', 'M', 'i', 'X'];
-    this.seriesNumbers = ['1', '2', '3', '4', '5', '6', '7', '8'];
+    this.seriesNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '666'];
     this.HOW_MUCH_GENERATE = 100;
     this.MAX_NUMBER_OF_HEX_COLOR = 16777215;
   }
