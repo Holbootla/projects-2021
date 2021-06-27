@@ -56,6 +56,23 @@ export default class CardsContainer {
           </div>
         </div>
       `;
+      const rotateBtn = wordCard.querySelector('.card-word-flip-icon');
+      rotateBtn?.addEventListener('click', (event) => {
+        wordCard
+          .querySelector('.card-word-inner')
+          ?.classList.add('card-word-flip');
+        wordCard.addEventListener('mouseleave', () => {
+          wordCard
+            .querySelector('.card-word-inner')
+            ?.classList.remove('card-word-flip');
+        });
+        event.stopPropagation();
+      });
+      wordCard.addEventListener('click', () => {
+        const audio = new Audio();
+        audio.src = `https://wooordhunt.ru/data/sound/sow/us/${word.word}.mp3`;
+        audio.autoplay = true;
+      });
       this.cards.appendChild(wordCard);
     });
   }
