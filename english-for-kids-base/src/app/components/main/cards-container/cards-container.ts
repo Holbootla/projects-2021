@@ -23,8 +23,14 @@ export default class CardsContainer {
     cardsData.forEach((item) => {
       const categoryCard = document.createElement('div');
       categoryCard.classList.add('card-theme');
-      categoryCard.style.background = `url(${item.image})`;
+      categoryCard.style.backgroundImage = `url(${item.image})`;
       categoryCard.style.backgroundSize = 'cover';
+      categoryCard.innerHTML = `
+      <div class="card-theme-title">${item.category}</div>
+      `;
+      categoryCard.addEventListener('click', () => {
+        window.location.hash = item.category;
+      });
       this.cards.appendChild(categoryCard);
     });
   }
