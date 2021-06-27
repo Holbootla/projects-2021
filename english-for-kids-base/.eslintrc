@@ -12,8 +12,7 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json",
-    "tsconfigRootDir": "__dirname"
+    "project": "./RSSchool-JS-2021-Q1/holbootla-JSFE2021Q1/english-for-kids-base/tsconfig.json"
   },
   "plugins": [
     "@typescript-eslint",
