@@ -1,6 +1,7 @@
 const cardsData = [
   {
     category: 'Action',
+    image: 'images/category/action.jpg',
     words: [
       {
         word: 'cry',
@@ -102,6 +103,7 @@ const cardsData = [
   },
   {
     category: 'Animals',
+    image: 'images/category/animals.jpg',
     words: [
       {
         word: 'cat',
@@ -155,6 +157,7 @@ const cardsData = [
   },
   {
     category: 'Clothes',
+    image: 'images/category/clothes.jpg',
     words: [
       {
         word: 'skirt',
@@ -208,6 +211,7 @@ const cardsData = [
   },
   {
     category: 'Emotions',
+    image: 'images/category/emotions.jpg',
     words: [
       {
         word: 'sad',
@@ -261,6 +265,7 @@ const cardsData = [
   },
   {
     category: 'Food',
+    image: 'images/category/food.jpg',
     words: [
       {
         word: 'banana',
@@ -314,6 +319,7 @@ const cardsData = [
   },
   {
     category: 'Family',
+    image: 'images/category/family.jpg',
     words: [
       {
         word: 'mother',
@@ -367,6 +373,7 @@ const cardsData = [
   },
   {
     category: 'Transport',
+    image: 'images/category/transport.jpg',
     words: [
       {
         word: 'car',
@@ -420,6 +427,7 @@ const cardsData = [
   },
   {
     category: 'Sports',
+    image: 'images/category/sports.jpg',
     words: [
       {
         word: 'football',
