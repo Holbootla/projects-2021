@@ -1,4 +1,4 @@
-const cards = [
+const cardsData = [
   {
     category: 'Action',
     words: [
@@ -473,4 +473,4 @@ const cards = [
   },
 ];
 
-export default cards;
+export default cardsData;

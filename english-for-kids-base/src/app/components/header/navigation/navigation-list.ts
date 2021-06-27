@@ -1,4 +1,4 @@
-import cards from '../../../../data/cards';
+import cardsData from '../../../../data/cards-data';
 import CategoryItem from './category-item';
 
 export default class NavigationList {
@@ -9,7 +9,10 @@ export default class NavigationList {
   constructor() {
     this.navigationList = document.createElement('ul');
     this.navigationList.classList.add('navigation-list');
-    this.listItems = cards.map((card) => card.category);
+    this.navigationList.appendChild(
+      new CategoryItem('Main page').getNavigationListItem()
+    );
+    this.listItems = cardsData.map((card) => card.category);
     this.listItems.forEach((category) => {
       this.navigationList.appendChild(
         new CategoryItem(category).getNavigationListItem()
@@ -22,6 +25,6 @@ export default class NavigationList {
   }
 
   refreshListItems(): void {
-    this.listItems = cards.map((card) => card.category);
+    this.listItems = cardsData.map((card) => card.category);
   }
 }
