@@ -1,9 +1,13 @@
+import State from '../../../state';
 import cardsData from '../../../../data/cards-data';
 
 export default class CardsContainer {
   cards: HTMLDivElement;
 
+  state: State;
+
   constructor() {
+    this.state = State.getInstance();
     this.cards = document.createElement('div');
     this.cards.classList.add('cards-container');
   }
@@ -36,6 +40,7 @@ export default class CardsContainer {
   }
 
   getWordCards(): void {
+    const playMode = this.state.getPlayMode();
     this.cards.innerHTML = '';
     const currentCategoryIndex = cardsData.findIndex(
       (item) =>
@@ -47,11 +52,19 @@ export default class CardsContainer {
       wordCard.classList.add('card-word');
       wordCard.innerHTML = `
         <div class="card-word-inner">
-          <div class="card-word-front" style="background-image: url(${word.image})">
-              <div class="card-word-title">${word.word}</div>
-              <div class="card-word-flip-icon"></div>
+          <div class="card-word-front" style="background-image: url(${
+            word.image
+          })">
+              <div class="card-word-title ${playMode ? 'z-index-1' : ''}">${
+        word.word
+      }</div>
+              <div class="card-word-flip-icon ${
+                playMode ? 'display-none' : ''
+              }"></div>
           </div>
-          <div class="card-word-back" style="background-image: url(${word.image})">
+          <div class="card-word-back" style="background-image: url(${
+            word.image
+          })">
               <div class="card-word-title">${word.translation}</div>
           </div>
         </div>

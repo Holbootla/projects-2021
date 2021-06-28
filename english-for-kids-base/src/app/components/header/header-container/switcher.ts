@@ -1,7 +1,12 @@
+import State from '../../../state';
+
 export default class Switcher {
   switcher: HTMLDivElement;
 
+  state: State;
+
   constructor() {
+    this.state = State.getInstance();
     this.switcher = document.createElement('div');
     this.switcher.classList.add('game-mode-button');
     this.switcher.innerHTML = `
@@ -13,7 +18,6 @@ export default class Switcher {
   getSwitcher(): HTMLDivElement {
     const PLAY_TEXT = 'PLAY';
     const TRAIN_TEXT = 'TRAIN';
-    let PLAY_MODE = false;
 
     const gameModeButtonSwitcher = this.switcher.querySelector(
       '.game-mode-button-switcher'
@@ -34,12 +38,10 @@ export default class Switcher {
         this.switcher.classList.contains('game-mode-button-on')
       ) {
         gameModeButtonText.innerHTML = TRAIN_TEXT;
-        PLAY_MODE = true;
-        // turnOnPlayMode();
+        this.state.setPlayMode(true);
       } else if (gameModeButtonText) {
         gameModeButtonText.innerHTML = PLAY_TEXT;
-        PLAY_MODE = false;
-        // turnOffPlayMode();
+        this.state.setPlayMode(false);
       }
     });
     return this.switcher;
