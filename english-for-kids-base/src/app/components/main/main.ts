@@ -41,13 +41,5 @@ export default class Main {
     this.main.appendChild(this.cards.getCards());
     this.main.appendChild(this.startButton.getButton());
     this.cards.getCards();
-    const hash = window.location.hash.slice(1).toLowerCase();
-    if (!hash || !this.state.getPlayMode()) {
-      this.stars.removeVisibility();
-      this.startButton.removeVisibility();
-    } else if (this.state.getPlayMode()) {
-      this.stars.addVisibility();
-      this.startButton.addVisibility();
-    }
   }
 }
