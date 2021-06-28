@@ -11,6 +11,24 @@ export default class StartButton {
     this.button.classList.add('start-game-button');
     this.button.classList.add('display-none');
     this.button.innerText = 'Start game';
+    this.button.addEventListener('click', () => {
+      const gameStatus = this.state.getGameStatus();
+      if (gameStatus === false) {
+        this.state.setGameStatus(true);
+      } else {
+        console.log('REPEAT WORD');
+      }
+    });
+    window.addEventListener('gameStatusChange', () => {
+      const gameStatus = this.state.getGameStatus();
+      if (gameStatus) {
+        this.button.classList.add('repeat-button');
+        this.button.innerText = 'Repeat';
+      } else {
+        this.button.classList.remove('repeat-button');
+        this.button.innerText = 'Start game';
+      }
+    });
   }
 
   getButton(): HTMLDivElement {

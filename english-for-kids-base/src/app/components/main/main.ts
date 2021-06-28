@@ -28,6 +28,7 @@ export default class Main {
   getMain(): HTMLElement {
     window.addEventListener('hashchange', () => {
       this.refreshMain();
+      this.state.setGameStatus(false);
     });
     window.addEventListener('playModeChange', () => {
       this.refreshMain();
@@ -36,7 +37,9 @@ export default class Main {
   }
 
   refreshMain(): void {
-    this.main.innerHTML = '';
+    this.main.removeChild(this.stars.getStars());
+    this.main.removeChild(this.cards.getCards());
+    this.main.removeChild(this.startButton.getButton());
     this.main.appendChild(this.stars.getStars());
     this.main.appendChild(this.cards.getCards());
     this.main.appendChild(this.startButton.getButton());

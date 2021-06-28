@@ -43,6 +43,7 @@ export default class Switcher {
         gameModeButtonText.innerHTML = PLAY_TEXT;
         this.state.setPlayMode(false);
       }
+      this.state.setGameStatus(false);
     });
     return this.switcher;
   }
