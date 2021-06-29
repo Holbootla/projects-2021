@@ -5,9 +5,12 @@ export default class State {
 
   gameStatus: boolean;
 
+  answer: boolean;
+
   private constructor() {
     this.playMode = false;
     this.gameStatus = false;
+    this.answer = false;
   }
 
   public static getInstance(): State {
@@ -32,6 +35,11 @@ export default class State {
 
   public setGameStatus(gameStatus: boolean): void {
     this.gameStatus = gameStatus;
-    dispatchEvent(new Event('gameStatusChange', { bubbles: true }));
+    document.dispatchEvent(new Event('gameStatusChange', { bubbles: true }));
+  }
+
+  public setAnswer(answer: boolean): void {
+    this.answer = answer;
+    document.dispatchEvent(new CustomEvent('answer', { detail: { answer } }));
   }
 }

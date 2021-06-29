@@ -1,4 +1,5 @@
 import State from '../../../state';
+import Stars from '../stars';
 
 export default class Card {
   card: HTMLDivElement;
@@ -11,8 +12,11 @@ export default class Card {
 
   state: State;
 
+  stars: Stars;
+
   constructor(word: string, image: string, translation: string) {
     this.state = State.getInstance();
+    this.stars = new Stars();
     this.card = document.createElement('div');
     this.card.classList.add('card-word');
     this.word = word;
@@ -50,10 +54,23 @@ export default class Card {
       event.stopPropagation();
     });
     this.card.addEventListener('click', () => {
-      const audio = new Audio();
-      audio.src = `https://wooordhunt.ru/data/sound/sow/us/${this.word}.mp3`;
-      audio.autoplay = true;
+      const gameStatus = this.state.getGameStatus();
+      if (gameStatus === false) {
+        this.playAudio();
+      } else {
+        this.chooseCard();
+      }
     });
     return this.card;
+  }
+
+  playAudio(): void {
+    const audio = new Audio();
+    audio.src = `https://wooordhunt.ru/data/sound/sow/us/${this.word}.mp3`;
+    audio.autoplay = true;
+  }
+
+  chooseCard(): void {
+    this.state.setAnswer(false);
   }
 }

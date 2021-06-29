@@ -19,7 +19,7 @@ export default class StartButton {
         console.log('REPEAT WORD');
       }
     });
-    window.addEventListener('gameStatusChange', () => {
+    document.addEventListener('gameStatusChange', () => {
       const gameStatus = this.state.getGameStatus();
       if (gameStatus) {
         this.button.classList.add('repeat-button');

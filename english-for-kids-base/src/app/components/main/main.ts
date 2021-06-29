@@ -21,6 +21,9 @@ export default class Main {
     this.cards = new CardsContainer();
     this.startButton = new StartButton();
     this.main.appendChild(this.stars.getStars());
+    document.addEventListener('answer', (event) => {
+      this.stars.addStar((<CustomEvent>event).detail.answer);
+    });
     this.main.appendChild(this.cards.getCards());
     this.main.appendChild(this.startButton.getButton());
   }
@@ -29,9 +32,11 @@ export default class Main {
     window.addEventListener('hashchange', () => {
       this.refreshMain();
       this.state.setGameStatus(false);
+      this.stars.refreshStars();
     });
     window.addEventListener('playModeChange', () => {
       this.refreshMain();
+      this.stars.refreshStars();
     });
     return this.main;
   }

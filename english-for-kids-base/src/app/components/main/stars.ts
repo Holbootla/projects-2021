@@ -5,12 +5,18 @@ export default class Stars {
 
   state: State;
 
+  starsArray: string[];
+
+  MAX_STARS_TO_SHOW: number;
+
   constructor() {
     this.state = State.getInstance();
     this.stars = document.createElement('div');
     this.stars.classList.add('stars');
     this.stars.classList.add('display-none');
-    this.stars.innerHTML = `&#9733&#9733&#9733&#9733&#9733&#9733`;
+    this.MAX_STARS_TO_SHOW = 8;
+    this.starsArray = [];
+    this.stars.innerHTML = ``;
   }
 
   getStars(): HTMLDivElement {
@@ -29,5 +35,25 @@ export default class Stars {
 
   addVisibility(): void {
     this.stars.classList.remove('display-none');
+  }
+
+  addStar(isCorrect: boolean): void {
+    if (isCorrect) {
+      this.starsArray.push('&#9733');
+      if (this.starsArray.length > this.MAX_STARS_TO_SHOW) {
+        this.starsArray.shift();
+      }
+    } else {
+      this.starsArray.push('&#9734');
+      if (this.starsArray.length > this.MAX_STARS_TO_SHOW) {
+        this.starsArray.shift();
+      }
+    }
+    this.stars.innerHTML = `${this.starsArray.join('')}`;
+  }
+
+  refreshStars(): void {
+    this.starsArray = [];
+    this.stars.innerHTML = '';
   }
 }
