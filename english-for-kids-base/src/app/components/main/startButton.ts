@@ -16,7 +16,9 @@ export default class StartButton {
       if (gameStatus === false) {
         this.state.setGameStatus(true);
       } else {
-        console.log('REPEAT WORD');
+        const audio = new Audio();
+        audio.src = `https://wooordhunt.ru/data/sound/sow/us/${this.state.getCurrentWord()}.mp3`;
+        audio.autoplay = true;
       }
     });
     document.addEventListener('gameStatusChange', () => {

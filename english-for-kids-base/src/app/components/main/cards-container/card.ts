@@ -71,6 +71,18 @@ export default class Card {
   }
 
   chooseCard(): void {
-    this.state.setAnswer(false);
+    if (this.word === this.state.getCurrentWord()) {
+      this.state.setAnswer(true);
+      this.card.innerHTML = `
+        <div class="card-word-inner">
+          <div class="card-word-front" style="background-image: url(${this.image})">
+            <div class="card-word-title">${this.word}</div>
+          </div>
+        </div>
+      `;
+      this.card.classList.add('disabled');
+    } else {
+      this.state.setAnswer(false);
+    }
   }
 }

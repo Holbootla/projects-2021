@@ -7,10 +7,16 @@ export default class State {
 
   answer: boolean;
 
+  wordsCounter: number;
+
+  currentWords: string[];
+
   private constructor() {
     this.playMode = false;
     this.gameStatus = false;
     this.answer = false;
+    this.wordsCounter = 0;
+    this.currentWords = [];
   }
 
   public static getInstance(): State {
@@ -41,5 +47,22 @@ export default class State {
   public setAnswer(answer: boolean): void {
     this.answer = answer;
     document.dispatchEvent(new CustomEvent('answer', { detail: { answer } }));
+  }
+
+  public incWordCounter(): void {
+    this.wordsCounter += 1;
+  }
+
+  public getCurrentWord(): string {
+    return this.currentWords[this.wordsCounter];
+  }
+
+  public setCurrentWords(words: string[]): void {
+    this.currentWords = words;
+    this.wordsCounter = 0;
+  }
+
+  public isFinish(): boolean {
+    return !(this.currentWords.length > this.wordsCounter);
   }
 }
