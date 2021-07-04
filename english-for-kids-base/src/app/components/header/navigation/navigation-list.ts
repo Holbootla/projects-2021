@@ -10,6 +10,9 @@ export default class NavigationList {
     this.navigationList = document.createElement('ul');
     this.navigationList.classList.add('navigation-list');
     this.navigationList.appendChild(
+      new CategoryItem('Statistics').getNavigationListItem()
+    );
+    this.navigationList.appendChild(
       new CategoryItem('Main page').getNavigationListItem()
     );
     this.listItems = cardsData.map((card) => card.category);

@@ -175,14 +175,14 @@ body {
 
 .hamburger-menu {
   width: 320px;
-  height: calc(100vh + 100px);
+  height: 100vh;
   padding-bottom: 100px;
+  padding-top: 100px;
   position: absolute;
   top: 0;
   left: -320px;
   display: flex;
   justify-content: center;
-  align-items: center;
   z-index: 100;
   background: #ff2222;
   transition: 0.3s;
@@ -195,6 +195,7 @@ body {
 
 .navigation-list {
   list-style: none;
+  overflow-y: scroll;
 }
 
 .navigation-item {

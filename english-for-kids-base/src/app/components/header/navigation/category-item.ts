@@ -10,7 +10,9 @@ export default class CategoryItem {
     navigationListItem.classList.add('navigation-item');
     navigationListItem.innerText = this.category;
     navigationListItem.addEventListener('click', () => {
-      if (this.category === 'Main page') {
+      if (this.category === 'Statistics') {
+        window.location.hash = 'statistics';
+      } else if (this.category === 'Main page') {
         window.location.hash = '';
       } else {
         window.location.hash = this.category.toLowerCase();
