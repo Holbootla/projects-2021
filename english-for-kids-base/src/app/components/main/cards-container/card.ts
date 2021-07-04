@@ -46,17 +46,21 @@ export default class Card {
       this.card
         .querySelector('.card-word-inner')
         ?.classList.add('card-word-flip');
+      this.card.classList.add('flipped');
       this.card.addEventListener('mouseleave', () => {
         this.card
           .querySelector('.card-word-inner')
           ?.classList.remove('card-word-flip');
+        this.card.classList.remove('flipped');
       });
       event.stopPropagation();
     });
     this.card.addEventListener('click', () => {
       const gameStatus = this.state.getGameStatus();
       if (gameStatus === false) {
-        this.playAudio();
+        if (!this.card.classList.contains('flipped')) {
+          this.playAudio();
+        }
       } else {
         this.chooseCard();
       }
