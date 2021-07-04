@@ -73,6 +73,7 @@ export default class Card {
   chooseCard(): void {
     if (this.word === this.state.getCurrentWord()) {
       this.state.setAnswer(true);
+      this.state.incRightAnswers();
       this.card.innerHTML = `
         <div class="card-word-inner">
           <div class="card-word-front" style="background-image: url(${this.image})">
@@ -83,6 +84,7 @@ export default class Card {
       this.card.classList.add('disabled');
     } else {
       this.state.setAnswer(false);
+      this.state.incWrongAnswers();
     }
   }
 }

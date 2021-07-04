@@ -3,6 +3,10 @@ import State from './state';
 
 export default function gameProcess(): void {
   const SECOND = 1000;
+  const state = State.getInstance();
+  const CORRECT_SIGNAL_SRC = 'audio/correct.mp3';
+  const WRONG_SIGNAL_SRC = 'audio/error.mp3';
+
   function playAudio(source: string): void {
     const audio = new Audio();
     audio.src = source;
@@ -10,7 +14,7 @@ export default function gameProcess(): void {
   }
 
   function gameResult() {
-    const wrongAnswers = 0;
+    const wrongAnswers = state.getWrongAnswers();
     const whatResult = wrongAnswers === 0 ? 'Good' : 'Bad';
     const smile = wrongAnswers === 0 ? 'green-smile' : 'red-smile';
 
@@ -29,7 +33,7 @@ export default function gameProcess(): void {
       <div class="result-container">
         <div class="result-title">${whatResult} job!</div>
         <div class="results">
-        Your result: ${wrongAnswers} mistakes
+        Mistakes: ${wrongAnswers}
         </div>
         <img class="smile" src="images/${smile}.svg">
       </div>
@@ -42,10 +46,6 @@ export default function gameProcess(): void {
       document.dispatchEvent(new Event('restart'));
     }, SECOND * 5);
   }
-
-  const state = State.getInstance();
-  const CORRECT_SIGNAL_SRC = 'audio/correct.mp3';
-  const WRONG_SIGNAL_SRC = 'audio/error.mp3';
 
   document.addEventListener('gameStatusChange', () => {
     const gameStatus = state.getGameStatus();

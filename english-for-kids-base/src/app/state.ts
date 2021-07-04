@@ -11,12 +11,18 @@ export default class State {
 
   currentWords: string[];
 
+  rightAnswers: number;
+
+  wrongAnswers: number;
+
   private constructor() {
     this.playMode = false;
     this.gameStatus = false;
     this.answer = false;
     this.wordsCounter = 0;
     this.currentWords = [];
+    this.rightAnswers = 0;
+    this.wrongAnswers = 0;
   }
 
   public static getInstance(): State {
@@ -32,6 +38,7 @@ export default class State {
 
   public setPlayMode(playMode: boolean): void {
     this.playMode = playMode;
+    this.resetAnswers();
     dispatchEvent(new Event('playModeChange', { bubbles: true }));
   }
 
@@ -41,6 +48,7 @@ export default class State {
 
   public setGameStatus(gameStatus: boolean): void {
     this.gameStatus = gameStatus;
+    this.resetAnswers();
     document.dispatchEvent(new Event('gameStatusChange', { bubbles: true }));
   }
 
@@ -64,5 +72,26 @@ export default class State {
 
   public isFinish(): boolean {
     return !(this.currentWords.length > this.wordsCounter);
+  }
+
+  public incRightAnswers(): void {
+    this.rightAnswers += 1;
+  }
+
+  public incWrongAnswers(): void {
+    this.wrongAnswers += 1;
+  }
+
+  public resetAnswers(): void {
+    this.rightAnswers = 0;
+    this.wrongAnswers = 0;
+  }
+
+  public getRightAnswers(): number {
+    return this.rightAnswers;
+  }
+
+  public getWrongAnswers(): number {
+    return this.wrongAnswers;
   }
 }

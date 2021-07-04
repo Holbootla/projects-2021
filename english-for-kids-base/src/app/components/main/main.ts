@@ -32,6 +32,7 @@ export default class Main {
     window.addEventListener('hashchange', () => {
       this.refreshMain();
       this.state.setGameStatus(false);
+      this.state.resetAnswers();
       this.stars.refreshStars();
     });
     window.addEventListener('playModeChange', () => {
