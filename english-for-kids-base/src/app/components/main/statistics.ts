@@ -43,7 +43,6 @@ export default class Stars {
 
   getStatistics(): HTMLDivElement {
     this.tbody.innerHTML = ``;
-    console.log(this.tbody);
     const statisticsList = this.state.getStatisticsList();
     statisticsList.forEach((item) => {
       this.tbody.insertAdjacentHTML(
