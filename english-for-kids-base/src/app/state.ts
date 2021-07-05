@@ -1,3 +1,5 @@
+import cardsData from '../data/cards-data';
+
 export default class State {
   private static instance: State;
 
@@ -15,6 +17,24 @@ export default class State {
 
   wrongAnswers: number;
 
+  statistics: {
+    category: string;
+    word: string;
+    translation: string;
+    clicks: number;
+    right: number;
+    wrong: number;
+  }[];
+
+  currentStatistics: {
+    category: string;
+    word: string;
+    translation: string;
+    clicks: number;
+    right: number;
+    wrong: number;
+  }[];
+
   private constructor() {
     this.playMode = false;
     this.gameStatus = false;
@@ -23,6 +43,25 @@ export default class State {
     this.currentWords = [];
     this.rightAnswers = 0;
     this.wrongAnswers = 0;
+    this.statistics = [];
+    if (!localStorage.getItem('statistics')) {
+      cardsData.forEach((item) => {
+        item.words.forEach((word) => {
+          this.statistics.push({
+            category: item.category,
+            word: word.word,
+            translation: word.translation,
+            clicks: 0,
+            right: 0,
+            wrong: 0,
+          });
+        });
+      });
+      localStorage.setItem('statistics', `${JSON.stringify(this.statistics)}`);
+    } else {
+      this.statistics = JSON.parse(localStorage.getItem('statistics') ?? '');
+    }
+    this.currentStatistics = [];
   }
 
   public static getInstance(): State {
@@ -93,5 +132,44 @@ export default class State {
 
   public getWrongAnswers(): number {
     return this.wrongAnswers;
+  }
+
+  public getStatisticsList(): {
+    category: string;
+    word: string;
+    translation: string;
+    clicks: number;
+    right: number;
+    wrong: number;
+  }[] {
+    this.currentStatistics = JSON.parse(
+      localStorage.getItem('statistics') ?? ''
+    );
+    return this.currentStatistics;
+  }
+
+  public setStatisticsList(
+    actionType: string,
+    category: string,
+    word: string
+  ): void {
+    const indexOfStatItem = this.statistics.findIndex(
+      (item) => item.category === category && item.word === word
+    );
+    switch (actionType) {
+      case 'clicks':
+        this.statistics[indexOfStatItem].clicks += 1;
+        break;
+      case 'right':
+        this.statistics[indexOfStatItem].right += 1;
+        break;
+      case 'wrong':
+        this.statistics[indexOfStatItem].wrong += 1;
+        break;
+      default:
+        break;
+    }
+    localStorage.setItem('statistics', `${JSON.stringify(this.statistics)}`);
+    document.dispatchEvent(new Event('statisticsUpd'));
   }
 }

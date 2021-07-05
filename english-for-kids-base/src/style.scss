@@ -15,7 +15,16 @@ a {
 }
 
 ::-webkit-scrollbar {
-  display: none;
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #cccccc8f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d84b4b;
 }
 
 .no-scroll {
@@ -186,6 +195,10 @@ body {
   z-index: 100;
   background: #ff2222;
   transition: 0.3s;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .hamburger-menu-opened {
@@ -480,4 +493,32 @@ footer {
   opacity: 0.5;
   pointer-events: none;
   cursor: default;
+}
+
+.page {
+  width: 100%;
+}
+
+.statistics-container {
+  justify-self: start;
+  min-width: 100%;
+  overflow-x: scroll;
+}
+
+.statistics {
+  min-width: 100%;
+  text-align: center;
+
+  td {
+    padding: 5px 10px;
+  }
+
+  thead tr td {
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: #ff99996c;
+  }
 }

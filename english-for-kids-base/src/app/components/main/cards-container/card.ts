@@ -14,11 +14,19 @@ export default class Card {
 
   stars: Stars;
 
-  constructor(word: string, image: string, translation: string) {
+  category: string;
+
+  constructor(
+    category: string,
+    word: string,
+    image: string,
+    translation: string
+  ) {
     this.state = State.getInstance();
     this.stars = new Stars();
     this.card = document.createElement('div');
     this.card.classList.add('card-word');
+    this.category = category;
     this.word = word;
     this.image = image;
     this.translation = translation;
@@ -60,6 +68,7 @@ export default class Card {
       if (gameStatus === false) {
         if (!this.card.classList.contains('flipped')) {
           this.playAudio();
+          this.state.setStatisticsList('clicks', this.category, this.word);
         }
       } else {
         this.chooseCard();
@@ -86,9 +95,11 @@ export default class Card {
         </div>
       `;
       this.card.classList.add('disabled');
+      this.state.setStatisticsList('right', this.category, this.word);
     } else {
       this.state.setAnswer(false);
       this.state.incWrongAnswers();
+      this.state.setStatisticsList('wrong', this.category, this.word);
     }
   }
 }
