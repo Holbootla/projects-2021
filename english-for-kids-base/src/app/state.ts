@@ -1,5 +1,15 @@
 import cardsData from '../data/cards-data';
 
+export type OrderType =
+  | 'category'
+  | 'word'
+  | 'clicks'
+  | 'right'
+  | 'wrong'
+  | 'percent';
+
+export type Order = 'ASC' | 'DESC';
+
 export default class State {
   private static instance: State;
 
@@ -35,6 +45,10 @@ export default class State {
     wrong: number;
   }[];
 
+  orderType: OrderType;
+
+  order: Order;
+
   private constructor() {
     this.playMode = false;
     this.gameStatus = false;
@@ -62,6 +76,8 @@ export default class State {
       this.statistics = JSON.parse(localStorage.getItem('statistics') ?? '');
     }
     this.currentStatistics = [];
+    this.orderType = 'category';
+    this.order = 'ASC';
   }
 
   public static getInstance(): State {
@@ -134,7 +150,10 @@ export default class State {
     return this.wrongAnswers;
   }
 
-  public getStatisticsList(): {
+  public getStatisticsList(
+    orderType: OrderType = 'category',
+    order: Order = 'ASC'
+  ): {
     category: string;
     word: string;
     translation: string;
@@ -142,10 +161,63 @@ export default class State {
     right: number;
     wrong: number;
   }[] {
+    this.orderType = orderType;
+    this.order = order;
     this.currentStatistics = JSON.parse(
       localStorage.getItem('statistics') ?? ''
     );
-    return this.currentStatistics;
+    switch (this.orderType) {
+      case 'category':
+        return this.currentStatistics.sort((a, b) => {
+          if (a.category < b.category) {
+            return this.order === 'DESC' ? 1 : -1;
+          }
+          if (a.category > b.category) {
+            return this.order === 'DESC' ? -1 : 1;
+          }
+          return 0;
+        });
+      case 'word':
+        return this.currentStatistics.sort((a, b) => {
+          if (a.word < b.word) {
+            return this.order === 'DESC' ? 1 : -1;
+          }
+          if (a.word > b.word) {
+            return this.order === 'DESC' ? -1 : 1;
+          }
+          return 0;
+        });
+      case 'clicks':
+        return this.currentStatistics.sort((a, b) =>
+          this.order === 'DESC' ? a.clicks - b.clicks : b.clicks - a.clicks
+        );
+      case 'right':
+        return this.currentStatistics.sort((a, b) =>
+          this.order === 'DESC' ? a.right - b.right : b.right - a.right
+        );
+      case 'wrong':
+        return this.currentStatistics.sort((a, b) =>
+          this.order === 'DESC' ? a.wrong - b.wrong : b.wrong - a.wrong
+        );
+      case 'percent':
+        return this.currentStatistics.sort((a, b) =>
+          this.order === 'DESC'
+            ? Math.floor((a.right / (a.right + a.wrong) || 0) * 100) -
+              Math.floor((b.right / (b.right + b.wrong) || 0) * 100)
+            : Math.floor((b.right / (b.right + b.wrong) || 0) * 100) -
+              Math.floor((a.right / (a.right + a.wrong) || 0) * 100)
+        );
+      default:
+        return this.currentStatistics.sort((a, b) => {
+          if (a.category < b.category) {
+            return this.order === 'DESC' ? 1 : -1;
+          }
+          if (a.category > b.category) {
+            return this.order === 'DESC' ? -1 : 1;
+          }
+          return 0;
+        });
+    }
   }
 
   public setStatisticsList(
@@ -171,5 +243,21 @@ export default class State {
     }
     localStorage.setItem('statistics', `${JSON.stringify(this.statistics)}`);
     document.dispatchEvent(new Event('statisticsUpd'));
+  }
+
+  public getOrder(): Order {
+    return this.order;
+  }
+
+  public getOrderType(): OrderType {
+    return this.orderType;
+  }
+
+  public setOrder(order: Order): void {
+    this.order = order;
+  }
+
+  public setOrderType(orderType: OrderType): void {
+    this.orderType = orderType;
   }
 }
