@@ -60,14 +60,14 @@ export default class Statistics {
     const sort = (orderType: OrderType) => {
       if (this.state.getOrderType() !== orderType) {
         this.state.setOrderType(orderType);
-        this.getStatistics(orderType, 'ASC');
+        this.getStatistics();
       } else if (this.state.getOrderType() === orderType) {
         if (this.state.getOrder() === 'ASC') {
           this.state.setOrder('DESC');
-          this.getStatistics(orderType, 'DESC');
+          this.getStatistics();
         } else {
-          this.getStatistics(orderType, 'ASC');
           this.state.setOrder('ASC');
+          this.getStatistics();
         }
       }
     };
@@ -91,10 +91,9 @@ export default class Statistics {
     });
   }
 
-  getStatistics(
-    orderType: OrderType = 'category',
-    order: Order = 'ASC'
-  ): HTMLDivElement {
+  getStatistics(): HTMLDivElement {
+    const order = this.state.getOrder();
+    const orderType = this.state.getOrderType();
     const arrow = order === 'ASC' ? ' &#8595;' : ' &#8593;';
     if (this.categoryBtn) {
       this.categoryBtn.innerHTML = `Category${
