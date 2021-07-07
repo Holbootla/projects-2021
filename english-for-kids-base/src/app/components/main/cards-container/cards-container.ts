@@ -130,7 +130,12 @@ export default class CardsContainer {
           ).getCard()
         );
       }
+      if (sortedCurrentStatistics.length) {
+        this.pageTitle.innerText = `- Repeat difficult words -`;
+        console.log(currentStatistics);
+      } else {
+        this.pageTitle.innerText = `- There is no difficult words for you -`;
+      }
     }
-    this.pageTitle.innerText = `- Repeat difficult words -`;
   }
 }
