@@ -1,4 +1,4 @@
-import State, { OrderType, Order } from '../../state';
+import State, { OrderType } from '../../state';
 
 export default class Statistics {
   state: State;
