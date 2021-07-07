@@ -2,6 +2,7 @@ import State from '../../../state';
 import cardsData from '../../../../data/cards-data';
 import Card from './card';
 import Statistics from '../statistics';
+import StartButton from '../startButton';
 
 export default class CardsContainer {
   cards: HTMLDivElement;
@@ -12,7 +13,11 @@ export default class CardsContainer {
 
   pageTitle: HTMLDivElement;
 
+  startButton: StartButton;
+
   statistics: Statistics;
+
+  repeatDifficultWordsButton: HTMLDivElement;
 
   constructor() {
     this.state = State.getInstance();
@@ -23,12 +28,21 @@ export default class CardsContainer {
     this.pageTitle.classList.add('theme-title');
     this.cards = document.createElement('div');
     this.cards.classList.add('cards-container');
+    this.startButton = new StartButton();
+    this.repeatDifficultWordsButton = document.createElement('div');
+    this.repeatDifficultWordsButton.classList.add('start-game-button');
+    this.repeatDifficultWordsButton.innerText = 'REPEAT!';
+    this.repeatDifficultWordsButton.addEventListener('click', () => {
+      window.location.hash = 'repeat';
+    });
   }
 
   getCards(): HTMLDivElement {
     const hash = window.location.hash.slice(1).toLowerCase();
     if (hash === 'statistics') {
       this.getStatistics();
+    } else if (hash === 'repeat') {
+      this.getDifficultWordCards();
     } else if (hash === '') {
       this.getCategoryCards();
     } else {
@@ -36,6 +50,7 @@ export default class CardsContainer {
     }
     this.page.appendChild(this.pageTitle);
     this.page.appendChild(this.cards);
+    this.page.appendChild(this.startButton.getButton());
     return this.page;
   }
 
@@ -81,5 +96,31 @@ export default class CardsContainer {
     this.pageTitle.innerText = '- Statistics -';
     this.cards.innerHTML = '';
     this.cards.appendChild(this.statistics.getStatistics());
+    this.cards.appendChild(this.repeatDifficultWordsButton);
+  }
+
+  getDifficultWordCards(): void {
+    this.cards.innerHTML = '';
+    const currentStatistics = JSON.parse(
+      localStorage.getItem('statistics') ?? ''
+    );
+    if (Array.isArray(currentStatistics)) {
+      const sortedCurrentStatistics = currentStatistics
+        .filter((word) => word.wrong > 0)
+        .sort((a, b) => b.wrong - a.wrong);
+      const MAX_WORDS =
+        sortedCurrentStatistics.length > 8 ? 8 : sortedCurrentStatistics.length;
+      for (let i = 0; i <= MAX_WORDS - 1; i += 1) {
+        this.cards.appendChild(
+          new Card(
+            sortedCurrentStatistics[i].category,
+            sortedCurrentStatistics[i].word,
+            sortedCurrentStatistics[i].image,
+            sortedCurrentStatistics[i].translation
+          ).getCard()
+        );
+      }
+    }
+    this.pageTitle.innerText = `- Repeat difficult words -`;
   }
 }

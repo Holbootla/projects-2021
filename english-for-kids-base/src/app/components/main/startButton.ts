@@ -35,7 +35,12 @@ export default class StartButton {
 
   getButton(): HTMLDivElement {
     const hash = window.location.hash.slice(1).toLowerCase();
-    if (!hash || !this.state.getPlayMode()) {
+    if (
+      !hash ||
+      !this.state.getPlayMode() ||
+      hash === 'statistics' ||
+      hash === 'repeat'
+    ) {
       this.removeVisibility();
     } else if (this.state.getPlayMode()) {
       this.addVisibility();

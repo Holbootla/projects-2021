@@ -1,7 +1,6 @@
 import State from '../../state';
 import CardsContainer from './cards-container/cards-container';
 import Stars from './stars';
-import StartButton from './startButton';
 
 export default class Main {
   main: HTMLElement;
@@ -10,8 +9,6 @@ export default class Main {
 
   cards: CardsContainer;
 
-  startButton: StartButton;
-
   state: State;
 
   constructor() {
@@ -19,13 +16,11 @@ export default class Main {
     this.main = document.createElement('main');
     this.stars = new Stars();
     this.cards = new CardsContainer();
-    this.startButton = new StartButton();
     this.main.appendChild(this.stars.getStars());
     document.addEventListener('answer', (event) => {
       this.stars.addStar((<CustomEvent>event).detail.answer);
     });
     this.main.appendChild(this.cards.getCards());
-    this.main.appendChild(this.startButton.getButton());
   }
 
   getMain(): HTMLElement {
@@ -45,10 +40,8 @@ export default class Main {
   refreshMain(): void {
     this.main.removeChild(this.stars.getStars());
     this.main.removeChild(this.cards.getCards());
-    this.main.removeChild(this.startButton.getButton());
     this.main.appendChild(this.stars.getStars());
     this.main.appendChild(this.cards.getCards());
-    this.main.appendChild(this.startButton.getButton());
     this.cards.getCards();
   }
 }

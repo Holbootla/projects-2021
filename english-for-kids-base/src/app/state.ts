@@ -31,6 +31,7 @@ export default class State {
     category: string;
     word: string;
     translation: string;
+    image: string;
     clicks: number;
     right: number;
     wrong: number;
@@ -40,6 +41,7 @@ export default class State {
     category: string;
     word: string;
     translation: string;
+    image: string;
     clicks: number;
     right: number;
     wrong: number;
@@ -65,6 +67,7 @@ export default class State {
             category: item.category,
             word: word.word,
             translation: word.translation,
+            image: word.image,
             clicks: 0,
             right: 0,
             wrong: 0,
