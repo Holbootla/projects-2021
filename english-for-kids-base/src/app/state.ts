@@ -263,4 +263,24 @@ export default class State {
   public setOrderType(orderType: OrderType): void {
     this.orderType = orderType;
   }
+
+  public clearStatistics(): void {
+    this.statistics = [];
+    cardsData.forEach((item) => {
+      item.words.forEach((word) => {
+        this.statistics.push({
+          category: item.category,
+          word: word.word,
+          translation: word.translation,
+          image: word.image,
+          clicks: 0,
+          right: 0,
+          wrong: 0,
+        });
+      });
+    });
+    localStorage.clear();
+    localStorage.setItem('statistics', `${JSON.stringify(this.statistics)}`);
+    this.statistics = JSON.parse(localStorage.getItem('statistics') ?? '');
+  }
 }

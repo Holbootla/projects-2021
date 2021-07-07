@@ -19,6 +19,8 @@ export default class CardsContainer {
 
   repeatDifficultWordsButton: HTMLDivElement;
 
+  resetStatistics: HTMLDivElement;
+
   constructor() {
     this.state = State.getInstance();
     this.statistics = new Statistics();
@@ -34,6 +36,13 @@ export default class CardsContainer {
     this.repeatDifficultWordsButton.innerText = 'REPEAT!';
     this.repeatDifficultWordsButton.addEventListener('click', () => {
       window.location.hash = 'repeat';
+    });
+    this.resetStatistics = document.createElement('div');
+    this.resetStatistics.classList.add('start-game-button');
+    this.resetStatistics.innerText = 'Reset';
+    this.resetStatistics.addEventListener('click', () => {
+      this.state.clearStatistics();
+      window.dispatchEvent(new Event('hashchange'));
     });
   }
 
@@ -97,6 +106,7 @@ export default class CardsContainer {
     this.cards.innerHTML = '';
     this.cards.appendChild(this.statistics.getStatistics());
     this.cards.appendChild(this.repeatDifficultWordsButton);
+    this.cards.appendChild(this.resetStatistics);
   }
 
   getDifficultWordCards(): void {
