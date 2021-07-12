@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import categoriesRouter from './category/router';
+import wordsRouter from './word/router';
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/categories/', categoriesRouter);
+app.use('/api/words/', wordsRouter);
 
 app.listen(3000, () => {
   console.log('Server has been started on port 3000...');
