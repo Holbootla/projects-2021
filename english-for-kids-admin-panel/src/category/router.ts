@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getCategory, getCategories } from './store';
+import { getCategory, getCategories, deleteCategory } from './store';
 
 const router = Router();
 
@@ -21,6 +21,21 @@ router.get('/:name', async (req, res) => {
   }
 
   return res.json(category);
+});
+
+router.delete('/:name', async (req, res) => {
+  const categoryName = req.params.name.toString();
+
+  if (!categoryName) {
+    return res.sendStatus(400);
+  }
+
+  try {
+    await deleteCategory(categoryName);
+    return res.sendStatus(200);
+  } catch (e) {
+    return res.status(404).send(e);
+  }
 });
 
 export default router;

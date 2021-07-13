@@ -37,3 +37,17 @@ export function getCategory(name: string): Promise<Category | undefined> {
   );
   return Promise.resolve(category);
 }
+
+export function deleteCategory(name: string): Promise<void> {
+  const categoryIndex = categories.findIndex(
+    (el) => el.category.toLowerCase() === name.toLowerCase()
+  );
+
+  if (categoryIndex < 0) {
+    Promise.reject(new Error('Category not found.'));
+  }
+
+  categories.splice(categoryIndex, 1);
+
+  return Promise.resolve();
+}
