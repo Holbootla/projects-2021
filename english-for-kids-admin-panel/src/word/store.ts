@@ -80,3 +80,15 @@ export function deleteWord(name: string): Promise<void> {
 
   return Promise.resolve();
 }
+
+export function createWord(word: Word): Promise<Word> {
+  if (words.find((el) => el.word === word.word)) {
+    return Promise.reject(
+      new Error(`This word '${word.word}' is already exist`)
+    );
+  }
+
+  words.push(word);
+
+  return Promise.resolve(word);
+}

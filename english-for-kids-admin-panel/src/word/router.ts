@@ -1,5 +1,12 @@
 import { Router } from 'express';
-import { getWords, getWordsByCategory, getWord, deleteWord } from './store';
+import { Word } from './word';
+import {
+  getWords,
+  getWordsByCategory,
+  getWord,
+  deleteWord,
+  createWord,
+} from './store';
 
 const router = Router();
 
@@ -50,6 +57,17 @@ router.delete('/:name', async (req, res) => {
     return res.sendStatus(200);
   } catch (e) {
     return res.status(404).send(e);
+  }
+});
+
+router.post('/', async (req, res) => {
+  const word: Word = req.body;
+
+  try {
+    await createWord(word);
+    return res.sendStatus(200);
+  } catch (e) {
+    return res.status(400).send(e);
   }
 });
 
