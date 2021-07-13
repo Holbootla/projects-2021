@@ -63,3 +63,14 @@ export function createCategory(category: Category): Promise<Category> {
 
   return Promise.resolve(category);
 }
+
+export function updateCategory(category: Category): Promise<Category> {
+  const categoryIndex = categories.findIndex(
+    (el) => el.category.toLowerCase() === category.category.toLowerCase()
+  );
+
+  categories.splice(categoryIndex, 1);
+  categories.push(category);
+
+  return Promise.resolve(category);
+}

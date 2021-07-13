@@ -5,6 +5,7 @@ import {
   getCategories,
   deleteCategory,
   createCategory,
+  updateCategory,
 } from './store';
 
 const router = Router();
@@ -49,6 +50,17 @@ router.post('/', async (req, res) => {
 
   try {
     await createCategory(category);
+    return res.sendStatus(200);
+  } catch (e) {
+    return res.status(400).send(e);
+  }
+});
+
+router.put('/', async (req, res) => {
+  const category: Category = req.body;
+
+  try {
+    await updateCategory(category);
     return res.sendStatus(200);
   } catch (e) {
     return res.status(400).send(e);
