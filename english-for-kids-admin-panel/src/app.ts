@@ -1,10 +1,12 @@
 import express from 'express';
 import cors from 'cors';
+import bodyparser from 'body-parser';
 import categoriesRouter from './category/router';
 import wordsRouter from './word/router';
 
 const app = express();
 
+app.use(bodyparser.json());
 app.use(cors());
 
 app.get('/', (req, res) => {
