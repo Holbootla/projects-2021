@@ -51,3 +51,15 @@ export function deleteCategory(name: string): Promise<void> {
 
   return Promise.resolve();
 }
+
+export function createCategory(category: Category): Promise<Category> {
+  if (categories.find((el) => el.category === category.category)) {
+    return Promise.reject(
+      new Error(`This category '${category.category}' is already exist`)
+    );
+  }
+
+  categories.push(category);
+
+  return Promise.resolve(category);
+}

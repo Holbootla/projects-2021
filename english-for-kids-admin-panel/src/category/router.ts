@@ -1,5 +1,11 @@
 import { Router } from 'express';
-import { getCategory, getCategories, deleteCategory } from './store';
+import { Category } from './category';
+import {
+  getCategory,
+  getCategories,
+  deleteCategory,
+  createCategory,
+} from './store';
 
 const router = Router();
 
@@ -35,6 +41,17 @@ router.delete('/:name', async (req, res) => {
     return res.sendStatus(200);
   } catch (e) {
     return res.status(404).send(e);
+  }
+});
+
+router.post('/', async (req, res) => {
+  const category: Category = req.body;
+
+  try {
+    await createCategory(category);
+    return res.sendStatus(200);
+  } catch (e) {
+    return res.status(400).send(e);
   }
 });
 
