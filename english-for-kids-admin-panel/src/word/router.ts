@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getWords, getWordsByCategory, getWord } from './store';
+import { getWords, getWordsByCategory, getWord, deleteWord } from './store';
 
 const router = Router();
 
@@ -36,6 +36,21 @@ router.get('/:name', async (req, res) => {
   }
 
   return res.json(word);
+});
+
+router.delete('/:name', async (req, res) => {
+  const wordName = req.params.name.toString();
+
+  if (!wordName) {
+    return res.sendStatus(400);
+  }
+
+  try {
+    await deleteWord(wordName);
+    return res.sendStatus(200);
+  } catch (e) {
+    return res.status(404).send(e);
+  }
 });
 
 export default router;

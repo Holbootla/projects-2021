@@ -66,3 +66,17 @@ export function getWord(name: string): Promise<Word | undefined> {
   const word = words.find((el) => el.word.toLowerCase() === name.toLowerCase());
   return Promise.resolve(word);
 }
+
+export function deleteWord(name: string): Promise<void> {
+  const wordIndex = words.findIndex(
+    (el) => el.word.toLowerCase() === name.toLowerCase()
+  );
+
+  if (wordIndex < 0) {
+    Promise.reject(new Error('Word not found.'));
+  }
+
+  words.splice(wordIndex, 1);
+
+  return Promise.resolve();
+}
