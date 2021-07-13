@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { getCategory } from 'category/store';
 import { Word } from './word';
 import {
   getWords,
@@ -64,6 +65,12 @@ router.delete('/:name', async (req, res) => {
 router.post('/', async (req, res) => {
   const word: Word = req.body;
 
+  const category = await getCategory(word.category);
+
+  if (!category) {
+    return res.status(400).send(`Category '${word.category}' is not exist`);
+  }
+
   try {
     await createWord(word);
     return res.sendStatus(200);
@@ -74,6 +81,12 @@ router.post('/', async (req, res) => {
 
 router.put('/', async (req, res) => {
   const word: Word = req.body;
+
+  const category = await getCategory(word.category);
+
+  if (!category) {
+    return res.status(400).send(`Category '${word.category}' is not exist`);
+  }
 
   try {
     await updateWord(word);
