@@ -6,6 +6,7 @@ import {
   getWord,
   deleteWord,
   createWord,
+  updateWord,
 } from './store';
 
 const router = Router();
@@ -65,6 +66,17 @@ router.post('/', async (req, res) => {
 
   try {
     await createWord(word);
+    return res.sendStatus(200);
+  } catch (e) {
+    return res.status(400).send(e);
+  }
+});
+
+router.put('/', async (req, res) => {
+  const word: Word = req.body;
+
+  try {
+    await updateWord(word);
     return res.sendStatus(200);
   } catch (e) {
     return res.status(400).send(e);

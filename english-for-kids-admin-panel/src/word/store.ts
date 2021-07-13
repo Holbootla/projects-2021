@@ -92,3 +92,14 @@ export function createWord(word: Word): Promise<Word> {
 
   return Promise.resolve(word);
 }
+
+export function updateWord(word: Word): Promise<Word> {
+  const wordIndex = words.findIndex(
+    (el) => el.word.toLowerCase() === word.word.toLowerCase()
+  );
+
+  words.splice(wordIndex, 1);
+  words.push(word);
+
+  return Promise.resolve(word);
+}
