@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import cors from 'cors';
 import bodyparser from 'body-parser';
@@ -10,8 +11,29 @@ const app = express();
 app.use(bodyparser.json());
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.send('English for kids admin panel');
+const publicPath = path.resolve(__dirname, '../wwwroot');
+const indexPath = path.resolve(__dirname, '../wwwroot/index.html');
+
+app.use(/^(?!\/api\/)/, express.static(publicPath));
+
+app.use(/^(?!\/api\/)/, (req, res) => {
+  res.sendFile(indexPath);
+});
+
+app.get('/api/', (req, res) => {
+  res.send(`English for kids API<br><br>
+  Can use:<br>
+  <br>
+  /categories/<br>
+  /categories/NAME<br>
+  /words/<br>
+  /words/category=NAME<br>
+  /words/NAME<br>
+  /users/<br>
+  <br>
+  Also categories and users have update (PUT), create (POST) and delete (DELETE) methods.<br><br>
+  RETURN TO SITE: <a href="../">English for kids</a>
+  `);
 });
 
 app.use('/api/categories/', categoriesRouter);

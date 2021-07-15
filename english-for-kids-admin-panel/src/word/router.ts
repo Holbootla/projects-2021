@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getCategory } from 'category/store';
+import { getCategory } from '../category/store';
 import { Word } from './word';
 import {
   getWords,
