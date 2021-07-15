@@ -11,28 +11,19 @@ const app = express();
 app.use(bodyparser.json());
 app.use(cors());
 
-const publicPath = path.resolve(__dirname, '../wwwroot');
-const indexPath = path.resolve(__dirname, '../wwwroot/index.html');
-
-app.use(/^(?!\/api\/)/, express.static(publicPath));
-
-app.use(/^(?!\/api\/)/, (req, res) => {
-  res.sendFile(indexPath);
-});
-
-app.get('/api/', (req, res) => {
+app.get('/', (req, res) => {
   res.send(`English for kids API<br><br>
   Can use:<br>
   <br>
-  /categories/<br>
-  /categories/NAME<br>
-  /words/<br>
-  /words/category=NAME<br>
-  /words/NAME<br>
-  /users/<br>
+  /api/categories/<br>
+  /api/categories/NAME<br>
+  /api/words/<br>
+  /api/words/category=NAME<br>
+  /api/words/NAME<br>
+  /api/users/<br>
   <br>
   Also categories and users have update (PUT), create (POST) and delete (DELETE) methods.<br><br>
-  RETURN TO SITE: <a href="../">English for kids</a>
+  RETURN TO SITE: <a href="https://rolling-scopes-school.github.io/holbootla-JSFE2021Q1/english-for-kids-base/">English for kids</a>
   `);
 });
 
